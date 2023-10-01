@@ -1,0 +1,14 @@
+.header-component-style {
+	display: flex;
+	align-items: center;
+	gap: 40px;
+	width: 100%;
+	background-color: #fff;
+	box-shadow: 2px 2px 2px #888888;
+
+	.header1-style {
+		font-weight: normal;
+		font-size: xx-large;
+		margin-left: 60px;
+	}
+}
