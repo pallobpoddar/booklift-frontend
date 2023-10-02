@@ -1,28 +1,35 @@
 import { useState, useEffect } from "react";
+import axiosInstance from "../utils/axiosInstance";
 
 const useBookApi = () => {
 	const [bookList, setBookList] = useState([]);
 	const [loading, setLoading] = useState(false);
 
 	useEffect(() => {
-		fetch(`http://localhost:8000/api/books/all`)
-			.then((res) => res.json())
-			.then((field) => field.data.books)
-			.then((data) => {
+		axiosInstance
+			.get("/all")
+			.then((response) => {
+				const data = response.data.data.books;
 				setBookList(data);
+			})
+			.catch((error) => {
+				console.error("Error fetching data:", error);
 			});
 	}, []);
 
-	const createPost = async (formData) => {
-		setLoading(true);
-		console.log("The form data ", formData);
-		await fetch(`http://localhost:8000/api/books/add`, {
-			method: "POST",
-			body: JSON.stringify(formData),
-		})
-			.then((resp) => resp.json())
-			.then((data) => console.log("Successfully created", data))
-			.finally(() => setLoading(false));
+	const createPost = (formData) => {
+		axiosInstance
+			.post("/add", formData, {
+				headers: {
+					"Content-Type": "application/json",
+				},
+			})
+			.then((response) => {
+				const data = response.data;
+			})
+			.catch((error) => {
+				console.error("Error:", error);
+			});
 	};
 
 	// const updateBook = async (formData) => {

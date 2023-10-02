@@ -1,128 +1,243 @@
-import { useState } from "react";
+import { useEffect } from "react";
+import { useForm, Controller } from "react-hook-form";
 import useBookApi from "../../../hooks/useBookApi";
 import "./AddEditForm.scss";
 
 const AddEditForm = () => {
+	const {
+		handleSubmit,
+		control,
+		formState: { errors },
+		getValues,
+	} = useForm();
+
 	const { createPost } = useBookApi();
 
-	const [title, setTitle] = useState("");
-	const [author, setAuthor] = useState("");
-	const [description, setDescription] = useState("");
-	const [price, setPrice] = useState(0);
-	const [year, setYear] = useState(0);
-	const [language, setLanguage] = useState("");
-	const [isbn, setIsbn] = useState(0);
-	const [category, setCategory] = useState("");
-	const [stock, setStock] = useState(0);
-
-	const handleCreateUser = (e) => {
-		e.preventDefault();
-
+	const handlerOnSubmit = () => {
 		const data = {
-			title: title,
-			author: author,
-			description: description,
-			price: price,
-			year: year,
-			language: language,
-			isbn: isbn,
-			category: category,
-			stock: stock,
+			title: getValues("title"),
+			author: getValues("author"),
+			description: getValues("description"),
+			price: getValues("price"),
+			year: getValues("year"),
+			language: getValues("language"),
+			isbn: getValues("isbn"),
+			category: getValues("category"),
+			stock: getValues("stock"),
 		};
 
 		createPost(data);
 	};
+
+	useEffect(() => {
+		console.log("Errors: ", errors);
+	}, [errors]);
+
 	return (
-		<div className="form-center">
-			<form className="form" onSubmit={handleCreateUser}>
-				<div className="form-row">
-					<label className="form-row-label">Title:</label>
-					<input
-						className="form-row-input"
-						type="text"
-						placeholder="Please enter title"
-						onChange={(e) => setTitle(e.target.value)}
-					/>
-				</div>
-				<div className="form-row">
-					<label className="form-row-label">Author:</label>
-					<input
-						className="form-row-input"
-						type="author"
-						placeholder="Please enter author"
-						onChange={(e) => setAuthor(e.target.value)}
-					/>
-				</div>
-				<div className="form-row">
-					<label className="form-row-label">Description:</label>
-					<input
-						className="form-row-input"
-						type="author"
-						placeholder="Please enter description"
-						onChange={(e) => setDescription(e.target.value)}
-					/>
-				</div>
-				<div className="form-row">
-					<label className="form-row-label">Price:</label>
-					<input
-						className="form-row-input"
-						type="text"
-						placeholder="Please enter price"
-						onChange={(e) => setPrice(e.target.value)}
-					/>
-				</div>
-				<div className="form-row">
-					<label className="form-row-label">Year:</label>
-					<input
-						className="form-row-input"
-						type="text"
-						placeholder="Please enter year"
-						onChange={(e) => setYear(e.target.value)}
-					/>
-				</div>
-				<div className="form-row">
-					<label className="form-row-label">Language:</label>
-					<input
-						className="form-row-input"
-						type="text"
-						placeholder="Please enter language"
-						onChange={(e) => setLanguage(e.target.value)}
-					/>
-				</div>
-				<div className="form-row">
-					<label className="form-row-label">ISBN:</label>
-					<input
-						className="form-row-input"
-						type="text"
-						placeholder="Please enter ISBN"
-						onChange={(e) => setIsbn(e.target.value)}
-					/>
-				</div>
-				<div className="form-row">
-					<label className="form-row-label">Category:</label>
-					<input
-						className="form-row-input"
-						type="text"
-						placeholder="Please enter Category"
-						onChange={(e) => setCategory(e.target.value)}
-					/>
-				</div>
-				<div className="form-row">
-					<label className="form-row-label">Stock:</label>
-					<input
-						className="form-row-input"
-						type="text"
-						placeholder="Please enter Stock"
-						onChange={(e) => setStock(e.target.value)}
-					/>
-				</div>
-				<div className="form-row">
-					<button className="form-row-button" type="submit">
-						Submit
-					</button>
-				</div>
-			</form>
-		</div>
+		<form
+			className="form"
+			onSubmit={handleSubmit(handlerOnSubmit)}>
+			<div className="form-row">
+				<Controller
+					name="title"
+					control={control}
+					rules={{
+						required: "Title is required",
+						minLength: {
+							value: 6,
+							message: "Minimum length must be 6",
+						},
+						maxLength: {
+							value: 50,
+							message: "Minimum length must be 20",
+						},
+					}}
+					render={({ field }) => (
+						<input
+							placeholder="Title"
+							{...field}
+							style={{ border: errors.title ? "1px solid red" : "" }}
+						/>
+					)}
+				/>
+				{errors.title && <h5>{errors.title.message}</h5>}
+			</div>
+			<div className="form-row">
+				<label className="form-row-label">Author:</label>
+				<Controller
+					name="author"
+					control={control}
+					rules={{
+						required: "Author is required",
+						minLength: {
+							value: 6,
+							message: "Minimum length must be 6",
+						},
+						maxLength: {
+							value: 50,
+							message: "Minimum length must be 20",
+						},
+					}}
+					render={({ field }) => (
+						<input
+							placeholder="Enter author"
+							{...field}
+							style={{ border: errors.author ? "1px solid red" : "" }}
+						/>
+					)}
+				/>
+				{errors.author && <h5>{errors.author.message}</h5>}
+			</div>
+			<div className="form-row">
+				<label className="form-row-label">Description:</label>
+				<Controller
+					name="description"
+					control={control}
+					rules={{
+						required: "description is required",
+						minLength: {
+							value: 6,
+							message: "Minimum length must be 6",
+						},
+						maxLength: {
+							value: 100,
+							message: "Minimum length must be 20",
+						},
+					}}
+					render={({ field }) => (
+						<input
+							placeholder="Enter description"
+							{...field}
+							style={{ border: errors.description ? "1px solid red" : "" }}
+						/>
+					)}
+				/>
+				{errors.description && <h5>{errors.description.message}</h5>}
+			</div>
+			<div className="form-row">
+				<label className="form-row-label">Price:</label>
+				<Controller
+					name="price"
+					control={control}
+					rules={{
+						required: "price is required",
+					}}
+					render={({ field }) => (
+						<input
+							placeholder="Enter price"
+							{...field}
+							style={{ border: errors.price ? "1px solid red" : "" }}
+						/>
+					)}
+				/>
+				{errors.price && <h5>{errors.price.message}</h5>}
+			</div>
+			<div className="form-row">
+				<label className="form-row-label">Year:</label>
+				<Controller
+					name="year"
+					control={control}
+					rules={{
+						required: "year is required",
+					}}
+					render={({ field }) => (
+						<input
+							placeholder="Enter year"
+							{...field}
+							style={{ border: errors.year ? "1px solid red" : "" }}
+						/>
+					)}
+				/>
+				{errors.year && <h5>{errors.year.message}</h5>}
+			</div>
+			<div className="form-row">
+				<label className="form-row-label">Language:</label>
+				<Controller
+					name="language"
+					control={control}
+					rules={{
+						required: "language is required",
+					}}
+					render={({ field }) => (
+						<input
+							placeholder="Enter language"
+							{...field}
+							style={{ border: errors.language ? "1px solid red" : "" }}
+						/>
+					)}
+				/>
+				{errors.language && <h5>{errors.language.message}</h5>}
+			</div>
+			<div className="form-row">
+				<label className="form-row-label">ISBN:</label>
+				<Controller
+					name="isbn"
+					control={control}
+					rules={{
+						required: "isbn is required",
+						minLength: {
+							value: 6,
+							message: "Minimum length must be 6",
+						},
+						maxLength: {
+							value: 20,
+							message: "Minimum length must be 20",
+						},
+					}}
+					render={({ field }) => (
+						<input
+							placeholder="Enter isbn"
+							{...field}
+							style={{ border: errors.isbn ? "1px solid red" : "" }}
+						/>
+					)}
+				/>
+				{errors.isbn && <h5>{errors.isbn.message}</h5>}
+			</div>
+			<div className="form-row">
+				<label className="form-row-label">Category:</label>
+				<Controller
+					name="category"
+					control={control}
+					rules={{
+						required: "category is required",
+					}}
+					render={({ field }) => (
+						<input
+							placeholder="Enter category"
+							{...field}
+							style={{ border: errors.category ? "1px solid red" : "" }}
+						/>
+					)}
+				/>
+				{errors.category && <h5>{errors.category.message}</h5>}
+			</div>
+			<div className="form-row">
+				<label className="form-row-label">Stock:</label>
+				<Controller
+					name="stock"
+					control={control}
+					rules={{
+						required: "stock is required",
+					}}
+					render={({ field }) => (
+						<input
+							placeholder="Enter stock"
+							{...field}
+							style={{ border: errors.stock ? "1px solid red" : "" }}
+						/>
+					)}
+				/>
+				{errors.stock && <h5>{errors.stock.message}</h5>}
+			</div>
+			<div className="form-row">
+				<button
+					className="form-row-button"
+					type="submit">
+					Submit
+				</button>
+			</div>
+		</form>
 	);
 };
 
