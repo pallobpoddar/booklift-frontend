@@ -4,32 +4,29 @@ import { Link } from "react-router-dom";
 const Sidebar = () => {
 	return (
 		<aside className="sidebar">
-			<ul>
-				<li>
-					<Link to={"/admin/dashboard"} className="link-decoration">
+			<ul className="unordered-list">
+				<li className="list-item">
+					<Link to={"/admin/dashboard"} className="link">
 						Dashboard
 					</Link>
 				</li>
-				<li>
-					<Link to={"/admin/users"} className="link-decoration">
+				<li className="list-item">
+					<Link to={"/admin/users"} className="link">
 						Users
 					</Link>
 				</li>
-				<li>
-					<Link to={"/admin/books"} className="link-decoration">
+				<li className="list-item">
+					<Link to={"/admin/books"} className="link">
 						Books
 					</Link>
 				</li>
-				<li>
-					<Link to={"/admin/discounts"} className="link-decoration">
+				<li className="list-item">
+					<Link to={"/admin/discounts"} className="link">
 						Discounts
 					</Link>
 				</li>
-				<li>
-					<Link
-						to={"/admin/transactions"}
-						className="link-decoration"
-					>
+				<li className="list-item">
+					<Link to={"/admin/transactions"} className="link">
 						Transactions
 					</Link>
 				</li>

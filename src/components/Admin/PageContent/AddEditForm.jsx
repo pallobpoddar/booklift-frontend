@@ -34,9 +34,7 @@ const AddEditForm = () => {
 	}, [errors]);
 
 	return (
-		<form
-			className="form"
-			onSubmit={handleSubmit(handlerOnSubmit)}>
+		<form className="form" onSubmit={handleSubmit(handlerOnSubmit)}>
 			<div className="form-row">
 				<Controller
 					name="title"
@@ -56,14 +54,14 @@ const AddEditForm = () => {
 						<input
 							placeholder="Title"
 							{...field}
-							style={{ border: errors.title ? "1px solid red" : "" }}
+							style={{
+								border: errors.title ? "1px solid red" : "",
+							}}
 						/>
 					)}
 				/>
 				{errors.title && <h5>{errors.title.message}</h5>}
-			</div>
-			<div className="form-row">
-				<label className="form-row-label">Author:</label>
+
 				<Controller
 					name="author"
 					control={control}
@@ -80,14 +78,17 @@ const AddEditForm = () => {
 					}}
 					render={({ field }) => (
 						<input
-							placeholder="Enter author"
+							placeholder="Author"
 							{...field}
-							style={{ border: errors.author ? "1px solid red" : "" }}
+							style={{
+								border: errors.author ? "1px solid red" : "",
+							}}
 						/>
 					)}
 				/>
 				{errors.author && <h5>{errors.author.message}</h5>}
 			</div>
+
 			<div className="form-row">
 				<label className="form-row-label">Description:</label>
 				<Controller
@@ -108,7 +109,11 @@ const AddEditForm = () => {
 						<input
 							placeholder="Enter description"
 							{...field}
-							style={{ border: errors.description ? "1px solid red" : "" }}
+							style={{
+								border: errors.description
+									? "1px solid red"
+									: "",
+							}}
 						/>
 					)}
 				/>
@@ -126,7 +131,9 @@ const AddEditForm = () => {
 						<input
 							placeholder="Enter price"
 							{...field}
-							style={{ border: errors.price ? "1px solid red" : "" }}
+							style={{
+								border: errors.price ? "1px solid red" : "",
+							}}
 						/>
 					)}
 				/>
@@ -144,7 +151,9 @@ const AddEditForm = () => {
 						<input
 							placeholder="Enter year"
 							{...field}
-							style={{ border: errors.year ? "1px solid red" : "" }}
+							style={{
+								border: errors.year ? "1px solid red" : "",
+							}}
 						/>
 					)}
 				/>
@@ -162,7 +171,9 @@ const AddEditForm = () => {
 						<input
 							placeholder="Enter language"
 							{...field}
-							style={{ border: errors.language ? "1px solid red" : "" }}
+							style={{
+								border: errors.language ? "1px solid red" : "",
+							}}
 						/>
 					)}
 				/>
@@ -188,7 +199,9 @@ const AddEditForm = () => {
 						<input
 							placeholder="Enter isbn"
 							{...field}
-							style={{ border: errors.isbn ? "1px solid red" : "" }}
+							style={{
+								border: errors.isbn ? "1px solid red" : "",
+							}}
 						/>
 					)}
 				/>
@@ -206,7 +219,9 @@ const AddEditForm = () => {
 						<input
 							placeholder="Enter category"
 							{...field}
-							style={{ border: errors.category ? "1px solid red" : "" }}
+							style={{
+								border: errors.category ? "1px solid red" : "",
+							}}
 						/>
 					)}
 				/>
@@ -224,16 +239,16 @@ const AddEditForm = () => {
 						<input
 							placeholder="Enter stock"
 							{...field}
-							style={{ border: errors.stock ? "1px solid red" : "" }}
+							style={{
+								border: errors.stock ? "1px solid red" : "",
+							}}
 						/>
 					)}
 				/>
 				{errors.stock && <h5>{errors.stock.message}</h5>}
 			</div>
 			<div className="form-row">
-				<button
-					className="form-row-button"
-					type="submit">
+				<button className="form-row-button" type="submit">
 					Submit
 				</button>
 			</div>

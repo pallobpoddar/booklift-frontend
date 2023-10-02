@@ -12,10 +12,10 @@
 
 .form-row {
 	display: flex;
-	width: 70%;
+	// width: 70%;
 	margin: 5px auto;
-	display: flex;
 	flex-direction: row;
+	border: 1px solid black;
 }
 
 .form-row-label {
