@@ -20,19 +20,15 @@
 	font-size: smaller;
 }
 
-.form {
+.form-style {
 	display: flex;
 	align-items: center;
 	justify-content: center;
 	margin-left: 450px;
 	width: 400px;
-	height: 300px;
+	height: 450px;
 	background-color: #fff;
 	margin-top: 30px;
-}
-
-.form-container {
-	margin-top: 20px;
 }
 
 .form-row {
@@ -68,4 +64,9 @@
 
 .form-row-button:hover {
 	background-color: #6ec8ec;
+}
+
+.link-remover {
+	text-decoration: none;
+	color: black;
 }

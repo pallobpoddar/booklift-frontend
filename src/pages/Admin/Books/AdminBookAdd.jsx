@@ -1,4 +1,4 @@
-import "../CommonStyle.scss";
+import "../../../utils/commonStyle.scss";
 import HeaderBar from "../../../components/Admin/Header/HeaderBar";
 import Sidebar from "../../../components/Admin/Sidebar/Sidebar";
 import AddEditForm from "../../../components/Admin/PageContent/AddEditForm";
