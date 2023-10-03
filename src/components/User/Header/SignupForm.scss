@@ -1,12 +1,38 @@
+.header1 {
+	display: flex;
+	align-items: center;
+	font-weight: normal;
+	font-size: xx-large;
+	margin-top: 100px;
+	margin-left: 600px;
+}
+
+.link-style {
+	text-decoration: none;
+	color: blue;
+}
+
+.form-row-paragraph {
+	margin-left: 30px;
+}
+
+.error-message {
+	font-size: smaller;
+}
+
 .form {
-	width: auto;
-	height: auto;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin-left: 450px;
+	width: 400px;
+	height: 450px;
 	background-color: #fff;
-	// margin: 80px auto auto 350px;
+	margin-top: 30px;
 }
 
 .form-container {
-	margin: 30px;
+	margin-top: 20px;
 }
 
 .form-row {
@@ -42,4 +68,9 @@
 
 .form-row-button:hover {
 	background-color: #6ec8ec;
+}
+
+.link-remover {
+	text-decoration: none;
+	color: black;
 }

@@ -7,8 +7,10 @@ const AdminBookAdd = () => {
 	return (
 		<>
 			<HeaderBar />
-			<Sidebar />
-			<AddEditForm />
+			<div className="container">
+				<Sidebar />
+				<AddEditForm />
+			</div>
 		</>
 	);
 };
