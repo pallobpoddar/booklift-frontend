@@ -1,8 +1,8 @@
 import { useEffect } from "react";
 import { useForm, Controller } from "react-hook-form";
-import useBookApi from "../../../hooks/useBookApi";
+import useBookApi from "../../hooks/useBookApi";
 import "./AddEditForm.scss";
-import "../../../utils/commonStyle.scss";
+import "../../App.scss";
 
 const AddEditForm = () => {
 	const {
@@ -53,8 +53,7 @@ const AddEditForm = () => {
 		<div className="form">
 			<form
 				className="form-container"
-				onSubmit={handleSubmit(handlerOnSubmit)}
-			>
+				onSubmit={handleSubmit(handlerOnSubmit)}>
 				<div className="form-row">
 					<Controller
 						name="title"
@@ -105,9 +104,7 @@ const AddEditForm = () => {
 								placeholder="Author"
 								{...field}
 								style={{
-									border: errors.author
-										? "1px solid red"
-										: "",
+									border: errors.author ? "1px solid red" : "",
 								}}
 							/>
 						)}
@@ -136,16 +133,12 @@ const AddEditForm = () => {
 								placeholder="Description"
 								{...field}
 								style={{
-									border: errors.description
-										? "1px solid red"
-										: "",
+									border: errors.description ? "1px solid red" : "",
 								}}
 							/>
 						)}
 					/>
-					{errors.description && (
-						<h5>{errors.description.message}</h5>
-					)}
+					{errors.description && <h5>{errors.description.message}</h5>}
 				</div>
 				<div className="form-row">
 					<Controller
@@ -200,9 +193,7 @@ const AddEditForm = () => {
 								placeholder="Language"
 								{...field}
 								style={{
-									border: errors.language
-										? "1px solid red"
-										: "",
+									border: errors.language ? "1px solid red" : "",
 								}}
 							/>
 						)}
@@ -250,9 +241,7 @@ const AddEditForm = () => {
 								placeholder="Category"
 								{...field}
 								style={{
-									border: errors.category
-										? "1px solid red"
-										: "",
+									border: errors.category ? "1px solid red" : "",
 								}}
 							/>
 						)}
@@ -280,7 +269,9 @@ const AddEditForm = () => {
 					{errors.stock && <h5>{errors.stock.message}</h5>}
 				</div>
 				<div className="form-row">
-					<button className="form-row-button" type="submit">
+					<button
+						className="form-row-button"
+						type="submit">
 						Submit
 					</button>
 				</div>

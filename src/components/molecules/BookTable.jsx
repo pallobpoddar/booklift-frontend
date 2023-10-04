@@ -1,4 +1,4 @@
-import useBookApi from "../../../hooks/useBookApi";
+import useBookApi from "../../hooks/useBookApi";
 import BookRow from "./BookRow";
 import "./BookTable.scss";
 

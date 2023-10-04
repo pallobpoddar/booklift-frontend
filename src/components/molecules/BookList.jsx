@@ -1,5 +1,5 @@
-import BookCard from "./BookCard";
-import useBookApi from "../../../hooks/useBookApi";
+import BookCard from "../atoms/cards/BookCard";
+import useBookApi from "../../hooks/useBookApi";
 import "./BookList.scss";
 
 const BookList = () => {

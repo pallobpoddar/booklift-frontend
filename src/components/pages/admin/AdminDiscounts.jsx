@@ -1,7 +1,7 @@
-import "../../utils/commonStyle.scss";
-import HeaderBar from "../../components/Admin/Header/HeaderBar";
-import ActionCard from "../../components/Admin/PageContent/ActionCard";
-import Sidebar from "../../components/Admin/Sidebar/Sidebar";
+import "../../../App.scss";
+import HeaderBar from "../../molecules/HeaderBar";
+import ActionCard from "../../molecules/ActionCard";
+import Sidebar from "../../molecules/Sidebar";
 
 const AdminDiscounts = () => {
 	return (
