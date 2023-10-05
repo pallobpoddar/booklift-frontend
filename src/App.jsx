@@ -10,6 +10,7 @@ import AdminBookList from "./components/pages/admin/AdminBookList";
 import AdminBookAdd from "./components/pages/admin/AdminBookAdd";
 import SigninForm from "./components/molecules/SigninForm";
 import SignupForm from "./components/molecules/SignupForm";
+import Authenticate from "./components/pages/user/authenticate";
 
 function App() {
 	return (
@@ -20,10 +21,10 @@ function App() {
 						path=""
 						Component={UserHome}
 					/>
-					<Route
+					{/* <Route
 						path="/admin/dashboard"
 						Component={AdminDashboard}
-					/>
+					/> */}
 					<Route
 						path="/admin/books"
 						Component={AdminBooks}
@@ -49,13 +50,20 @@ function App() {
 						Component={AdminBookAdd}
 					/>
 					<Route
-						path="/user/signin"
+						path="/admin/signin"
 						Component={SigninForm}
 					/>
 					<Route
 						path="/user/signup"
 						Component={SignupForm}
 					/>
+
+					<Route element={<Authenticate />}>
+						<Route
+							path="/admin/dashboard"
+							Component={AdminDashboard}
+						/>
+					</Route>
 				</Routes>
 			</Router>
 		</>
