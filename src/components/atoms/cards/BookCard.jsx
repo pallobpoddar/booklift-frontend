@@ -1,6 +1,22 @@
 import "./BookCard.scss";
+import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { addBook, deleteBook } from "../../../redux/actions/bookActions";
 
 const BookCard = (card) => {
+	const dispatch = useDispatch();
+
+	const addNewBook = () => {
+		if (card.title && card.price) {
+			dispatch(
+				addBook({
+					title: card.title,
+					price: card.price,
+				})
+			);
+		}
+	};
+
 	return (
 		<>
 			<ul className="card">
@@ -16,7 +32,12 @@ const BookCard = (card) => {
 						</div>
 						${card.price}
 					</p>
-					<button className="card-button"> Add to cart</button>
+					<button
+						className="card-button"
+						onClick={addNewBook}>
+						{" "}
+						Add to cart
+					</button>
 				</li>
 			</ul>
 		</>
