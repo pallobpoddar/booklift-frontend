@@ -9,7 +9,7 @@ const UserHome = () => {
 			<Main />
 			<hr></hr>
 			<h2> Cart</h2>
-			<BookShow />
+			{/* <BookShow /> */}
 		</>
 	);
 };
