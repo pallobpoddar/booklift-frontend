@@ -2,10 +2,14 @@ import { useEffect } from "react";
 import { useForm, Controller } from "react-hook-form";
 import { Link } from "react-router-dom";
 import useAuthApi from "../../hooks/useAuthApi";
+import { useDispatch } from "react-redux";
 import "./SigninForm.scss";
 import "../../App.scss";
+import { addUserInfo } from "../../redux/slices/userSlice";
 
 const SigninForm = () => {
+	const dispatch = useDispatch();
+
 	const {
 		handleSubmit,
 		control,
@@ -28,6 +32,7 @@ const SigninForm = () => {
 		};
 
 		login(data);
+		dispatch(addUserInfo(data));
 	};
 
 	useEffect(() => {
