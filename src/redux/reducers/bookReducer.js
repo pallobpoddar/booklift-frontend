@@ -6,7 +6,6 @@ const initialState = {
 const booksReducer = (state = initialState, action) => {
 	switch (action.type) {
 		case "ADD_BOOK":
-			console.log("Products is calling ");
 			return {
 				...state,
 				bookList: [...state.bookList, action.payload],

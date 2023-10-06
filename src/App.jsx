@@ -50,7 +50,7 @@ function App() {
 						Component={AdminBookAdd}
 					/>
 					<Route
-						path="/admin/signin"
+						path="/user/signin"
 						Component={SigninForm}
 					/>
 					<Route
