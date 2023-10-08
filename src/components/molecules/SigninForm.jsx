@@ -1,11 +1,13 @@
-import { useEffect } from "react";
-import { useForm, Controller } from "react-hook-form";
-import { Link } from "react-router-dom";
-import useAuthApi from "../../hooks/useAuthApi";
+import { React, useEffect } from "react";
 import { useDispatch } from "react-redux";
-import "./SigninForm.scss";
-import "../../App.scss";
+import { useForm, Controller } from "react-hook-form";
+import useAuthApi from "../../hooks/useAuthApi";
 import { addUserInfo } from "../../redux/slices/userSlice";
+import { Link } from "react-router-dom";
+import Header1 from "../atoms/labels/Header1";
+import "../../App.scss";
+import "./SigninForm.scss";
+import ValidationInput from "../atoms/inputs/ValidationInput";
 
 const SigninForm = () => {
 	const dispatch = useDispatch();
@@ -41,32 +43,25 @@ const SigninForm = () => {
 
 	return (
 		<div>
-			<div>
-				<h1 className="header1">Sign In</h1>
-			</div>
-			<form
-				className="form"
-				onSubmit={handleSubmit(handlerOnSubmit)}>
+			<Header1 header1Style="header1" text="Sign In" />
+			<form className="form" onSubmit={handleSubmit(handlerOnSubmit)}>
 				<div className="form-row">
 					<Controller
 						name="email"
 						control={control}
 						rules={{
 							required: "Email is required",
-							minLength: {
-								value: 6,
-								message: "Minimum length must be 6",
-							},
 							maxLength: {
-								value: 50,
-								message: "Minimum length must be 20",
+								value: 64,
+								message: "Email is not valid",
 							},
 						}}
 						render={({ field }) => (
-							<input
-								className="form-input"
+							<ValidationInput
+								type="text"
+								inputStyle="form-input"
 								placeholder="Email"
-								{...field}
+								field={field}
 								style={{
 									border: errors.email ? "1px solid red" : "",
 								}}
@@ -85,12 +80,13 @@ const SigninForm = () => {
 						rules={{
 							required: "Password is required",
 							minLength: {
-								value: 6,
-								message: "Minimum length must be 6",
+								value: 8,
+								message:
+									"Password must be at least 8 characters long",
 							},
 							maxLength: {
-								value: 50,
-								message: "Minimum length must be 20",
+								value: 20,
+								message: "Password is too long",
 							},
 						}}
 						render={({ field }) => (
@@ -100,7 +96,9 @@ const SigninForm = () => {
 								type="password"
 								{...field}
 								style={{
-									border: errors.password ? "1px solid red" : "",
+									border: errors.password
+										? "1px solid red"
+										: "",
 								}}
 							/>
 						)}
@@ -112,18 +110,14 @@ const SigninForm = () => {
 				</div>
 
 				<div className="form-row">
-					<button
-						className="form-row-button"
-						type="submit">
+					<button className="form-row-button" type="submit">
 						Sign in
 					</button>
 				</div>
 				<div className="form-row">
 					<p className="form-row-paragraph">
 						Don't have an account?{" "}
-						<Link
-							to={"/user/signup"}
-							className="link-style">
+						<Link to={"/user/signup"} className="link-style">
 							Create one
 						</Link>
 					</p>

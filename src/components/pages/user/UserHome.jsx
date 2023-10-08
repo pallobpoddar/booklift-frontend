@@ -1,15 +1,18 @@
-import Book from "../../molecules/Book";
-import BookShow from "../../molecules/BookShow";
+import React from "react";
 import Header from "../../organisms/Header";
-import Main from "../../organisms/Main";
+import Banner from "../../organisms/Banner";
+import BookList from "../../organisms/BookList";
+import Footer from "../../organisms/Footer";
+
 const UserHome = () => {
 	return (
 		<>
 			<Header />
-			<Main />
-			<hr></hr>
-			<h2> Cart</h2>
-			{/* <BookShow /> */}
+			<main>
+				<Banner />
+				<BookList />
+			</main>
+			<Footer />
 		</>
 	);
 };
