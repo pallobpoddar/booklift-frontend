@@ -1,8 +1,11 @@
 import React from "react";
 
-const PrimaryInput = ({ type, inputStyle, placeholder }) => {
+const PrimaryInput = ({ type, StyledInput, placeholder }) => {
 	return (
-		<input type={type} className={inputStyle} placeholder={placeholder} />
+		<StyledInput
+			type={type}
+			placeholder={placeholder}
+		/>
 	);
 };
 

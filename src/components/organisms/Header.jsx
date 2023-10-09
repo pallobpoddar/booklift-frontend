@@ -4,20 +4,25 @@ import NavigationList from "../molecules/NavigationList";
 import PrimaryInput from "../atoms/inputs/PrimaryInput";
 import IconButton from "../atoms/buttons/IconButton";
 import PrimaryButton from "../atoms/buttons/PrimaryButton";
+import {
+	StyledHeader,
+	StyledList,
+	StyledInput,
+	StyledIcon,
+} from "./Header.styles.jsx";
 import "../../App.scss";
-import "./Header.scss";
 
 const Header = () => {
 	return (
-		<header className="homePageHeader">
-			<NavigationList listStyle="navigationList" />
+		<StyledHeader>
+			<NavigationList StyledList={StyledList} />
 			<PrimaryInput
 				type="search"
-				inputStyle="searchField"
+				StyledInput={StyledInput}
 				placeholder="Search Khonika"
 			/>
 			<IconButton
-				buttonStyle="iconButton"
+				StyledIcon={StyledIcon}
 				icon={faCartShopping}
 				size="2xl"
 			/>
@@ -25,8 +30,9 @@ const Header = () => {
 				buttonStyle="primaryButton"
 				text="Sign in"
 				to="/user/signin"
+				linkStyle="link"
 			/>
-		</header>
+		</StyledHeader>
 	);
 };
 

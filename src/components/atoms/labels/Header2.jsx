@@ -1,10 +1,10 @@
 import React from "react";
 
-const Header2 = ({ header2Style, text }) => {
+const Header2 = ({ StyledHeader2, text }) => {
 	return (
-		<h2 className={header2Style}>
+		<StyledHeader2>
 			<i>{text}</i>
-		</h2>
+		</StyledHeader2>
 	);
 };
 
