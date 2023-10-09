@@ -1,5 +1,4 @@
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import "./App.scss";
 import UserHome from "./components/pages/user/UserHome";
 import AdminDashboard from "./components/pages/admin/AdminDashboard";
 import AdminBooks from "./components/pages/admin/AdminBooks";
@@ -8,9 +7,9 @@ import AdminDiscounts from "./components/pages/admin/AdminDiscounts";
 import AdminTransactions from "./components/pages/admin/AdminTransactions";
 import AdminBookList from "./components/pages/admin/AdminBookList";
 import AdminBookAdd from "./components/pages/admin/AdminBookAdd";
-import SigninForm from "./components/molecules/SigninForm";
+import SigninBox from "./components/organisms/SigninBox";
 import SignupForm from "./components/molecules/SignupForm";
-import Authenticate from "./components/pages/user/authenticate";
+import "./App.scss";
 
 function App() {
 	return (
@@ -18,7 +17,7 @@ function App() {
 			<Router>
 				<Routes>
 					<Route
-						path=""
+						path="/"
 						Component={UserHome}
 					/>
 					{/* <Route
@@ -51,19 +50,17 @@ function App() {
 					/>
 					<Route
 						path="/user/signin"
-						Component={SigninForm}
+						Component={SigninBox}
 					/>
 					<Route
 						path="/user/signup"
 						Component={SignupForm}
 					/>
 
-					<Route element={<Authenticate />}>
-						<Route
-							path="/admin/dashboard"
-							Component={AdminDashboard}
-						/>
-					</Route>
+					<Route
+						path="/admin/dashboard"
+						Component={AdminDashboard}
+					/>
 				</Routes>
 			</Router>
 		</>

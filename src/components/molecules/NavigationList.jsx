@@ -1,15 +1,15 @@
 import React from "react";
 import PrimaryList from "../atoms/lists/PrimaryList";
 
-const NavigationList = ({ listStyle }) => {
+const NavigationList = ({ StyledList }) => {
 	return (
-		<ul className={listStyle}>
+		<StyledList>
 			<PrimaryList text="Books" />
 			<PrimaryList text="Fiction" />
 			<PrimaryList text="Nonfiction" />
 			<PrimaryList text="Kids" />
 			<PrimaryList text="New Releases" />
-		</ul>
+		</StyledList>
 	);
 };
 

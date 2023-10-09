@@ -2,15 +2,15 @@ import React from "react";
 import TitleList from "../atoms/lists/TitleList";
 import PrimaryList from "../atoms/lists/PrimaryList";
 
-const ServiceList = ({ listStyle }) => {
+const ServiceList = ({ StyledFooterList }) => {
 	return (
-		<ul className={listStyle}>
+		<StyledFooterList>
 			<TitleList text="Khonika Services" />
 			<PrimaryList text="Affiliate Program" />
 			<PrimaryList text="Mobile App" />
 			<PrimaryList text="Membership" />
 			<PrimaryList text="Bookfairs" />
-		</ul>
+		</StyledFooterList>
 	);
 };
 

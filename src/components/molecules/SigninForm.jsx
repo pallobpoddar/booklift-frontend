@@ -3,11 +3,14 @@ import { useDispatch } from "react-redux";
 import { useForm, Controller } from "react-hook-form";
 import useAuthApi from "../../hooks/useAuthApi";
 import { addUserInfo } from "../../redux/slices/userSlice";
-import { Link } from "react-router-dom";
-import Header1 from "../atoms/labels/Header1";
-import "../../App.scss";
-import "./SigninForm.scss";
 import ValidationInput from "../atoms/inputs/ValidationInput";
+import PrimaryButton from "../atoms/buttons/PrimaryButton";
+import {
+	StyledForm,
+	StyledFormRow,
+	StyledFormError,
+	StyledFormInput,
+} from "../../App.styles";
 
 const SigninForm = () => {
 	const dispatch = useDispatch();
@@ -42,88 +45,80 @@ const SigninForm = () => {
 	}, [errors]);
 
 	return (
-		<div>
-			<Header1 header1Style="header1" text="Sign In" />
-			<form className="form" onSubmit={handleSubmit(handlerOnSubmit)}>
-				<div className="form-row">
-					<Controller
-						name="email"
-						control={control}
-						rules={{
-							required: "Email is required",
-							maxLength: {
-								value: 64,
-								message: "Email is not valid",
-							},
-						}}
-						render={({ field }) => (
-							<ValidationInput
-								type="text"
-								inputStyle="form-input"
-								placeholder="Email"
-								field={field}
-								style={{
-									border: errors.email ? "1px solid red" : "",
-								}}
-							/>
-						)}
-					/>
-				</div>
+		<StyledForm onSubmit={handleSubmit(handlerOnSubmit)}>
+			<StyledFormRow>
+				<Controller
+					name="email"
+					control={control}
+					rules={{
+						required: "Email is required",
 
-				<div className="error-message">
-					{errors.email && <p>{errors.email.message}</p>}
-				</div>
-				<div className="form-row">
-					<Controller
-						name="password"
-						control={control}
-						rules={{
-							required: "Password is required",
-							minLength: {
-								value: 8,
-								message:
-									"Password must be at least 8 characters long",
-							},
-							maxLength: {
-								value: 20,
-								message: "Password is too long",
-							},
-						}}
-						render={({ field }) => (
-							<input
-								className="form-input"
-								placeholder="Password"
-								type="password"
-								{...field}
-								style={{
-									border: errors.password
-										? "1px solid red"
-										: "",
-								}}
-							/>
-						)}
-					/>
-				</div>
+						maxLength: {
+							value: 64,
+							message: "Email is not valid",
+						},
+					}}
+					render={({ field }) => (
+						<ValidationInput
+							type="text"
+							StyledFormInput={StyledFormInput}
+							placeholder="Email"
+							field={field}
+							style={{
+								border: errors.email ? "1px solid red" : "",
+							}}
+						/>
+					)}
+				/>
+			</StyledFormRow>
 
-				<div className="error-message">
-					{errors.password && <p>{errors.password.message}</p>}
-				</div>
+			<StyledFormError>
+				{errors.email && <p>{errors.email.message}</p>}
+			</StyledFormError>
 
-				<div className="form-row">
-					<button className="form-row-button" type="submit">
-						Sign in
-					</button>
-				</div>
-				<div className="form-row">
-					<p className="form-row-paragraph">
-						Don't have an account?{" "}
-						<Link to={"/user/signup"} className="link-style">
-							Create one
-						</Link>
-					</p>
-				</div>
-			</form>
-		</div>
+			<StyledFormRow>
+				<Controller
+					name="password"
+					control={control}
+					rules={{
+						required: "Password is required",
+						minLength: {
+							value: 8,
+							message: "Password must be at least 8 characters long",
+						},
+						maxLength: {
+							value: 20,
+							message: "Password is too long",
+						},
+					}}
+					render={({ field }) => (
+						<ValidationInput
+							type="text"
+							StyledFormInput={StyledFormInput}
+							placeholder="Password"
+							field={field}
+							style={{
+								border: errors.password ? "1px solid red" : "",
+							}}
+						/>
+					)}
+				/>
+			</StyledFormRow>
+
+			<StyledFormError>
+				{errors.password && <p>{errors.password.message}</p>}
+			</StyledFormError>
+
+			<StyledFormRow>
+				<PrimaryButton
+					buttonStyle="primaryButton"
+					text="Sign in"
+					to="/"
+					linkStyle="link"
+					type="submit"
+				/>
+			</StyledFormRow>
+		</StyledForm>
 	);
 };
 

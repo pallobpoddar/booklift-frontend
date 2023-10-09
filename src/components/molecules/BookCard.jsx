@@ -4,9 +4,8 @@ import { addBook } from "../../redux/actions/bookActions";
 import PrimaryImage from "../atoms/images/PrimaryImage";
 import PrimaryButton from "../atoms/buttons/PrimaryButton";
 import "../../App.scss";
-import "../organisms/BookList.scss";
 
-const BookCard = ({ card, cardStyle, cardImageStyle, listTitleStyle }) => {
+const BookCard = ({ card, StyledBook, StyledBookImage, StyledListTitle }) => {
 	const dispatch = useDispatch();
 
 	const addNewBook = () => {
@@ -22,13 +21,13 @@ const BookCard = ({ card, cardStyle, cardImageStyle, listTitleStyle }) => {
 
 	return (
 		<>
-			<ul className={cardStyle}>
+			<StyledBook>
 				<li>
 					<PrimaryImage
-						imageStyle={cardImageStyle}
+						StyledImage={StyledBookImage}
 						src="https://m.media-amazon.com/images/I/71uUx073fcL._AC_UF1000,1000_QL80_.jpg"
 					/>
-					<div className={listTitleStyle}>{card.title}</div>
+					<StyledListTitle>{card.title}</StyledListTitle>
 					Tk {card.price}
 					<div>
 						<PrimaryButton
@@ -38,7 +37,7 @@ const BookCard = ({ card, cardStyle, cardImageStyle, listTitleStyle }) => {
 						/>
 					</div>
 				</li>
-			</ul>
+			</StyledBook>
 		</>
 	);
 };

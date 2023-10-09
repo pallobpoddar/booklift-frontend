@@ -1,10 +1,15 @@
 import React from "react";
 
-const ValidationInput = ({ type, inputStyle, placeholder, field, style }) => {
+const ValidationInput = ({
+	type,
+	StyledFormInput,
+	placeholder,
+	field,
+	style,
+}) => {
 	return (
-		<input
+		<StyledFormInput
 			type={type}
-			className={inputStyle}
 			placeholder={placeholder}
 			{...field}
 			style={style}
