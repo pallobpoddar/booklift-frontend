@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 const StyledHeader1 = styled.h1`
 	font-weight: 600;
+	color: royalblue;
 `;
 
 const StyledBanner = styled.img`
@@ -47,13 +48,18 @@ const StyledFormBox = styled.div`
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	justify-content: center;
 	width: max-content;
-	padding: 20px;
-	border: 1px solid #e5e5e5;
+	padding: 50px;
+	border: 2px solid #e5e5e5;
 	border-radius: 2px;
-	margin: 100px 450px;
 	background-color: #fff;
+`;
+
+const StyledParentDiv = styled.div`
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: 100vh;
 `;
 
 export {
@@ -65,4 +71,5 @@ export {
 	StyledFormError,
 	StyledFormInput,
 	StyledFormBox,
+	StyledParentDiv,
 };
