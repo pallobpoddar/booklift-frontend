@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import axiosInstance from "../utils/axiosInstance";
 
-const useBookApi = () => {
+const useBook = () => {
 	const [bookList, setBookList] = useState([]);
 	const [loading, setLoading] = useState(false);
 
@@ -61,4 +61,4 @@ const useBookApi = () => {
 	return { bookList, createPost };
 };
 
-export default useBookApi;
+export default useBook;

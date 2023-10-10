@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useForm, Controller } from "react-hook-form";
 import { Link } from "react-router-dom";
-import useBookApi from "../../hooks/useBookApi";
+import useBook from "../../hooks/useBook";
 import "./SignupForm.scss";
 import "../../App.scss";
 const SignupForm = () => {
@@ -23,7 +23,7 @@ const SignupForm = () => {
 		},
 	});
 
-	// const { createPost } = useBookApi();
+	// const { createPost } = useBook();
 
 	const handlerOnSubmit = () => {
 		const data = {
@@ -56,7 +56,8 @@ const SignupForm = () => {
 			<div className="form">
 				<form
 					className="form-container"
-					onSubmit={handleSubmit(handlerOnSubmit)}>
+					onSubmit={handleSubmit(handlerOnSubmit)}
+				>
 					<div className="form-row">
 						<Controller
 							name="firstName"
@@ -78,7 +79,9 @@ const SignupForm = () => {
 									placeholder="First name"
 									{...field}
 									style={{
-										border: errors.firstName ? "1px solid red" : "",
+										border: errors.firstName
+											? "1px solid red"
+											: "",
 									}}
 								/>
 							)}
@@ -110,7 +113,9 @@ const SignupForm = () => {
 									placeholder="Last name"
 									{...field}
 									style={{
-										border: errors.lastName ? "1px solid red" : "",
+										border: errors.lastName
+											? "1px solid red"
+											: "",
 									}}
 								/>
 							)}
@@ -142,7 +147,9 @@ const SignupForm = () => {
 									placeholder="Email"
 									{...field}
 									style={{
-										border: errors.email ? "1px solid red" : "",
+										border: errors.email
+											? "1px solid red"
+											: "",
 									}}
 								/>
 							)}
@@ -175,7 +182,9 @@ const SignupForm = () => {
 									type="password"
 									{...field}
 									style={{
-										border: errors.password ? "1px solid red" : "",
+										border: errors.password
+											? "1px solid red"
+											: "",
 									}}
 								/>
 							)}
@@ -203,7 +212,9 @@ const SignupForm = () => {
 									type="password"
 									{...field}
 									style={{
-										border: errors.confirmPassword ? "1px solid red" : "",
+										border: errors.confirmPassword
+											? "1px solid red"
+											: "",
 									}}
 								/>
 							)}
@@ -211,16 +222,17 @@ const SignupForm = () => {
 					</div>
 
 					<div className="error-message">
-						{errors.confirmPassword && <p>{errors.confirmPassword.message}</p>}
+						{errors.confirmPassword && (
+							<p>{errors.confirmPassword.message}</p>
+						)}
 					</div>
 
 					<div className="form-row">
-						<button
-							className="form-row-button"
-							type="submit">
+						<button className="form-row-button" type="submit">
 							<Link
 								to={"http://localhost:5173/"}
-								className="link-remover">
+								className="link-remover"
+							>
 								Sign up
 							</Link>
 						</button>
@@ -228,9 +240,7 @@ const SignupForm = () => {
 					<div className="form-row">
 						<p className="form-row-paragraph">
 							Already a user?{" "}
-							<Link
-								to={"/user/signin"}
-								className="link-style">
+							<Link to={"/user/signin"} className="link-style">
 								Sign in
 							</Link>
 						</p>

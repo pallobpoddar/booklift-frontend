@@ -1,8 +1,6 @@
 import { React, useEffect } from "react";
-import { useDispatch } from "react-redux";
 import { useForm, Controller } from "react-hook-form";
-import useAuthApi from "../../hooks/useAuthApi";
-import { addUserInfo } from "../../redux/slices/userSlice";
+import useAuth from "../../hooks/useAuth";
 import ValidationInput from "../atoms/inputs/ValidationInput";
 import PrimaryButton from "../atoms/buttons/PrimaryButton";
 import {
@@ -13,8 +11,6 @@ import {
 } from "../../App.styles";
 
 const SigninForm = () => {
-	const dispatch = useDispatch();
-
 	const {
 		handleSubmit,
 		control,
@@ -28,7 +24,7 @@ const SigninForm = () => {
 		},
 	});
 
-	const { login } = useAuthApi();
+	const { login } = useAuth();
 
 	const handlerOnSubmit = () => {
 		const formData = {
@@ -36,7 +32,6 @@ const SigninForm = () => {
 			password: getValues("password"),
 		};
 		login(formData);
-		dispatch(addUserInfo(formData));
 	};
 
 	useEffect(() => {}, [errors]);
@@ -79,10 +74,6 @@ const SigninForm = () => {
 					control={control}
 					rules={{
 						required: "Password is required",
-						minLength: {
-							value: 8,
-							message: "Password must be at least 8 characters long",
-						},
 						maxLength: {
 							value: 20,
 							message: "Password is too long",
