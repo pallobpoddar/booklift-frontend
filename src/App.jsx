@@ -18,7 +18,11 @@ function App() {
 				<Routes>
 					<Route
 						path="/"
-						Component={UserHome}
+						element={<UserHome />}
+					/>
+					<Route
+						path="/user/signin"
+						element={<SigninBox />}
 					/>
 					{/* <Route
 						path="/admin/dashboard"
@@ -48,10 +52,7 @@ function App() {
 						path="/admin/books/add"
 						Component={AdminBookAdd}
 					/>
-					<Route
-						path="/user/signin"
-						Component={SigninBox}
-					/>
+
 					<Route
 						path="/user/signup"
 						Component={SignupForm}

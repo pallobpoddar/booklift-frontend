@@ -31,18 +31,15 @@ const SigninForm = () => {
 	const { login } = useAuthApi();
 
 	const handlerOnSubmit = () => {
-		const data = {
+		const formData = {
 			email: getValues("email"),
 			password: getValues("password"),
 		};
-
-		login(data);
-		dispatch(addUserInfo(data));
+		login(formData);
+		dispatch(addUserInfo(formData));
 	};
 
-	useEffect(() => {
-		console.log("Errors: ", errors);
-	}, [errors]);
+	useEffect(() => {}, [errors]);
 
 	return (
 		<StyledForm onSubmit={handleSubmit(handlerOnSubmit)}>
@@ -93,7 +90,7 @@ const SigninForm = () => {
 					}}
 					render={({ field }) => (
 						<ValidationInput
-							type="text"
+							type="password"
 							StyledFormInput={StyledFormInput}
 							placeholder="Password"
 							field={field}
@@ -113,8 +110,6 @@ const SigninForm = () => {
 				<PrimaryButton
 					buttonStyle="primaryButton"
 					text="Sign in"
-					to="/"
-					linkStyle="link"
 					type="submit"
 				/>
 			</StyledFormRow>

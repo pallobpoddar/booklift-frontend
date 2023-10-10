@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { faCartShopping } from "@fortawesome/free-solid-svg-icons";
 import NavigationList from "../molecules/NavigationList";
 import PrimaryInput from "../atoms/inputs/PrimaryInput";
@@ -26,12 +27,14 @@ const Header = () => {
 				icon={faCartShopping}
 				size="2xl"
 			/>
-			<PrimaryButton
-				buttonStyle="primaryButton"
-				text="Sign in"
+			<Link
 				to="/user/signin"
-				linkStyle="link"
-			/>
+				className="link">
+				<PrimaryButton
+					buttonStyle="primaryButton"
+					text="Sign in"
+				/>
+			</Link>
 		</StyledHeader>
 	);
 };

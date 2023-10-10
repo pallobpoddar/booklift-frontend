@@ -1,27 +1,34 @@
 import { useState, useEffect } from "react";
-import authInstance from "../utils/authInstance";
+import { useNavigate } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import loginInstance from "../utils/authInstance";
 
 const useAuthApi = () => {
-	// const [loginCredential, setLoginCredential] = useState([]);
-	const [loading, setLoading] = useState(false);
-
+	const navigate = useNavigate();
+	const [loginCredential, setLoginCredential] = useState({});
+	const notify = () => toast("Hello, this is a toast notification!");
 	const login = (formdata) => {
-		authInstance
+		loginInstance
 			.post("/login", formdata, {
 				headers: {
 					"Content-Type": "application/json",
 				},
 			})
 			.then((response) => {
-				const data = response.data.data;
-				console.log(data);
+				setLoginCredential(response.data);
+				if (response.data) {
+					navigate("/");
+				} else {
+					<ToastContainer {...notify} />;
+				}
 			})
 			.catch((error) => {
 				console.error("Error:", error);
 			});
 	};
 
-	return { login };
+	return { loginCredential, login };
 };
 
 export default useAuthApi;

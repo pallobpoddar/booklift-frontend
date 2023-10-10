@@ -1,8 +1,8 @@
 import axios from "axios";
 
-const authInstance = axios.create({
+const loginInstance = axios.create({
 	baseURL: "http://localhost:8000/api/auths",
 	timeout: 5000,
 });
 
-export default authInstance;
+export default loginInstance;

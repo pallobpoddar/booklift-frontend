@@ -1,17 +1,13 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const PrimaryButton = ({ buttonStyle, text, to, linkStyle, type }) => {
+const PrimaryButton = ({ buttonStyle, text, type }) => {
 	return (
-		<Link
-			to={to}
-			className={linkStyle}>
-			<button
-				className={buttonStyle}
-				type={type}>
-				{text}
-			</button>
-		</Link>
+		<button
+			className={buttonStyle}
+			type={type}>
+			{text}
+		</button>
 	);
 };
 
