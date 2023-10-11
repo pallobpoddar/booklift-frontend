@@ -22,21 +22,19 @@ const BookCard = ({ card, StyledBook, StyledBookImage, StyledListTitle }) => {
 	return (
 		<>
 			<StyledBook>
-				<li>
-					<PrimaryImage
-						StyledImage={StyledBookImage}
-						src="https://m.media-amazon.com/images/I/71uUx073fcL._AC_UF1000,1000_QL80_.jpg"
-					/>
-					<StyledListTitle>{card.title}</StyledListTitle>
-					Tk {card.price}
-					<div>
-						<PrimaryButton
-							buttonStyle="cardButton"
-							text="Add to cart"
-							onClick={addNewBook}
-						/>
-					</div>
-				</li>
+				<PrimaryImage
+					StyledImage={StyledBookImage}
+					src={card.image}
+				/>
+				<StyledListTitle>{card.title}</StyledListTitle>
+				Tk {card.price}
+				{/* <div> */}
+				<PrimaryButton
+					buttonStyle="cardButton"
+					text="Add to cart"
+					onClick={addNewBook}
+				/>
+				{/* </div> */}
 			</StyledBook>
 		</>
 	);

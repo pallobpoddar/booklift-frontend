@@ -5,15 +5,21 @@ const StyledHeader1 = styled.h1`
 	color: royalblue;
 `;
 
-const StyledBanner = styled.img`
-	padding: 20px 40px;
-	width: 95%;
-`;
-
 const StyledHeader2 = styled.h2`
 	font-weight: normal;
 	font-size: xx-large;
 	margin-left: 30px;
+`;
+
+const StyledHeader3 = styled.h3`
+	font-weight: 500;
+	font-size: large;
+	line-height: 2;
+`;
+
+const StyledBanner = styled.img`
+	padding: 20px 40px;
+	width: 95%;
 `;
 
 const StyledForm = styled.form`
@@ -64,8 +70,9 @@ const StyledParentDiv = styled.div`
 
 export {
 	StyledHeader1,
-	StyledBanner,
 	StyledHeader2,
+	StyledHeader3,
+	StyledBanner,
 	StyledForm,
 	StyledFormRow,
 	StyledFormError,

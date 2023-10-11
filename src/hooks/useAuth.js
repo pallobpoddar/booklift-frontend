@@ -29,9 +29,8 @@ const useAuth = () => {
 			});
 	};
 
-	dispatch(addUserInfo(formData));
-
 	useEffect(() => {
+		dispatch(addUserInfo(loginResponse));
 		loginResponse.data && navigate("/");
 	}, [loginResponse]);
 

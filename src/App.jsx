@@ -16,28 +16,58 @@ import "./App.scss";
 function App() {
 	return (
 		<>
-			<ToastContainer position="top-center" autoClose={4000} />
+			<ToastContainer
+				position="top-right"
+				autoClose={4000}
+			/>
 			<Router>
 				<Routes>
-					<Route path="/" element={<UserHome />} />
-					<Route path="/user/signin" element={<SigninBox />} />
+					<Route
+						path="/"
+						element={<UserHome />}
+					/>
+					<Route
+						path="/user/signin"
+						element={<SigninBox />}
+					/>
 					{/* <Route
 						path="/admin/dashboard"
 						Component={AdminDashboard}
 					/> */}
-					<Route path="/admin/books" Component={AdminBooks} />
-					<Route path="/admin/users" Component={AdminUsers} />
-					<Route path="/admin/discounts" Component={AdminDiscounts} />
+					<Route
+						path="/admin/books"
+						Component={AdminBooks}
+					/>
+					<Route
+						path="/admin/users"
+						Component={AdminUsers}
+					/>
+					<Route
+						path="/admin/discounts"
+						Component={AdminDiscounts}
+					/>
 					<Route
 						path="/admin/transactions"
 						Component={AdminTransactions}
 					/>
-					<Route path="/admin/books/all" Component={AdminBookList} />
-					<Route path="/admin/books/add" Component={AdminBookAdd} />
+					<Route
+						path="/admin/books/all"
+						Component={AdminBookList}
+					/>
+					<Route
+						path="/admin/books/add"
+						Component={AdminBookAdd}
+					/>
 
-					<Route path="/user/signup" Component={SignupForm} />
+					<Route
+						path="/user/signup"
+						Component={SignupForm}
+					/>
 
-					<Route path="/admin/dashboard" Component={AdminDashboard} />
+					<Route
+						path="/admin/dashboard"
+						Component={AdminDashboard}
+					/>
 				</Routes>
 			</Router>
 		</>

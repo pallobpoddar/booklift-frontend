@@ -2,7 +2,9 @@ import { React, Fragment } from "react";
 import useBook from "../../hooks/useBook";
 import Header2 from "../atoms/labels/Header2";
 import BookCard from "../molecules/BookCard";
+import Filter from "./Filter";
 import {
+	StyledBookBox,
 	StyledBookList,
 	StyledBook,
 	StyledBookImage,
@@ -18,21 +20,23 @@ const BookList = () => {
 				StyledHeader2={StyledHeader2}
 				text="Fall into a good book"
 			/>
-			<StyledBookList>
-				{bookList &&
-					bookList.map((card) => {
-						return (
-							<Fragment key={card.isbn}>
-								<BookCard
-									card={card}
-									StyledBook={StyledBook}
-									StyledBookImage={StyledBookImage}
-									StyledListTitle={StyledListTitle}
-								></BookCard>
-							</Fragment>
-						);
-					})}
-			</StyledBookList>
+			<StyledBookBox>
+				<Filter />
+				<StyledBookList>
+					{bookList &&
+						bookList.map((card) => {
+							return (
+								<Fragment key={card.isbn}>
+									<BookCard
+										card={card}
+										StyledBook={StyledBook}
+										StyledBookImage={StyledBookImage}
+										StyledListTitle={StyledListTitle}></BookCard>
+								</Fragment>
+							);
+						})}
+				</StyledBookList>
+			</StyledBookBox>
 		</>
 	);
 };

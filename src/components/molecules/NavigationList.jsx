@@ -7,7 +7,6 @@ const NavigationList = ({ StyledList }) => {
 			<PrimaryList text="Books" />
 			<PrimaryList text="Fiction" />
 			<PrimaryList text="Nonfiction" />
-			<PrimaryList text="Kids" />
 			<PrimaryList text="New Releases" />
 		</StyledList>
 	);

@@ -1,6 +1,8 @@
 import React from "react";
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { faCartShopping } from "@fortawesome/free-solid-svg-icons";
+import { faUser } from "@fortawesome/free-solid-svg-icons";
 import NavigationList from "../molecules/NavigationList";
 import PrimaryInput from "../atoms/inputs/PrimaryInput";
 import IconButton from "../atoms/buttons/IconButton";
@@ -14,6 +16,7 @@ import {
 import "../../App.scss";
 
 const Header = () => {
+	const userData = useSelector((state) => state.user.userData);
 	return (
 		<StyledHeader>
 			<NavigationList StyledList={StyledList} />
@@ -27,13 +30,25 @@ const Header = () => {
 				icon={faCartShopping}
 				size="2xl"
 			/>
+			<IconButton
+				StyledIcon={StyledIcon}
+				icon={faUser}
+				size="2xl"
+			/>
 			<Link
 				to="/user/signin"
 				className="link">
-				<PrimaryButton
-					buttonStyle="primaryButton"
-					text="Sign in"
-				/>
+				{Object.keys(userData).length === 0 ? (
+					<PrimaryButton
+						buttonStyle="primaryButton"
+						text="Sign in"
+					/>
+				) : (
+					<PrimaryButton
+						buttonStyle="primaryButton"
+						text="Sign out"
+					/>
+				)}
 			</Link>
 		</StyledHeader>
 	);
