@@ -1,12 +1,7 @@
 import React from "react";
 
-const CheckboxInput = ({ type, value, onChange }) => {
-	return (
-		<input
-			type={type}
-			value={value}
-			onChange={onChange}></input>
-	);
+const CheckboxInput = ({ type, field }) => {
+	return <input type={type} {...field} />;
 };
 
 export default CheckboxInput;

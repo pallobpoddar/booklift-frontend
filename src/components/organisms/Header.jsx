@@ -16,7 +16,7 @@ import {
 import "../../App.scss";
 
 const Header = () => {
-	const userData = useSelector((state) => state.user.userData);
+	const data = useSelector((state) => state.user);
 	return (
 		<StyledHeader>
 			<NavigationList StyledList={StyledList} />
@@ -30,19 +30,10 @@ const Header = () => {
 				icon={faCartShopping}
 				size="2xl"
 			/>
-			<IconButton
-				StyledIcon={StyledIcon}
-				icon={faUser}
-				size="2xl"
-			/>
-			<Link
-				to="/user/signin"
-				className="link">
-				{Object.keys(userData).length === 0 ? (
-					<PrimaryButton
-						buttonStyle="primaryButton"
-						text="Sign in"
-					/>
+			<IconButton StyledIcon={StyledIcon} icon={faUser} size="2xl" />
+			<Link to="/user/signin" className="link">
+				{!data.userData ? (
+					<PrimaryButton buttonStyle="primaryButton" text="Sign in" />
 				) : (
 					<PrimaryButton
 						buttonStyle="primaryButton"
