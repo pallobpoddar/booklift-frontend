@@ -9,9 +9,11 @@ import AdminDiscounts from "./components/pages/admin/AdminDiscounts";
 import AdminTransactions from "./components/pages/admin/AdminTransactions";
 import AdminBookList from "./components/pages/admin/AdminBookList";
 import AdminBookAdd from "./components/pages/admin/AdminBookAdd";
-import SigninBox from "./components/organisms/SigninBox";
 import SignupForm from "./components/molecules/SignupForm";
 import "./App.scss";
+import UserCart from "./components/pages/user/UserCart";
+import UserSignin from "./components/pages/user/UserSignin";
+import UserSignup from "./components/pages/user/UserSignup";
 
 function App() {
 	return (
@@ -28,8 +30,17 @@ function App() {
 					/>
 					<Route
 						path="/user/signin"
-						element={<SigninBox />}
+						element={<UserSignin />}
 					/>
+					<Route
+						path="/user/signup"
+						element={<UserSignup />}
+					/>
+					<Route
+						path="/user/cart"
+						element={<UserCart />}
+					/>
+
 					{/* <Route
 						path="/admin/dashboard"
 						Component={AdminDashboard}
@@ -58,12 +69,6 @@ function App() {
 						path="/admin/books/add"
 						Component={AdminBookAdd}
 					/>
-
-					<Route
-						path="/user/signup"
-						Component={SignupForm}
-					/>
-
 					<Route
 						path="/admin/dashboard"
 						Component={AdminDashboard}

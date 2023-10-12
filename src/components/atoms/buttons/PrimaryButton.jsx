@@ -1,10 +1,11 @@
 import React from "react";
 
-const PrimaryButton = ({ buttonStyle, text, type }) => {
+const PrimaryButton = ({ buttonStyle, text, type, onClick }) => {
 	return (
 		<button
 			className={buttonStyle}
-			type={type}>
+			type={type}
+			onClick={onClick}>
 			{text}
 		</button>
 	);

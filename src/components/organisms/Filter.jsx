@@ -1,12 +1,11 @@
 import { React } from "react";
 import { useForm, Controller } from "react-hook-form";
-import CategoryCheckbox from "../molecules/CategoryCheckbox";
 import PrimaryButton from "../atoms/buttons/PrimaryButton";
-import LanguageCheckbox from "../molecules/LanguageCheckbox";
-import PriceCheckbox from "../molecules/PriceCheckbox";
-import { StyledFilterPanel, StyledFilterSection } from "./Filter.styles";
-import "../../App.scss";
 import CheckboxInput from "../atoms/inputs/CheckboxInput";
+import Header3 from "../atoms/labels/Header3";
+import { StyledFilterPanel, StyledFilterSection } from "./Filter.styles";
+import { StyledHeader3 } from "../../App.styles";
+import "../../App.scss";
 
 const Filter = () => {
 	const {
@@ -17,17 +16,23 @@ const Filter = () => {
 	} = useForm({
 		mode: "onChange",
 		defaultValues: {
-			category: "",
-			language: "",
-			price: "",
+			fantasy: "",
+			fiction: "",
+			english: "",
+			french: "",
+			price300: "",
+			price600: "",
 		},
 	});
 
-	const handlerOnSubmit = () => {
+	const handlerOnSubmit = (data) => {
 		const formData = {
-			category: getValues("category"),
-			language: getValues("language"),
-			price: getValues("price"),
+			fantasy: getValues("fantasy"),
+			fiction: getValues("fiction"),
+			english: getValues("english"),
+			french: getValues("french"),
+			price300: getValues("price300"),
+			price600: getValues("price600"),
 		};
 		console.log(formData);
 	};
@@ -35,46 +40,119 @@ const Filter = () => {
 	return (
 		<StyledFilterPanel onSubmit={handleSubmit(handlerOnSubmit)}>
 			<StyledFilterSection>
-				<Controller
-					name="category"
-					control={control}
-					render={({ field }) => (
-						<CheckboxInput type="checkbox" field={field} />
-					)}
-				/>{" "}
-				Fantasy
+				<Header3
+					StyledHeader3={StyledHeader3}
+					text="Category"
+				/>
+				<div>
+					<Controller
+						name="fantasy"
+						control={control}
+						render={({ field }) => (
+							<>
+								<CheckboxInput
+									type="checkbox"
+									field={field}
+									value="Fantasy"
+								/>
+								<label>Fantasy</label>
+							</>
+						)}
+					/>
+				</div>
+				<div>
+					<Controller
+						name="fiction"
+						control={control}
+						render={({ field }) => (
+							<>
+								<CheckboxInput
+									type="checkbox"
+									field={field}
+									value="Fiction"
+								/>
+								<label>Fiction</label>
+							</>
+						)}
+					/>
+				</div>
 			</StyledFilterSection>
 			<StyledFilterSection>
-				<Controller
-					name="language"
-					control={control}
-					render={({ field }) => (
-						<CheckboxInput type="checkbox" field={field} />
-					)}
+				<Header3
+					StyledHeader3={StyledHeader3}
+					text="Language"
 				/>
+				<div>
+					<Controller
+						name="english"
+						control={control}
+						render={({ field }) => (
+							<>
+								<CheckboxInput
+									type="checkbox"
+									field={field}
+									value="English"
+								/>
+								<label>English</label>
+							</>
+						)}
+					/>
+				</div>
+				<div>
+					<Controller
+						name="french"
+						control={control}
+						render={({ field }) => (
+							<>
+								<CheckboxInput
+									type="checkbox"
+									field={field}
+									value="French"
+								/>
+								<label>French</label>
+							</>
+						)}
+					/>
+				</div>
 			</StyledFilterSection>
 			<StyledFilterSection>
-				<Controller
-					name="price"
-					control={control}
-					render={({ field }) => (
-						<CheckboxInput type="checkbox" field={field} />
-					)}
+				<Header3
+					StyledHeader3={StyledHeader3}
+					text="Price"
 				/>
+				<div>
+					<Controller
+						name="price300"
+						control={control}
+						render={({ field }) => (
+							<>
+								<CheckboxInput
+									type="checkbox"
+									field={field}
+									value="300"
+								/>
+								<label>0 - 300</label>
+							</>
+						)}
+					/>
+				</div>
+				<div>
+					<Controller
+						name="price600"
+						control={control}
+						render={({ field }) => (
+							<>
+								<CheckboxInput
+									type="checkbox"
+									field={field}
+									value="600"
+								/>
+								<label>301 - 600</label>
+							</>
+						)}
+					/>
+				</div>
 			</StyledFilterSection>
-
-			{/* <CategoryCheckbox
-				StyledFilterSection={StyledFilterSection}
-				handleCategoryChange={handleCategoryChange}
-			/>
-			<LanguageCheckbox
-				StyledFilterSection={StyledFilterSection}
-				handleLanguageChange={handleLanguageChange}
-			/>
-			<PriceCheckbox
-				StyledFilterSection={StyledFilterSection}
-				handlePriceChange={handlePriceChange}
-			/> */}
 			<PrimaryButton
 				buttonStyle="primaryButton"
 				text="Filter"

@@ -1,6 +1,7 @@
 import React from "react";
 import { useDispatch } from "react-redux";
-import { addBook } from "../../redux/actions/bookActions";
+// import { addBook } from "../../redux/actions/bookActions";
+import { addBook } from "../../redux/slices/cartSlice";
 import PrimaryImage from "../atoms/images/PrimaryImage";
 import PrimaryButton from "../atoms/buttons/PrimaryButton";
 import "../../App.scss";
@@ -9,11 +10,16 @@ const BookCard = ({ card, StyledBook, StyledBookImage, StyledListTitle }) => {
 	const dispatch = useDispatch();
 
 	const addNewBook = () => {
+		console.log(card.title);
 		if (card.title && card.price) {
 			dispatch(
 				addBook({
-					title: card.title,
-					price: card.price,
+					id: new Date().getTime(),
+					object: {
+						image: card.image,
+						title: card.title,
+						price: card.price,
+					},
 				})
 			);
 		}
@@ -28,13 +34,11 @@ const BookCard = ({ card, StyledBook, StyledBookImage, StyledListTitle }) => {
 				/>
 				<StyledListTitle>{card.title}</StyledListTitle>
 				Tk {card.price}
-				{/* <div> */}
 				<PrimaryButton
 					buttonStyle="cardButton"
 					text="Add to cart"
 					onClick={addNewBook}
 				/>
-				{/* </div> */}
 			</StyledBook>
 		</>
 	);

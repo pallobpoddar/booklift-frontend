@@ -38,6 +38,7 @@ const StyledInput = styled.input`
 `;
 
 const StyledIcon = styled.button`
+	cursor: pointer;
 	border: none;
 	background-color: #fff;
 	padding: 0px;

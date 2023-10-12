@@ -16,7 +16,7 @@ import {
 import "../../App.scss";
 
 const Header = () => {
-	const data = useSelector((state) => state.user);
+	const data = useSelector((state) => state.user.userData);
 	return (
 		<StyledHeader>
 			<NavigationList StyledList={StyledList} />
@@ -25,15 +25,28 @@ const Header = () => {
 				StyledInput={StyledInput}
 				placeholder="Search Khonika"
 			/>
+			<Link
+				to="/user/cart"
+				className="link">
+				<IconButton
+					StyledIcon={StyledIcon}
+					icon={faCartShopping}
+					size="2xl"
+				/>
+			</Link>
 			<IconButton
 				StyledIcon={StyledIcon}
-				icon={faCartShopping}
+				icon={faUser}
 				size="2xl"
 			/>
-			<IconButton StyledIcon={StyledIcon} icon={faUser} size="2xl" />
-			<Link to="/user/signin" className="link">
-				{!data.userData ? (
-					<PrimaryButton buttonStyle="primaryButton" text="Sign in" />
+			<Link
+				to="/user/signin"
+				className="link">
+				{data === undefined ? (
+					<PrimaryButton
+						buttonStyle="primaryButton"
+						text="Sign in"
+					/>
 				) : (
 					<PrimaryButton
 						buttonStyle="primaryButton"
