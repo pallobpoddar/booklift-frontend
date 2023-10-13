@@ -1,7 +1,10 @@
 import { useState, useEffect } from "react";
+import { useDispatch } from "react-redux";
 import axiosInstance from "../utils/axiosInstance";
+import { changeBookList } from "../redux/slices/bookSlice";
 
 const useBook = () => {
+	const dispatch = useDispatch();
 	const [bookList, setBookList] = useState([]);
 	const [loading, setLoading] = useState(false);
 
@@ -11,6 +14,7 @@ const useBook = () => {
 			.then((response) => {
 				const data = response.data.data.books;
 				setBookList(data);
+				dispatch(changeBookList(data));
 			})
 			.catch((error) => {
 				console.error("Error fetching data:", error);

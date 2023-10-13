@@ -8,11 +8,10 @@ const AdminBookList = () => {
 	return (
 		<>
 			<HeaderBar />
-			<Sidebar />
-			<div>
-				<SearchDebounce />
+			<div className="adminParentDiv">
+				<Sidebar />
+				<BookTable />
 			</div>
-			<BookTable />
 		</>
 	);
 };

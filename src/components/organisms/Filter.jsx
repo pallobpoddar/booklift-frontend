@@ -40,10 +40,7 @@ const Filter = () => {
 	return (
 		<StyledFilterPanel onSubmit={handleSubmit(handlerOnSubmit)}>
 			<StyledFilterSection>
-				<Header3
-					StyledHeader3={StyledHeader3}
-					text="Category"
-				/>
+				<Header3 StyledHeader3={StyledHeader3} text="Category" />
 				<div>
 					<Controller
 						name="fantasy"
@@ -78,10 +75,7 @@ const Filter = () => {
 				</div>
 			</StyledFilterSection>
 			<StyledFilterSection>
-				<Header3
-					StyledHeader3={StyledHeader3}
-					text="Language"
-				/>
+				<Header3 StyledHeader3={StyledHeader3} text="Language" />
 				<div>
 					<Controller
 						name="english"
@@ -116,10 +110,7 @@ const Filter = () => {
 				</div>
 			</StyledFilterSection>
 			<StyledFilterSection>
-				<Header3
-					StyledHeader3={StyledHeader3}
-					text="Price"
-				/>
+				<Header3 StyledHeader3={StyledHeader3} text="Price" />
 				<div>
 					<Controller
 						name="price300"

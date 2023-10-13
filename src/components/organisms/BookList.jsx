@@ -11,9 +11,12 @@ import {
 	StyledListTitle,
 } from "./BookList.styles";
 import { StyledHeader2 } from "../../App.styles";
+import FilterPanel from "./FilterPanel";
+import { useSelector } from "react-redux";
 
 const BookList = () => {
 	const { bookList } = useBook();
+	const bookCards = useSelector((state) => state.filteredBooks.bookList);
 	return (
 		<>
 			<Header2
@@ -21,17 +24,18 @@ const BookList = () => {
 				text="Fall into a good book"
 			/>
 			<StyledBookBox>
-				<Filter />
+				<FilterPanel />
 				<StyledBookList>
-					{bookList &&
-						bookList.map((card) => {
+					{bookCards &&
+						bookCards.map((card) => {
 							return (
 								<Fragment key={card.isbn}>
 									<BookCard
 										card={card}
 										StyledBook={StyledBook}
 										StyledBookImage={StyledBookImage}
-										StyledListTitle={StyledListTitle}></BookCard>
+										StyledListTitle={StyledListTitle}
+									></BookCard>
 								</Fragment>
 							);
 						})}

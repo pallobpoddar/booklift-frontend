@@ -3,6 +3,7 @@ import "./BookRow.scss";
 const BookRow = (row) => {
 	return (
 		<>
+			<td>{row._id}</td>
 			<td>{row.title}</td>
 			<td>{row.author}</td>
 			<td>{row.year}</td>

@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-const StyledFilterPanel = styled.form`
+const StyledFilterPanel = styled.div`
 	background-color: #fff;
 	width: 20%;
 	height: max-content;

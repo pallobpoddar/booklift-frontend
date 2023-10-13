@@ -25,28 +25,17 @@ const Header = () => {
 				StyledInput={StyledInput}
 				placeholder="Search Khonika"
 			/>
-			<Link
-				to="/user/cart"
-				className="link">
+			<Link to="/user/cart" className="link">
 				<IconButton
 					StyledIcon={StyledIcon}
 					icon={faCartShopping}
 					size="2xl"
 				/>
 			</Link>
-			<IconButton
-				StyledIcon={StyledIcon}
-				icon={faUser}
-				size="2xl"
-			/>
-			<Link
-				to="/user/signin"
-				className="link">
-				{data === undefined ? (
-					<PrimaryButton
-						buttonStyle="primaryButton"
-						text="Sign in"
-					/>
+			<IconButton StyledIcon={StyledIcon} icon={faUser} size="2xl" />
+			<Link to="/user/signin" className="link">
+				{data === null || data === undefined ? (
+					<PrimaryButton buttonStyle="primaryButton" text="Sign in" />
 				) : (
 					<PrimaryButton
 						buttonStyle="primaryButton"

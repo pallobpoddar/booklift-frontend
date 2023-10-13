@@ -7,12 +7,14 @@ const AdminDashboard = () => {
 	return (
 		<>
 			<HeaderBar />
-			<Sidebar />
-			<div className="container">
-				<ActionCard title={"Users"} />
-				<ActionCard title={"Books"} />
-				<ActionCard title={"Discounts"} />
-				<ActionCard title={"Transactions"} />
+			<div className="adminParentDiv">
+				<Sidebar />
+				<div className="container">
+					<ActionCard title={"Users"} path="/admin/users" />
+					<ActionCard title={"Books"} />
+					<ActionCard title={"Discounts"} />
+					<ActionCard title={"Transactions"} />
+				</div>
 			</div>
 		</>
 	);

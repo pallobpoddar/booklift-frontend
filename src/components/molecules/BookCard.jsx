@@ -1,6 +1,5 @@
 import React from "react";
 import { useDispatch } from "react-redux";
-// import { addBook } from "../../redux/actions/bookActions";
 import { addBook } from "../../redux/slices/cartSlice";
 import PrimaryImage from "../atoms/images/PrimaryImage";
 import PrimaryButton from "../atoms/buttons/PrimaryButton";
@@ -10,7 +9,6 @@ const BookCard = ({ card, StyledBook, StyledBookImage, StyledListTitle }) => {
 	const dispatch = useDispatch();
 
 	const addNewBook = () => {
-		console.log(card.title);
 		if (card.title && card.price) {
 			dispatch(
 				addBook({
@@ -28,10 +26,7 @@ const BookCard = ({ card, StyledBook, StyledBookImage, StyledListTitle }) => {
 	return (
 		<>
 			<StyledBook>
-				<PrimaryImage
-					StyledImage={StyledBookImage}
-					src={card.image}
-				/>
+				<PrimaryImage StyledImage={StyledBookImage} src={card.image} />
 				<StyledListTitle>{card.title}</StyledListTitle>
 				Tk {card.price}
 				<PrimaryButton

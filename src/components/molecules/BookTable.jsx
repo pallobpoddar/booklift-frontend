@@ -10,6 +10,7 @@ const BookTable = () => {
 			<caption>List of all books</caption>
 			<thead>
 				<tr>
+					<th>ID</th>
 					<th>Title</th>
 					<th>Author</th>
 					<th>Year</th>

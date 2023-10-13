@@ -7,12 +7,14 @@ const AdminUsers = () => {
 	return (
 		<>
 			<HeaderBar />
-			<Sidebar />
-			<div className="container">
-				<ActionCard title={"All Users"} />
-				<ActionCard title={"Add User"} />
-				<ActionCard title={"Edit User"} />
-				<ActionCard title={"Delete User"} />
+			<div className="adminParentDiv">
+				<Sidebar />
+				<div className="container">
+					<ActionCard title={"All Users"} />
+					<ActionCard title={"Add User"} />
+					<ActionCard title={"Edit User"} />
+					<ActionCard title={"Delete User"} />
+				</div>
 			</div>
 		</>
 	);
