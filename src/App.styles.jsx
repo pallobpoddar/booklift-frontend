@@ -59,6 +59,7 @@ const StyledFormBox = styled.div`
 	border: 2px solid #e5e5e5;
 	border-radius: 2px;
 	background-color: #fff;
+	margin: 150px 250px;
 `;
 
 const StyledParentDiv = styled.div`

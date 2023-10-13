@@ -43,7 +43,7 @@ const useAuth = () => {
 			})
 			.then((response) => {
 				navigate("/user/signin");
-				toast.error("You need to sign in now");
+				toast.success("You need to sign in now");
 			})
 			.catch((error) => {
 				if (error.response && error.response.status === 422) {

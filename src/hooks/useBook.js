@@ -1,7 +1,9 @@
 import { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
-import axiosInstance from "../utils/axiosInstance";
+import axiosInstance from "../utils/bookInstance";
 import { changeBookList } from "../redux/slices/bookSlice";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const useBook = () => {
 	const dispatch = useDispatch();
@@ -21,7 +23,7 @@ const useBook = () => {
 			});
 	}, []);
 
-	const createPost = (formData) => {
+	const addBook = (formData) => {
 		axiosInstance
 			.post("/add", formData, {
 				headers: {
@@ -32,37 +34,52 @@ const useBook = () => {
 				const data = response.data;
 			})
 			.catch((error) => {
-				console.error("Error:", error);
+				if (error.response && error.response.status === 422) {
+					const validationErrors = error.response.data.errors;
+					toast.error("Failed to add the book");
+				}
 			});
 	};
 
-	// const updateBook = async (formData) => {
-	// 	setLoading(true);
-	// 	console.log("The form data ", formData);
-	// 	await fetch(`http://localhost:8000/api/books/update-one-by-id`, {
-	// 		method: "PATCH",
-	// 		body: JSON.stringify(formData),
-	// 	})
-	// 		.then((resp) => resp.json())
-	// 		.then((data) => console.log("Successfully updated", data))
-	// 		.finally(() => setLoading(false));
-	// };
+	const updateBook = (formData) => {
+		axiosInstance
+			.patch(`/update-one-by-id/${formData.id}`, formData, {
+				headers: {
+					"Content-Type": "application/json",
+				},
+			})
+			.then((response) => {
+				const data = response.data;
+				toast.success("Successfully updated the book");
+			})
+			.catch((error) => {
+				if (error.response && error.response.status === 422) {
+					const validationErrors = error.response.data.errors;
+					toast.error("Failed to update the book");
+				}
+			});
+	};
 
-	// const deleteBook = async (formData) => {
-	// 	setLoading(true);
-	// 	console.log("The form data ", formData);
-	// 	await fetch(`http://localhost:8000/api/books/delete-one-by-id`, {
-	// 		method: "DELETE",
-	// 		body: JSON.stringify(formData),
-	// 	})
-	// 		.then((resp) => resp.json())
-	// 		.then((data) => console.log("Successfully deleted", data))
-	// 		.finally(() => setLoading(false));
-	// };
+	const deleteBook = (id) => {
+		axiosInstance
+			.delete(`/delete-one-by-id/${id}`, id, {
+				headers: {
+					"Content-Type": "application/json",
+				},
+			})
+			.then((response) => {
+				const data = response.data;
+				toast.success("Successfully deleted the book");
+			})
+			.catch((error) => {
+				if (error.response && error.response.status === 422) {
+					const validationErrors = error.response.data.errors;
+					toast.error("Failed to delete the book");
+				}
+			});
+	};
 
-	// return { bookList, createPost, updateBook, deleteBook };
-
-	return { bookList, createPost };
+	return { bookList, addBook, updateBook, deleteBook };
 };
 
 export default useBook;

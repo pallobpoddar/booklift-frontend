@@ -8,12 +8,13 @@ import AdminUsers from "./components/pages/admin/AdminUsers";
 import AdminDiscounts from "./components/pages/admin/AdminDiscounts";
 import AdminTransactions from "./components/pages/admin/AdminTransactions";
 import AdminBookList from "./components/pages/admin/AdminBookList";
-import AdminBookAdd from "./components/pages/admin/AdminBookAdd";
+import AdminBookAdd from "./components/pages/admin/AdminBookUpdate";
 import SignupForm from "./components/molecules/SignupForm";
 import "./App.scss";
 import UserCart from "./components/pages/user/UserCart";
 import UserSignin from "./components/pages/user/UserSignin";
 import UserSignup from "./components/pages/user/UserSignup";
+import AdminBookUpdate from "./components/pages/admin/AdminBookUpdate";
 
 function App() {
 	return (
@@ -40,14 +41,17 @@ function App() {
 						path="/user/cart"
 						element={<UserCart />}
 					/>
-
-					{/* <Route
-						path="/admin/dashboard"
-						Component={AdminDashboard}
-					/> */}
 					<Route
 						path="/admin/books"
 						Component={AdminBooks}
+					/>
+					<Route
+						path="/admin/books/add"
+						element={<AdminBookAdd />}
+					/>
+					<Route
+						path="/admin/books/edit/:id"
+						element={<AdminBookUpdate />}
 					/>
 					<Route
 						path="/admin/users"

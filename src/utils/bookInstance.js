@@ -1,8 +1,8 @@
 import axios from "axios";
 
-const axiosInstance = axios.create({
+const bookInstance = axios.create({
 	baseURL: "http://localhost:8000/api/books",
 	timeout: 5000,
 });
 
-export default axiosInstance;
+export default bookInstance;

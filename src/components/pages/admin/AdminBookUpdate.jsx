@@ -1,19 +1,18 @@
-import React from "react";
 import "../../../App.scss";
 import HeaderBar from "../../molecules/HeaderBar";
 import Sidebar from "../../molecules/Sidebar";
-import BookUpdateBox from "../../organisms/BookUpdateBox";
+import BookAddEditBox from "../../organisms/BookAddEditBox";
 
-const AdminBookAdd = () => {
+const AdminBookUpdate = () => {
 	return (
 		<>
 			<HeaderBar />
 			<div className="container">
 				<Sidebar />
-				<BookUpdateBox />
+				<BookAddEditBox />
 			</div>
 		</>
 	);
 };
 
-export default AdminBookAdd;
+export default AdminBookUpdate;

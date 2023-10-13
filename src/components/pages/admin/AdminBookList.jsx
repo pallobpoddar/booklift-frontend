@@ -3,6 +3,7 @@ import HeaderBar from "../../molecules/HeaderBar";
 import Sidebar from "../../molecules/Sidebar";
 import BookTable from "../../molecules/BookTable";
 import SearchDebounce from "../../molecules/SearchDebounce";
+import { Link } from "react-router-dom";
 
 const AdminBookList = () => {
 	return (
@@ -10,7 +11,11 @@ const AdminBookList = () => {
 			<HeaderBar />
 			<div className="adminParentDiv">
 				<Sidebar />
-				<BookTable />
+				<div>
+					<SearchDebounce />
+					<button className="addButton">Add</button>
+					<BookTable />
+				</div>
 			</div>
 		</>
 	);

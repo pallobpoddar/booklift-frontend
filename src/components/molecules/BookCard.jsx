@@ -3,12 +3,15 @@ import { useDispatch } from "react-redux";
 import { addBook } from "../../redux/slices/cartSlice";
 import PrimaryImage from "../atoms/images/PrimaryImage";
 import PrimaryButton from "../atoms/buttons/PrimaryButton";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import "../../App.scss";
 
 const BookCard = ({ card, StyledBook, StyledBookImage, StyledListTitle }) => {
 	const dispatch = useDispatch();
 
 	const addNewBook = () => {
+		toast.success("Successfully added to the cart");
 		if (card.title && card.price) {
 			dispatch(
 				addBook({
@@ -26,7 +29,10 @@ const BookCard = ({ card, StyledBook, StyledBookImage, StyledListTitle }) => {
 	return (
 		<>
 			<StyledBook>
-				<PrimaryImage StyledImage={StyledBookImage} src={card.image} />
+				<PrimaryImage
+					StyledImage={StyledBookImage}
+					src={card.image}
+				/>
 				<StyledListTitle>{card.title}</StyledListTitle>
 				Tk {card.price}
 				<PrimaryButton

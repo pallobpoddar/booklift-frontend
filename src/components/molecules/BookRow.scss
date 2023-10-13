@@ -10,3 +10,14 @@ td {
 	text-overflow: ellipsis;
 	white-space: nowrap;
 }
+
+.actionButton {
+	display: flex;
+	// align-items: center;
+	// justify-content: center;
+	column-gap: 10px;
+}
+
+.click {
+	cursor: pointer;
+}

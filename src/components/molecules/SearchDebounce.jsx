@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import axiosInstance from "../../utils/axiosInstance";
+import axiosInstance from "../../utils/bookInstance";
 
 const DebounceDemo = () => {
 	const [productId, setProductId] = useState("");
