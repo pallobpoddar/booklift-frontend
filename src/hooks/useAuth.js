@@ -7,19 +7,19 @@ import authInstance from "../utils/authInstance";
 import { addUserInfo } from "../redux/slices/userSlice";
 
 const useAuth = () => {
-	const [loginResponse, setLoginResponse] = useState({});
+	const [signinResponse, setSigninResponse] = useState({});
 	const navigate = useNavigate();
 	const dispatch = useDispatch();
 
-	const login = (formdata) => {
+	const signin = (formData) => {
 		authInstance
-			.post("/login", formdata, {
+			.post("/signin", formData, {
 				headers: {
 					"Content-Type": "application/json",
 				},
 			})
 			.then((response) => {
-				setLoginResponse(response.data);
+				setSigninResponse(response.data);
 			})
 			.catch((error) => {
 				if (error.response && error.response.status === 422) {
@@ -30,13 +30,13 @@ const useAuth = () => {
 	};
 
 	useEffect(() => {
-		dispatch(addUserInfo(loginResponse));
-		loginResponse.data && navigate("/");
-	}, [loginResponse]);
+		dispatch(addUserInfo(signinResponse));
+		signinResponse.data && navigate("/");
+	}, [signinResponse]);
 
-	const signup = (formdata) => {
+	const signup = (formData) => {
 		authInstance
-			.post("signup", formdata, {
+			.post("/signup", formData, {
 				headers: {
 					"Content-Type": "application/json",
 				},
@@ -53,7 +53,43 @@ const useAuth = () => {
 			});
 	};
 
-	return { loginResponse, login, signup };
+	const forgotPassword = (formData) => {
+		authInstance
+			.post("/forgot-password", formData, {
+				headers: {
+					"Content-Type": "application/json",
+				},
+			})
+			.then((response) => {
+				toast.success("An email has been sent to reset password");
+			})
+			.catch((error) => {
+				if (error.response && error.response.status === 422) {
+					const validationErrors = error.response.data.errors;
+					toast.error("Invalid credentials");
+				}
+			});
+	};
+
+	const resetPassword = (formData) => {
+		authInstance
+			.post("/reset-password", formData, {
+				headers: {
+					"Content-Type": "application/json",
+				},
+			})
+			.then((response) => {
+				toast.success("Password has been reset successfully");
+			})
+			.catch((error) => {
+				if (error.response && error.response.status === 422) {
+					const validationErrors = error.response.data.errors;
+					toast.error("Invalid credentials");
+				}
+			});
+	};
+
+	return { signinResponse, signin, signup, forgotPassword, resetPassword };
 };
 
 export default useAuth;

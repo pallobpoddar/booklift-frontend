@@ -9,8 +9,9 @@ import {
 	StyledFormError,
 	StyledFormInput,
 } from "../../App.styles";
+import { useParams } from "react-router-dom";
 
-const SigninForm = () => {
+const ResetPasswordForm = () => {
 	const {
 		handleSubmit,
 		control,
@@ -19,58 +20,30 @@ const SigninForm = () => {
 	} = useForm({
 		mode: "onChange",
 		defaultValues: {
-			email: "",
-			password: "",
+			newPassword: "",
+			confirmPassword: "",
 		},
 	});
 
-	const { signin } = useAuth();
+	const { resetPassword } = useAuth();
+	const { token, id } = useParams();
 
 	const handlerOnSubmit = () => {
 		const formData = {
-			email: getValues("email"),
-			password: getValues("password"),
+			token: token,
+			id: id,
+			newPassword: getValues("newPassword"),
+			confirmPassword: getValues("confirmPassword"),
 		};
-		signin(formData);
+		resetPassword(formData);
 	};
 
 	useEffect(() => {}, [errors]);
-
 	return (
 		<StyledForm onSubmit={handleSubmit(handlerOnSubmit)}>
 			<StyledFormRow>
 				<Controller
-					name="email"
-					control={control}
-					rules={{
-						required: "Email is required",
-
-						maxLength: {
-							value: 64,
-							message: "Email is not valid",
-						},
-					}}
-					render={({ field }) => (
-						<ValidationInput
-							type="text"
-							StyledFormInput={StyledFormInput}
-							placeholder="Email"
-							field={field}
-							style={{
-								border: errors.email ? "1px solid red" : "",
-							}}
-						/>
-					)}
-				/>
-			</StyledFormRow>
-
-			<StyledFormError>
-				{errors.email && <p>{errors.email.message}</p>}
-			</StyledFormError>
-
-			<StyledFormRow>
-				<Controller
-					name="password"
+					name="newPassword"
 					control={control}
 					rules={{
 						required: "Password is required",
@@ -83,10 +56,10 @@ const SigninForm = () => {
 						<ValidationInput
 							type="password"
 							StyledFormInput={StyledFormInput}
-							placeholder="Password"
+							placeholder="New Password"
 							field={field}
 							style={{
-								border: errors.password ? "1px solid red" : "",
+								border: errors.newPassword ? "1px solid red" : "",
 							}}
 						/>
 					)}
@@ -94,13 +67,42 @@ const SigninForm = () => {
 			</StyledFormRow>
 
 			<StyledFormError>
-				{errors.password && <p>{errors.password.message}</p>}
+				{errors.newPassword && <p>{errors.newPassword.message}</p>}
+			</StyledFormError>
+
+			<StyledFormRow>
+				<Controller
+					name="confirmPassword"
+					control={control}
+					rules={{
+						required: "Confirm password is required",
+						maxLength: {
+							value: 20,
+							message: "Confirm password is too long",
+						},
+					}}
+					render={({ field }) => (
+						<ValidationInput
+							type="password"
+							StyledFormInput={StyledFormInput}
+							placeholder="Confirm Password"
+							field={field}
+							style={{
+								border: errors.confirmPassword ? "1px solid red" : "",
+							}}
+						/>
+					)}
+				/>
+			</StyledFormRow>
+
+			<StyledFormError>
+				{errors.confirmPassword && <p>{errors.confirmPassword.message}</p>}
 			</StyledFormError>
 
 			<StyledFormRow>
 				<PrimaryButton
 					buttonStyle="primaryButton"
-					text="Sign in"
+					text="Submit"
 					type="submit"
 				/>
 			</StyledFormRow>
@@ -108,4 +110,4 @@ const SigninForm = () => {
 	);
 };
 
-export default SigninForm;
+export default ResetPasswordForm;

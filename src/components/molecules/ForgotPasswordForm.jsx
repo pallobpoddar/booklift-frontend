@@ -10,7 +10,7 @@ import {
 	StyledFormInput,
 } from "../../App.styles";
 
-const SigninForm = () => {
+const ForgotPasswordForm = () => {
 	const {
 		handleSubmit,
 		control,
@@ -20,18 +20,16 @@ const SigninForm = () => {
 		mode: "onChange",
 		defaultValues: {
 			email: "",
-			password: "",
 		},
 	});
 
-	const { signin } = useAuth();
+	const { forgotPassword } = useAuth();
 
 	const handlerOnSubmit = () => {
 		const formData = {
 			email: getValues("email"),
-			password: getValues("password"),
 		};
-		signin(formData);
+		forgotPassword(formData);
 	};
 
 	useEffect(() => {}, [errors]);
@@ -69,38 +67,9 @@ const SigninForm = () => {
 			</StyledFormError>
 
 			<StyledFormRow>
-				<Controller
-					name="password"
-					control={control}
-					rules={{
-						required: "Password is required",
-						maxLength: {
-							value: 20,
-							message: "Password is too long",
-						},
-					}}
-					render={({ field }) => (
-						<ValidationInput
-							type="password"
-							StyledFormInput={StyledFormInput}
-							placeholder="Password"
-							field={field}
-							style={{
-								border: errors.password ? "1px solid red" : "",
-							}}
-						/>
-					)}
-				/>
-			</StyledFormRow>
-
-			<StyledFormError>
-				{errors.password && <p>{errors.password.message}</p>}
-			</StyledFormError>
-
-			<StyledFormRow>
 				<PrimaryButton
 					buttonStyle="primaryButton"
-					text="Sign in"
+					text="Send email"
 					type="submit"
 				/>
 			</StyledFormRow>
@@ -108,4 +77,4 @@ const SigninForm = () => {
 	);
 };
 
-export default SigninForm;
+export default ForgotPasswordForm;

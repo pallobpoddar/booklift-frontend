@@ -12,14 +12,24 @@ const SigninBox = () => {
 	return (
 		<StyledParentDiv>
 			<StyledFormBox>
-				<Header1 StyledHeader1={StyledHeader1} text="Sign In" />
+				<Header1
+					StyledHeader1={StyledHeader1}
+					text="Sign In"
+				/>
 				<SigninForm />
 				<p>
 					Don't have an account?{" "}
-					<Link to={"/user/signup"} className="linkWithStyle">
+					<Link
+						to={"/user/signup"}
+						className="linkWithStyle">
 						Create one
 					</Link>
 				</p>
+				<Link
+					to={"/user/forgot-password"}
+					className="linkWithStyle">
+					Forgot password?
+				</Link>
 			</StyledFormBox>
 		</StyledParentDiv>
 	);

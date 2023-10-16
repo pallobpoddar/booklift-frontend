@@ -9,19 +9,20 @@ import AdminDiscounts from "./components/pages/admin/AdminDiscounts";
 import AdminTransactions from "./components/pages/admin/AdminTransactions";
 import AdminBookList from "./components/pages/admin/AdminBookList";
 import AdminBookAdd from "./components/pages/admin/AdminBookUpdate";
-import SignupForm from "./components/molecules/SignupForm";
-import "./App.scss";
 import UserCart from "./components/pages/user/UserCart";
 import UserSignin from "./components/pages/user/UserSignin";
 import UserSignup from "./components/pages/user/UserSignup";
 import AdminBookUpdate from "./components/pages/admin/AdminBookUpdate";
+import "./App.scss";
+import UserForgotPassword from "./components/pages/user/UserForgotPassword";
+import UserResetPassword from "./components/pages/user/UserResetPassword";
 
 function App() {
 	return (
 		<>
 			<ToastContainer
 				position="top-right"
-				autoClose={4000}
+				autoClose={3000}
 			/>
 			<Router>
 				<Routes>
@@ -32,6 +33,14 @@ function App() {
 					<Route
 						path="/user/signin"
 						element={<UserSignin />}
+					/>
+					<Route
+						path="/user/forgot-password"
+						element={<UserForgotPassword />}
+					/>
+					<Route
+						path="/reset-password/:token/:id"
+						element={<UserResetPassword />}
 					/>
 					<Route
 						path="/user/signup"
