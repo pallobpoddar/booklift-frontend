@@ -16,6 +16,7 @@ import AdminBookUpdate from "./components/pages/admin/AdminBookUpdate";
 import "./App.scss";
 import UserForgotPassword from "./components/pages/user/UserForgotPassword";
 import UserResetPassword from "./components/pages/user/UserResetPassword";
+import UserProfile from "./components/pages/user/UserProfile";
 
 function App() {
 	return (
@@ -49,6 +50,10 @@ function App() {
 					<Route
 						path="/user/cart"
 						element={<UserCart />}
+					/>
+					<Route
+						path="/user/profile"
+						element={<UserProfile />}
 					/>
 					<Route
 						path="/admin/books"
