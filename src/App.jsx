@@ -11,7 +11,7 @@ import AdminBookList from "./components/pages/admin/AdminBookList";
 import AdminBookAdd from "./components/pages/admin/AdminBookUpdate";
 import UserCart from "./components/pages/user/UserCart";
 import UserSignin from "./components/pages/user/UserSignin";
-import UserSignup from "./components/pages/user/UserSignup";
+import Signup from "./components/pages/Signup";
 import AdminBookUpdate from "./components/pages/admin/AdminBookUpdate";
 import "./App.scss";
 import UserForgotPassword from "./components/pages/user/UserForgotPassword";
@@ -45,7 +45,7 @@ function App() {
 					/>
 					<Route
 						path="/user/signup"
-						element={<UserSignup />}
+						element={<Signup />}
 					/>
 					<Route
 						path="/user/cart"
