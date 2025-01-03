@@ -1,5 +1,3 @@
-import React from "react";
-
 const PrimaryInput = ({ type, StyledInput, placeholder }) => {
 	return (
 		<StyledInput
