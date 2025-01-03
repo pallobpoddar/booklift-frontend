@@ -1,8 +1,9 @@
-import { React, useEffect } from "react";
+import { useEffect } from "react";
 import { useForm, Controller } from "react-hook-form";
-import useAuth from "../../hooks/useAuth";
 import ValidationInput from "../atoms/inputs/ValidationInput";
 import PrimaryButton from "../atoms/buttons/PrimaryButton";
+import usePost from "../../hooks/usePost";
+import { signupUrl } from "../../api/auths";
 
 import {
 	StyledForm,
@@ -21,35 +22,54 @@ const SignupForm = () => {
 	} = useForm({
 		mode: "onChange",
 		defaultValues: {
+			name: "",
 			email: "",
 			password: "",
 			confirmPassword: "",
-			name: "",
-			phone: "",
-			birthday: "",
-			gender: "",
 		},
 	});
 
-	const { signup } = useAuth();
+	const {data, error, loading, postData} = usePost(signupUrl);
 
 	const handlerOnSubmit = () => {
 		const formData = {
+			name: getValues("name"),
 			email: getValues("email"),
 			password: getValues("password"),
 			confirmPassword: getValues("confirmPassword"),
-			name: getValues("name"),
-			phone: getValues("phone"),
-			birthday: getValues("birthday"),
-			gender: getValues("gender"),
 		};
-		signup(formData);
+		postData(formData);
 	};
 
 	useEffect(() => {}, [errors]);
 
 	return (
 		<StyledForm onSubmit={handleSubmit(handlerOnSubmit)}>
+			<StyledFormRow>
+				<Controller
+					name="name"
+					control={control}
+					rules={{
+						required: "Name is required",
+						maxLength: {
+							value: 30,
+							message: "Name is too long",
+						},
+					}}
+					render={({ field }) => (
+						<ValidationInput
+							type="text"
+							StyledFormInput={StyledFormInput}
+							placeholder="Name"
+							field={field}
+							style={{
+								border: errors.name ? "1px solid red" : "",
+							}}
+						/>
+					)}
+				/>
+			</StyledFormRow>
+
 			<StyledFormRow>
 				<Controller
 					name="email"
@@ -134,124 +154,6 @@ const SignupForm = () => {
 
 			<StyledFormError>
 				{errors.confirmPassword && <p>{errors.confirmPassword.message}</p>}
-			</StyledFormError>
-
-			<StyledFormRow>
-				<Controller
-					name="name"
-					control={control}
-					rules={{
-						required: "Name is required",
-						maxLength: {
-							value: 30,
-							message: "Name is too long",
-						},
-					}}
-					render={({ field }) => (
-						<ValidationInput
-							type="text"
-							StyledFormInput={StyledFormInput}
-							placeholder="Name"
-							field={field}
-							style={{
-								border: errors.name ? "1px solid red" : "",
-							}}
-						/>
-					)}
-				/>
-			</StyledFormRow>
-
-			<StyledFormError>
-				{errors.name && <p>{errors.name.message}</p>}
-			</StyledFormError>
-
-			<StyledFormRow>
-				<Controller
-					name="phone"
-					control={control}
-					rules={{
-						required: "Phone number is required",
-						minLength: {
-							value: 11,
-							message: "Phone number is not valid",
-						},
-						maxLength: {
-							value: 14,
-							message: "Phone number is too long",
-						},
-					}}
-					render={({ field }) => (
-						<ValidationInput
-							StyledFormInput={StyledFormInput}
-							type="text"
-							placeholder="Phone"
-							field={field}
-							style={{
-								border: errors.phone ? "1px solid red" : "",
-							}}
-						/>
-					)}
-				/>
-			</StyledFormRow>
-
-			<StyledFormError>
-				{errors.phone && <p>{errors.phone.message}</p>}
-			</StyledFormError>
-
-			<StyledFormRow>
-				<Controller
-					name="birthday"
-					control={control}
-					rules={{
-						maxLength: {
-							value: 11,
-							message: "Birthday is not valid",
-						},
-					}}
-					render={({ field }) => (
-						<ValidationInput
-							StyledFormInput={StyledFormInput}
-							type="text"
-							placeholder="Birthday"
-							field={field}
-							style={{
-								border: errors.birthday ? "1px solid red" : "",
-							}}
-						/>
-					)}
-				/>
-			</StyledFormRow>
-
-			<StyledFormError>
-				{errors.birthday && <p>{errors.birthday.message}</p>}
-			</StyledFormError>
-
-			<StyledFormRow>
-				<Controller
-					name="gender"
-					control={control}
-					rules={{
-						maxLength: {
-							value: 10,
-							message: "Gender is not valid",
-						},
-					}}
-					render={({ field }) => (
-						<ValidationInput
-							StyledFormInput={StyledFormInput}
-							type="text"
-							placeholder="Gender"
-							field={field}
-							style={{
-								border: errors.gender ? "1px solid red" : "",
-							}}
-						/>
-					)}
-				/>
-			</StyledFormRow>
-
-			<StyledFormError>
-				{errors.gender && <p>{errors.gender.message}</p>}
 			</StyledFormError>
 
 			<StyledFormRow>
