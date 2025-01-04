@@ -52,8 +52,8 @@ const SignupForm = () => {
 					rules={{
 						required: "Name is required",
 						maxLength: {
-							value: 30,
-							message: "Name is too long",
+							value: 100,
+							message: "Character limit exceeded",
 						},
 					}}
 					render={({ field }) => (
@@ -106,7 +106,7 @@ const SignupForm = () => {
 					rules={{
 						required: "Password is required",
 						maxLength: {
-							value: 20,
+							value: 50,
 							message: "Password is too long",
 						},
 					}}
