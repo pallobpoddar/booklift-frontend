@@ -11,7 +11,7 @@ import AdminBookList from "./components/pages/admin/AdminBookList";
 import AdminBookAdd from "./components/pages/admin/AdminBookUpdate";
 import UserCart from "./components/pages/user/UserCart";
 import UserSignin from "./components/pages/user/UserSignin";
-import UserSignup from "./components/pages/user/UserSignup";
+import Signup from "./components/pages/Signup";
 import AdminBookUpdate from "./components/pages/admin/AdminBookUpdate";
 import "./App.scss";
 import UserForgotPassword from "./components/pages/user/UserForgotPassword";
@@ -19,82 +19,37 @@ import UserResetPassword from "./components/pages/user/UserResetPassword";
 import UserProfile from "./components/pages/user/UserProfile";
 
 function App() {
-	return (
-		<>
-			<ToastContainer
-				position="top-right"
-				autoClose={3000}
-			/>
-			<Router>
-				<Routes>
-					<Route
-						path="/"
-						element={<UserHome />}
-					/>
-					<Route
-						path="/user/signin"
-						element={<UserSignin />}
-					/>
-					<Route
-						path="/user/forgot-password"
-						element={<UserForgotPassword />}
-					/>
-					<Route
-						path="/reset-password/:token/:id"
-						element={<UserResetPassword />}
-					/>
-					<Route
-						path="/user/signup"
-						element={<UserSignup />}
-					/>
-					<Route
-						path="/user/cart"
-						element={<UserCart />}
-					/>
-					<Route
-						path="/user/profile"
-						element={<UserProfile />}
-					/>
-					<Route
-						path="/admin/books"
-						Component={AdminBooks}
-					/>
-					<Route
-						path="/admin/books/add"
-						element={<AdminBookAdd />}
-					/>
-					<Route
-						path="/admin/books/edit/:id"
-						element={<AdminBookUpdate />}
-					/>
-					<Route
-						path="/admin/users"
-						Component={AdminUsers}
-					/>
-					<Route
-						path="/admin/discounts"
-						Component={AdminDiscounts}
-					/>
-					<Route
-						path="/admin/transactions"
-						Component={AdminTransactions}
-					/>
-					<Route
-						path="/admin/books/all"
-						Component={AdminBookList}
-					/>
-					<Route
-						path="/admin/books/add"
-						Component={AdminBookAdd}
-					/>
-					<Route
-						path="/admin/dashboard"
-						Component={AdminDashboard}
-					/>
-				</Routes>
-			</Router>
-		</>
-	);
+  return (
+    <>
+      <ToastContainer position="top-right" autoClose={3000} />
+      <Router>
+        <Routes>
+          <Route path="/" element={<UserHome />} />
+          <Route path="/user/signin" element={<UserSignin />} />
+          <Route
+            path="/user/forgot-password"
+            element={<UserForgotPassword />}
+          />
+          <Route
+            path="/reset-password/:token/:id"
+            element={<UserResetPassword />}
+          />
+          <Route path="/user/signup" element={<Signup />} />
+          <Route path="/user/cart" element={<UserCart />} />
+          <Route path="/user/profile" element={<UserProfile />} />
+          <Route path="/admin/books" Component={AdminBooks} />
+          <Route path="/admin/books/add" element={<AdminBookAdd />} />
+          <Route path="/admin/books/edit/:id" element={<AdminBookUpdate />} />
+          <Route path="/admin/users" Component={AdminUsers} />
+          <Route path="/admin/discounts" Component={AdminDiscounts} />
+          <Route path="/admin/transactions" Component={AdminTransactions} />
+          <Route path="/admin/books/all" Component={AdminBookList} />
+          <Route path="/admin/books/add" Component={AdminBookAdd} />
+          <Route path="/admin/dashboard" Component={AdminDashboard} />
+        </Routes>
+      </Router>
+    </>
+  );
 }
 
 export default App;

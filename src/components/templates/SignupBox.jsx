@@ -1,6 +1,5 @@
-import React from "react";
 import Header1 from "../atoms/labels/Header1";
-import SignupForm from "../molecules/SignupForm";
+import SignupForm from "../organisms/SignupForm";
 import {
 	StyledHeader1,
 	StyledFormBox,
@@ -8,9 +7,9 @@ import {
 } from "../../App.styles";
 import { Link } from "react-router-dom";
 
-const SigninBox = () => {
-	return (
-		<StyledParentDiv>
+const SignupBox = () => {
+  return (
+    <StyledParentDiv>
 			<StyledFormBox>
 				<Header1
 					StyledHeader1={StyledHeader1}
@@ -27,7 +26,7 @@ const SigninBox = () => {
 				</p>
 			</StyledFormBox>
 		</StyledParentDiv>
-	);
-};
+  )
+}
 
-export default SigninBox;
+export default SignupBox

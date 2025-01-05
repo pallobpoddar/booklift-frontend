@@ -1,8 +1,7 @@
 import styled from "styled-components";
 
 const StyledHeader1 = styled.h1`
-	font-weight: 600;
-	color: royalblue;
+	color: #21282d;
 `;
 
 const StyledHeader2 = styled.h2`
@@ -23,26 +22,21 @@ const StyledBanner = styled.img`
 `;
 
 const StyledForm = styled.form`
-	width: max-content;
-`;
-
-const StyledFormRow = styled.div`
 	display: flex;
-	justify-content: center;
+	flex-direction: column;
+	gap: 1rem;
 	margin: 20px 0px;
 `;
 
-const StyledFormError = styled.div`
+const StyledFormError = styled.p`
 	font-size: smaller;
 `;
 
 const StyledFormInput = styled.input`
 	width: 300px;
 	height: 25px;
-	background-color: #f5f5f6;
-	border: 2px solid #dcdcdd;
-	border-radius: 10px;
-	padding-left: 15px;
+	border: 1px solid #ccc;
+	padding: 0.6rem 1rem;
 
 	&:focus {
 		outline: none;
@@ -54,12 +48,9 @@ const StyledFormBox = styled.div`
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	width: max-content;
-	padding: 50px;
+	padding: 3rem;
 	border: 2px solid #e5e5e5;
 	border-radius: 2px;
-	background-color: #fff;
-	margin: 150px 250px;
 `;
 
 const StyledParentDiv = styled.div`
@@ -75,7 +66,6 @@ export {
 	StyledHeader3,
 	StyledBanner,
 	StyledForm,
-	StyledFormRow,
 	StyledFormError,
 	StyledFormInput,
 	StyledFormBox,
