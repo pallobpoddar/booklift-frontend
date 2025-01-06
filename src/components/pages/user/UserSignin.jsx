@@ -1,4 +1,3 @@
-import React from "react";
 import SigninBox from "../../organisms/SigninBox";
 
 const UserSignin = () => {

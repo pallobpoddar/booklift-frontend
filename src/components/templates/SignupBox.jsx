@@ -17,9 +17,9 @@ const SignupBox = () => {
 				/>
 				<SignupForm />
 				<p>
-					Already registered?{" "}
+					Already have an account? {" "}
 					<Link
-						to={"/user/signup"}
+						to={"/signin"}
 						className="linkWithStyle">
 						Sign in
 					</Link>

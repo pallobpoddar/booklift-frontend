@@ -1,14 +1,22 @@
-import { React, useEffect } from "react";
+import { useEffect } from "react";
 import { useForm, Controller } from "react-hook-form";
 import useAuth from "../../hooks/useAuth";
-import ValidationInput from "../atoms/inputs/ValidationInput";
-import PrimaryButton from "../atoms/buttons/Button";
+import Input from "../atoms/inputs/Input";
+import Button from "../atoms/buttons/Button";
 import {
   StyledForm,
   StyledFormRow,
   StyledFormError,
-  StyledFormInput,
+  StyledInput,
 } from "../../App.styles";
+import styled from "styled-components";
+
+const StyledButton = styled.button`
+  padding: 0.5rem 1rem;
+  background-color: #3e5962;
+  color: white;
+  font-weight: bold;
+`;
 
 const ForgotPasswordForm = () => {
   const {
@@ -49,9 +57,9 @@ const ForgotPasswordForm = () => {
             },
           }}
           render={({ field }) => (
-            <ValidationInput
+            <Input
               type="text"
-              StyledFormInput={StyledFormInput}
+              StyledInput={StyledInput}
               placeholder="Email"
               field={field}
               style={{
@@ -67,8 +75,8 @@ const ForgotPasswordForm = () => {
       </StyledFormError>
 
       <StyledFormRow>
-        <PrimaryButton
-          buttonStyle="primaryButton"
+        <Button
+          StyledButton={StyledButton}
           text="Send email"
           type="submit"
         />

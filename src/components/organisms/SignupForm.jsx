@@ -1,19 +1,16 @@
 import { useEffect } from "react";
 import { useForm, Controller } from "react-hook-form";
-import ValidationInput from "../atoms/inputs/ValidationInput";
+import Input from "../atoms/inputs/Input";
 import Button from "../atoms/buttons/Button";
 import usePost from "../../hooks/usePost";
 import { signupUrl } from "../../api/auths";
-import styled from "styled-components";
-
-import { StyledForm, StyledFormError, StyledFormInput } from "../../App.styles";
-
-const StyledButton = styled.button`
-	padding: 0.5rem 1rem;
-	background-color: #3e5962;
-	color: white;
-	font-weight: bold;
-`
+import { BeatLoader } from "react-spinners";
+import {
+  StyledForm,
+  StyledFormError,
+  StyledInput,
+  StyledButton,
+} from "../../App.styles";
 
 const SignupForm = () => {
   const {
@@ -48,115 +45,138 @@ const SignupForm = () => {
 
   return (
     <StyledForm onSubmit={handleSubmit(handlerOnSubmit)}>
-      <Controller
-        name="name"
-        control={control}
-        rules={{
-          required: "Name is required",
-          maxLength: {
-            value: 100,
-            message: "Character limit exceeded",
-          },
-        }}
-        render={({ field }) => (
-          <ValidationInput
-            type="text"
-            StyledFormInput={StyledFormInput}
-            placeholder="Name"
-            field={field}
-            style={{
-              border: errors.name ? "1px solid red" : "",
-            }}
-          />
+      <div>
+        <Controller
+          name="name"
+          control={control}
+          rules={{
+            required: "Name is required",
+            maxLength: {
+              value: 100,
+              message: "Character limit exceeded",
+            },
+          }}
+          render={({ field }) => (
+            <Input
+              type="text"
+              StyledInput={StyledInput}
+              placeholder="Name"
+              autoFocus
+              field={field}
+              style={{
+                border: errors.name ? "1px solid red" : "",
+              }}
+            />
+          )}
+        />
+
+        {errors.name && (
+          <StyledFormError>{errors.name.message}</StyledFormError>
         )}
-      />
+      </div>
 
-      {errors.name && <StyledFormError>{errors.name.message}</StyledFormError>}
+      <div>
+        <Controller
+          name="email"
+          control={control}
+          rules={{
+            required: "Email is required",
+            maxLength: {
+              value: 320,
+              message: "Invalid email format",
+            },
+            pattern: {
+              value: /^[a-zA-Z0-9._+-]+@[a-zA-Z0-9-]+\.[a-zA-Z]{2,4}$/,
+              message: "Invalid email format",
+            },
+          }}
+          render={({ field }) => (
+            <Input
+              type="text"
+              StyledInput={StyledInput}
+              placeholder="Email"
+              field={field}
+              style={{
+                border: errors.email ? "1px solid red" : "",
+              }}
+            />
+          )}
+        />
 
-      <Controller
-        name="email"
-        control={control}
-        rules={{
-          required: "Email is required",
-          maxLength: {
-            value: 320,
-            message: "Invalid email format",
-          },
-          pattern: {
-            value: /^[a-zA-Z0-9._+-]+@[a-zA-Z0-9-]+\.[a-zA-Z]{2,4}$/,
-            message: "Invalid email format",
-          },
-        }}
-        render={({ field }) => (
-          <ValidationInput
-            type="text"
-            StyledFormInput={StyledFormInput}
-            placeholder="Email"
-            field={field}
-            style={{
-              border: errors.email ? "1px solid red" : "",
-            }}
-          />
+        {errors.email && (
+          <StyledFormError>{errors.email.message}</StyledFormError>
         )}
-      />
+      </div>
 
-      {errors.email && (
-        <StyledFormError>{errors.email.message}</StyledFormError>
-      )}
+      <div>
+        <Controller
+          name="password"
+          control={control}
+          rules={{
+            required: "Password is required",
+            minLength: {
+              value: 8,
+              message: "Password must be at least 8 characters",
+            },
+            maxLength: {
+              value: 20,
+              message: "Character limit exceeded",
+            },
+            pattern: {
+              value:
+                /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[~`!@#$%^&*()_\-+={[}\]|\\:;"'<,>.?/])[A-Za-z\d~`!@#$%^&*()_\-+={[}\]|\\:;"'<,>.?/]{8,20}$/,
+              message:
+                "Password must contain at least 8 characters, 1 lowercase letter, 1 uppercase letter, 1 number and 1 symbol",
+            },
+          }}
+          render={({ field }) => (
+            <Input
+              StyledInput={StyledInput}
+              placeholder="Password"
+              type="password"
+              field={field}
+              style={{
+                border: errors.password ? "1px solid red" : "",
+              }}
+            />
+          )}
+        />
 
-      <Controller
-        name="password"
-        control={control}
-        rules={{
-          required: "Password is required",
-          maxLength: {
-            value: 50,
-            message: "Character limit exceeded",
-          },
-        }}
-        render={({ field }) => (
-          <ValidationInput
-            StyledFormInput={StyledFormInput}
-            placeholder="Password"
-            type="password"
-            field={field}
-            style={{
-              border: errors.password ? "1px solid red" : "",
-            }}
-          />
+        {errors.password && (
+          <StyledFormError>{errors.password.message}</StyledFormError>
         )}
-      />
+      </div>
 
-      {errors.password && (
-        <StyledFormError>{errors.password.message}</StyledFormError>
-      )}
+      <div>
+        <Controller
+          name="confirmPassword"
+          control={control}
+          rules={{
+            required: "Confirm password is required",
+            validate: (value) =>
+              value === watch("password") || "Passwords don't match",
+          }}
+          render={({ field }) => (
+            <Input
+              StyledInput={StyledInput}
+              placeholder="Confirm password"
+              type="password"
+              field={field}
+              style={{
+                border: errors.confirmPassword ? "1px solid red" : "",
+              }}
+            />
+          )}
+        />
 
-      <Controller
-        name="confirmPassword"
-        control={control}
-        rules={{
-          required: "Confirm password is required",
-          validate: (value) =>
-            value === watch("password") || "Passwords don't match",
-        }}
-        render={({ field }) => (
-          <ValidationInput
-            StyledFormInput={StyledFormInput}
-            placeholder="Confirm password"
-            type="password"
-            field={field}
-            style={{
-              border: errors.confirmPassword ? "1px solid red" : "",
-            }}
-          />
+        {errors.confirmPassword && (
+          <StyledFormError>{errors.confirmPassword.message}</StyledFormError>
         )}
-      />
+      </div>
 
-      {errors.confirmPassword && (
-        <StyledFormError>{errors.confirmPassword.message}</StyledFormError>
-      )}
-
-      <Button StyledButton={StyledButton} text="Sign Up" type="submit" />
+      <Button StyledButton={StyledButton} type="submit">
+        {loading ? <BeatLoader color="white" size={8} /> : "SIGN UP"}
+      </Button>
     </StyledForm>
   );
 };

@@ -9,11 +9,11 @@ const UserHome = () => {
 	return (
 		<>
 			<Header />
-			<main>
+			{/* <main>
 				<Banner />
 				<BookList />
 			</main>
-			<Footer />
+			<Footer /> */}
 		</>
 	);
 };

@@ -1,4 +1,3 @@
-import React from "react";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { faCartShopping } from "@fortawesome/free-solid-svg-icons";
@@ -6,7 +5,7 @@ import { faUser } from "@fortawesome/free-solid-svg-icons";
 import NavigationList from "../molecules/NavigationList";
 import PrimaryInput from "../atoms/inputs/PrimaryInput";
 import IconButton from "../atoms/buttons/IconButton";
-import PrimaryButton from "../atoms/buttons/Button.jsx";
+import Button from "../atoms/buttons/Button.jsx";
 import {
   StyledHeader,
   StyledList,
@@ -14,6 +13,14 @@ import {
   StyledIcon,
 } from "./Header.styles.jsx";
 import "../../App.scss";
+import styled from "styled-components";
+
+const StyledButton = styled.button`
+	padding: 0.5rem 1rem;
+	background-color: #3e5962;
+	color: white;
+	font-weight: bold;
+`
 
 const Header = () => {
   const data = useSelector((state) => state.user.userData);
@@ -33,9 +40,9 @@ const Header = () => {
       </Link>
       <Link to="/user/signin" className="link">
         {data === null || data === undefined ? (
-          <PrimaryButton buttonStyle="primaryButton" text="Sign in" />
+          <Button StyledButton={StyledButton} text="Sign in" />
         ) : (
-          <PrimaryButton buttonStyle="primaryButton" text="Sign out" />
+          <Button StyledButton={StyledButton} text="Sign out" />
         )}
       </Link>
     </StyledHeader>

@@ -1,15 +1,23 @@
-import { React, useEffect } from "react";
+import { useEffect } from "react";
 import { useForm, Controller } from "react-hook-form";
 import useBook from "../../hooks/useBook";
-import ValidationInput from "../atoms/inputs/ValidationInput";
-import PrimaryButton from "../atoms/buttons/Button";
-
+import Input from "../atoms/inputs/Input";
+import Button from "../atoms/buttons/Button";
 import {
   StyledForm,
   StyledFormRow,
   StyledFormError,
-  StyledFormInput,
+  StyledInput,
 } from "../../App.styles";
+import styled from "styled-components";
+
+const StyledButton = styled.button`
+  padding: 0.5rem 1rem;
+  background-color: #3e5962;
+  color: white;
+  font-weight: bold;
+  border: none;
+`;
 
 const AdminBookUpdate = ({ action }) => {
   const {
@@ -66,9 +74,9 @@ const AdminBookUpdate = ({ action }) => {
             required: "Id is required",
           }}
           render={({ field }) => (
-            <ValidationInput
+            <Input
               type="text"
-              StyledFormInput={StyledFormInput}
+              StyledInput={StyledInput}
               placeholder="Id"
               field={field}
               style={{
@@ -95,9 +103,9 @@ const AdminBookUpdate = ({ action }) => {
             },
           }}
           render={({ field }) => (
-            <ValidationInput
+            <Input
               type="text"
-              StyledFormInput={StyledFormInput}
+              StyledInput={StyledInput}
               placeholder="Title"
               field={field}
               style={{
@@ -124,9 +132,9 @@ const AdminBookUpdate = ({ action }) => {
             },
           }}
           render={({ field }) => (
-            <ValidationInput
+            <Input
               type="text"
-              StyledFormInput={StyledFormInput}
+              StyledInput={StyledInput}
               placeholder="Author"
               field={field}
               style={{
@@ -149,9 +157,9 @@ const AdminBookUpdate = ({ action }) => {
             required: "Year is required",
           }}
           render={({ field }) => (
-            <ValidationInput
+            <Input
               type="text"
-              StyledFormInput={StyledFormInput}
+              StyledInput={StyledInput}
               placeholder="Year"
               field={field}
               style={{
@@ -178,9 +186,9 @@ const AdminBookUpdate = ({ action }) => {
             },
           }}
           render={({ field }) => (
-            <ValidationInput
+            <Input
               type="text"
-              StyledFormInput={StyledFormInput}
+              StyledInput={StyledInput}
               placeholder="Description"
               field={field}
               style={{
@@ -203,9 +211,9 @@ const AdminBookUpdate = ({ action }) => {
             required: "Language is required",
           }}
           render={({ field }) => (
-            <ValidationInput
+            <Input
               type="text"
-              StyledFormInput={StyledFormInput}
+              StyledInput={StyledInput}
               placeholder="Language"
               field={field}
               style={{
@@ -228,9 +236,9 @@ const AdminBookUpdate = ({ action }) => {
             required: "Category is required",
           }}
           render={({ field }) => (
-            <ValidationInput
+            <Input
               type="text"
-              StyledFormInput={StyledFormInput}
+              StyledInput={StyledInput}
               placeholder="Category"
               field={field}
               style={{
@@ -253,9 +261,9 @@ const AdminBookUpdate = ({ action }) => {
             required: "ISBN is required",
           }}
           render={({ field }) => (
-            <ValidationInput
+            <Input
               type="text"
-              StyledFormInput={StyledFormInput}
+              StyledInput={StyledInput}
               placeholder="ISBN"
               field={field}
               style={{
@@ -278,9 +286,9 @@ const AdminBookUpdate = ({ action }) => {
             required: "Price is required",
           }}
           render={({ field }) => (
-            <ValidationInput
+            <Input
               type="text"
-              StyledFormInput={StyledFormInput}
+              StyledInput={StyledInput}
               placeholder="Price"
               field={field}
               style={{
@@ -303,9 +311,9 @@ const AdminBookUpdate = ({ action }) => {
             required: "Stock is required",
           }}
           render={({ field }) => (
-            <ValidationInput
+            <Input
               type="text"
-              StyledFormInput={StyledFormInput}
+              StyledInput={StyledInput}
               placeholder="Stock"
               field={field}
               style={{
@@ -321,8 +329,8 @@ const AdminBookUpdate = ({ action }) => {
       </StyledFormError>
 
       <StyledFormRow>
-        <PrimaryButton
-          buttonStyle="primaryButton"
+        <Button
+          StyledButton={StyledButton}
           text="Update"
           type="submit"
         />

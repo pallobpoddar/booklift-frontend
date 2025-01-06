@@ -1,14 +1,22 @@
 import { React, useEffect } from "react";
 import { useForm, Controller } from "react-hook-form";
 import useAuth from "../../hooks/useAuth";
-import ValidationInput from "../atoms/inputs/ValidationInput";
-import PrimaryButton from "../atoms/buttons/Button";
+import Input from "../atoms/inputs/Input";
+import Button from "../atoms/buttons/Button";
 import {
   StyledForm,
   StyledFormRow,
   StyledFormError,
-  StyledFormInput,
+  StyledInput,
 } from "../../App.styles";
+import styled from "styled-components";
+
+const StyledButton = styled.button`
+  padding: 0.5rem 1rem;
+  background-color: #3e5962;
+  color: white;
+  font-weight: bold;
+`;
 
 const SigninForm = () => {
   const {
@@ -51,9 +59,9 @@ const SigninForm = () => {
             },
           }}
           render={({ field }) => (
-            <ValidationInput
+            <Input
               type="text"
-              StyledFormInput={StyledFormInput}
+              StyledInput={StyledInput}
               placeholder="Email"
               field={field}
               style={{
@@ -80,9 +88,9 @@ const SigninForm = () => {
             },
           }}
           render={({ field }) => (
-            <ValidationInput
+            <Input
               type="password"
-              StyledFormInput={StyledFormInput}
+              StyledInput={StyledInput}
               placeholder="Password"
               field={field}
               style={{
@@ -98,11 +106,7 @@ const SigninForm = () => {
       </StyledFormError>
 
       <StyledFormRow>
-        <PrimaryButton
-          buttonStyle="primaryButton"
-          text="Sign in"
-          type="submit"
-        />
+        <Button StyledButton={StyledButton} text="Sign in" type="submit" />
       </StyledFormRow>
     </StyledForm>
   );

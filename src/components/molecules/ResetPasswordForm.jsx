@@ -1,15 +1,23 @@
-import { React, useEffect } from "react";
+import { useEffect } from "react";
 import { useForm, Controller } from "react-hook-form";
 import useAuth from "../../hooks/useAuth";
-import ValidationInput from "../atoms/inputs/ValidationInput";
-import PrimaryButton from "../atoms/buttons/Button";
+import Input from "../atoms/inputs/Input";
+import Button from "../atoms/buttons/Button";
 import {
   StyledForm,
   StyledFormRow,
   StyledFormError,
-  StyledFormInput,
+  StyledInput,
 } from "../../App.styles";
 import { useParams } from "react-router-dom";
+import styled from "styled-components";
+
+const StyledButton = styled.button`
+  padding: 0.5rem 1rem;
+  background-color: #3e5962;
+  color: white;
+  font-weight: bold;
+`;
 
 const ResetPasswordForm = () => {
   const {
@@ -53,9 +61,9 @@ const ResetPasswordForm = () => {
             },
           }}
           render={({ field }) => (
-            <ValidationInput
+            <Input
               type="password"
-              StyledFormInput={StyledFormInput}
+              StyledInput={StyledInput}
               placeholder="New Password"
               field={field}
               style={{
@@ -82,9 +90,9 @@ const ResetPasswordForm = () => {
             },
           }}
           render={({ field }) => (
-            <ValidationInput
+            <Input
               type="password"
-              StyledFormInput={StyledFormInput}
+              StyledInput={StyledInput}
               placeholder="Confirm Password"
               field={field}
               style={{
@@ -100,8 +108,8 @@ const ResetPasswordForm = () => {
       </StyledFormError>
 
       <StyledFormRow>
-        <PrimaryButton
-          buttonStyle="primaryButton"
+        <Button
+          StyledButton={StyledButton}
           text="Submit"
           type="submit"
         />

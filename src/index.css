@@ -1,11 +1,18 @@
 * {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
 }
 
 html {
   font-family: "Lato", serif;
   font-weight: 400;
   font-style: normal;
-  font-size: 16px;
+  font-size: 14px;
+}
+
+@media (min-width: 481px) {
+  html {
+    font-size: 16px;
+  }
 }

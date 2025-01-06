@@ -25,7 +25,7 @@ function App() {
       <Router>
         <Routes>
           <Route path="/" element={<UserHome />} />
-          <Route path="/user/signin" element={<UserSignin />} />
+          <Route path="/signin" element={<UserSignin />} />
           <Route
             path="/user/forgot-password"
             element={<UserForgotPassword />}
@@ -34,7 +34,7 @@ function App() {
             path="/reset-password/:token/:id"
             element={<UserResetPassword />}
           />
-          <Route path="/user/signup" element={<Signup />} />
+          <Route path="/signup" element={<Signup />} />
           <Route path="/user/cart" element={<UserCart />} />
           <Route path="/user/profile" element={<UserProfile />} />
           <Route path="/admin/books" Component={AdminBooks} />

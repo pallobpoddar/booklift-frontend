@@ -1,28 +1,31 @@
 import PropTypes from "prop-types";
 
-const ValidationInput = ({
+const Input = ({
+	StyledInput,
 	type,
-	StyledFormInput,
 	placeholder,
+	autoFocus,
 	field,
 	style,
 }) => {
 	return (
-		<StyledFormInput
+		<StyledInput
 			type={type}
 			placeholder={placeholder}
+			autoFocus={autoFocus}
 			{...field}
 			style={style}
 		/>
 	);
 };
 
-ValidationInput.propTypes = {
+Input.propTypes = {
+  StyledInput: PropTypes.elementType.isRequired,
   type: PropTypes.string,
-  StyledFormInput: PropTypes.elementType.isRequired,
   placeholder: PropTypes.string,
+	autoFocus: PropTypes.bool,
   field: PropTypes.object.isRequired,
   style: PropTypes.object,
 };
 
-export default ValidationInput;
+export default Input;

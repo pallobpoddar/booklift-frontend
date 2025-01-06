@@ -24,25 +24,37 @@ const StyledBanner = styled.img`
 const StyledForm = styled.form`
 	display: flex;
 	flex-direction: column;
-	gap: 1rem;
-	margin: 20px 0px;
+	gap: 1.25rem;
+	margin: 1.25rem 0;
 `;
 
 const StyledFormError = styled.p`
 	font-size: smaller;
+	margin: 0.25rem 0;
 `;
 
-const StyledFormInput = styled.input`
-	width: 300px;
-	height: 25px;
+const StyledInput = styled.input`
 	border: 1px solid #ccc;
-	padding: 0.6rem 1rem;
+	padding: 1rem 1.25rem;
+	width: 20rem;
 
-	&:focus {
+	&:hover, &:focus {
 		outline: none;
-		border: 2px solid #87ceeb;
+		border: 2px solid #346250;
+		padding: calc(1rem - 1px) calc(1.25rem - 1px);
 	}
 `;
+
+const StyledButton = styled.button`
+  padding: 0.75rem;
+  background-color: #3e5962;
+  color: white;
+  font-weight: bold;
+  border: none;
+	cursor: pointer;
+`;
+
+const StyledFormRow = styled.div``;
 
 const StyledFormBox = styled.div`
 	display: flex;
@@ -67,7 +79,9 @@ export {
 	StyledBanner,
 	StyledForm,
 	StyledFormError,
-	StyledFormInput,
+	StyledInput,
+	StyledButton,
 	StyledFormBox,
 	StyledParentDiv,
+	StyledFormRow
 };
