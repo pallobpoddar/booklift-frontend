@@ -4,7 +4,7 @@ import { useDispatch } from "react-redux";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import authInstance from "../utils/authInstance";
-import { addUserInfo } from "../redux/slices/userSlice";
+// import { addUserInfo } from "../redux/slices/userSlice";
 
 const useAuth = () => {
 	const [signinResponse, setSigninResponse] = useState({});
@@ -30,7 +30,7 @@ const useAuth = () => {
 	};
 
 	useEffect(() => {
-		dispatch(addUserInfo(signinResponse));
+		// dispatch(addUserInfo(signinResponse));
 		signinResponse.data && navigate("/");
 	}, [signinResponse]);
 

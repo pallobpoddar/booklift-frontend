@@ -1,10 +1,13 @@
-import { useEffect } from "react";
 import { useForm, Controller } from "react-hook-form";
 import Input from "../atoms/inputs/Input";
 import Button from "../atoms/buttons/Button";
 import usePost from "../../hooks/usePost";
 import { signupUrl } from "../../api/auths";
 import { BeatLoader } from "react-spinners";
+import { toast } from "react-toastify";
+import { useNavigate, Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { saveSignIn } from "../../redux/slices/userSlice";
 import {
   StyledForm,
   StyledFormError,
@@ -30,6 +33,8 @@ const SignupForm = () => {
   });
 
   const { data, error, loading, postData } = usePost(signupUrl);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const handlerOnSubmit = () => {
     const formData = {
@@ -39,9 +44,17 @@ const SignupForm = () => {
       confirmPassword: getValues("confirmPassword"),
     };
     postData(formData);
-  };
 
-  useEffect(() => {}, [errors]);
+    if (data) {
+      dispatch(saveSignIn(data));
+    }
+
+    if (error) {
+      toast.error(error, {
+        theme: "colored",
+      });
+    }
+  };
 
   return (
     <StyledForm onSubmit={handleSubmit(handlerOnSubmit)}>

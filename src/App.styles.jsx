@@ -31,6 +31,7 @@ const StyledForm = styled.form`
 const StyledFormError = styled.p`
 	font-size: smaller;
 	margin: 0.25rem 0;
+	width: 20rem;
 `;
 
 const StyledInput = styled.input`
