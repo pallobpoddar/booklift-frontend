@@ -1,6 +1,5 @@
-import React from "react";
 import Header1 from "../atoms/labels/Header1";
-import SigninForm from "../molecules/SigninForm";
+import SigninForm from "../organisms/SigninForm";
 import {
 	StyledHeader1,
 	StyledFormBox,
@@ -9,8 +8,8 @@ import {
 import { Link } from "react-router-dom";
 
 const SigninBox = () => {
-	return (
-		<StyledParentDiv>
+  return (
+    <StyledParentDiv>
 			<StyledFormBox>
 				<Header1
 					StyledHeader1={StyledHeader1}
@@ -18,21 +17,21 @@ const SigninBox = () => {
 				/>
 				<SigninForm />
 				<p>
-					Don't have an account?{" "}
+					Don&apos;t have an account?{" "}
 					<Link
-						to={"/user/signup"}
+						to={"/signin"}
 						className="linkWithStyle">
 						Create one
 					</Link>
 				</p>
-				<Link
+        <Link
 					to={"/user/forgot-password"}
 					className="linkWithStyle">
 					Forgot password?
 				</Link>
 			</StyledFormBox>
 		</StyledParentDiv>
-	);
-};
+  )
+}
 
-export default SigninBox;
+export default SigninBox

@@ -13,8 +13,9 @@ const usePost = (url) => {
     try {
       const response = await axios.post(url, payload);
       setData(response.data);
-    } catch (err) {
-      setError(err.response.data.message || "An error occurred");
+    } catch (error) {
+      console.log(error);
+      setError(error.response.data.message || "An error occurred");
     } finally {
       setLoading(false);
     }

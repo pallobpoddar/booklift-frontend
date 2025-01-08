@@ -10,13 +10,13 @@ import AdminTransactions from "./components/pages/admin/AdminTransactions";
 import AdminBookList from "./components/pages/admin/AdminBookList";
 import AdminBookAdd from "./components/pages/admin/AdminBookUpdate";
 import UserCart from "./components/pages/user/UserCart";
-import UserSignin from "./components/pages/user/UserSignin";
+import Signin from "./components/pages/Signin";
 import Signup from "./components/pages/Signup";
 import AdminBookUpdate from "./components/pages/admin/AdminBookUpdate";
-import "./App.scss";
 import UserForgotPassword from "./components/pages/user/UserForgotPassword";
 import UserResetPassword from "./components/pages/user/UserResetPassword";
 import UserProfile from "./components/pages/user/UserProfile";
+import "./App.scss";
 
 function App() {
   return (
@@ -25,7 +25,7 @@ function App() {
       <Router>
         <Routes>
           <Route path="/" element={<UserHome />} />
-          <Route path="/signin" element={<UserSignin />} />
+          <Route path="/signin" element={<Signin />} />
           <Route
             path="/user/forgot-password"
             element={<UserForgotPassword />}

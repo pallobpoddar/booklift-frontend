@@ -1,22 +1,14 @@
-import { React, useEffect } from "react";
+import { useEffect } from "react";
 import { useForm, Controller } from "react-hook-form";
 import useAuth from "../../hooks/useAuth";
 import Input from "../atoms/inputs/Input";
 import Button from "../atoms/buttons/Button";
 import {
   StyledForm,
-  StyledFormRow,
   StyledFormError,
   StyledInput,
+  StyledButton,
 } from "../../App.styles";
-import styled from "styled-components";
-
-const StyledButton = styled.button`
-  padding: 0.5rem 1rem;
-  background-color: #3e5962;
-  color: white;
-  font-weight: bold;
-`;
 
 const SigninForm = () => {
   const {
@@ -46,7 +38,7 @@ const SigninForm = () => {
 
   return (
     <StyledForm onSubmit={handleSubmit(handlerOnSubmit)}>
-      <StyledFormRow>
+      <div>
         <Controller
           name="email"
           control={control}
@@ -70,13 +62,13 @@ const SigninForm = () => {
             />
           )}
         />
-      </StyledFormRow>
 
-      <StyledFormError>
-        {errors.email && <p>{errors.email.message}</p>}
-      </StyledFormError>
+        {errors.email && (
+          <StyledFormError>{errors.email.message}</StyledFormError>
+        )}
+      </div>
 
-      <StyledFormRow>
+      <div>
         <Controller
           name="password"
           control={control}
@@ -99,15 +91,16 @@ const SigninForm = () => {
             />
           )}
         />
-      </StyledFormRow>
 
-      <StyledFormError>
-        {errors.password && <p>{errors.password.message}</p>}
-      </StyledFormError>
+        {errors.password && (
+          <StyledFormError>{errors.password.message}</StyledFormError>
+        )}
+      </div>
 
-      <StyledFormRow>
-        <Button StyledButton={StyledButton} text="Sign in" type="submit" />
-      </StyledFormRow>
+      <Button StyledButton={StyledButton} type="submit">
+        {/* {loading ? <BeatLoader color="white" size={8} /> : "SIGN UP"} */}
+        SIGN IN
+      </Button>
     </StyledForm>
   );
 };

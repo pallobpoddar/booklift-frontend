@@ -12,7 +12,7 @@ const Button = ({ StyledButton, type, onClick, children }) => {
 
 Button.propTypes = {
 	StyledButton: PropTypes.elementType.isRequired,
-	children: PropTypes.element,
+	children: PropTypes.node,
 	type: PropTypes.string,
 	onClick: PropTypes.func,
 };

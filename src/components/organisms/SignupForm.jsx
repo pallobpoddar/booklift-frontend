@@ -5,9 +5,6 @@ import usePost from "../../hooks/usePost";
 import { signupUrl } from "../../api/auths";
 import { BeatLoader } from "react-spinners";
 import { toast } from "react-toastify";
-import { useNavigate, Link } from "react-router-dom";
-import { useDispatch } from "react-redux";
-import { saveSignIn } from "../../redux/slices/userSlice";
 import {
   StyledForm,
   StyledFormError,
@@ -33,8 +30,6 @@ const SignupForm = () => {
   });
 
   const { data, error, loading, postData } = usePost(signupUrl);
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
 
   const handlerOnSubmit = () => {
     const formData = {
@@ -46,7 +41,11 @@ const SignupForm = () => {
     postData(formData);
 
     if (data) {
-      dispatch(saveSignIn(data));
+      toast.success(data.message, {
+        autoClose: false,
+        hideProgressBar: true,
+        theme: "colored",
+      });
     }
 
     if (error) {
