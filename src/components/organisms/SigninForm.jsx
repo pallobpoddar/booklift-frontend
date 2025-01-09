@@ -1,8 +1,10 @@
-import { useEffect } from "react";
 import { useForm, Controller } from "react-hook-form";
-import useAuth from "../../hooks/useAuth";
 import Input from "../atoms/inputs/Input";
 import Button from "../atoms/buttons/Button";
+import usePatch from "../../hooks/usePatch";
+import { signinUrl } from "../../api/auths";
+import { BeatLoader } from "react-spinners";
+import { toast } from "react-toastify";
 import {
   StyledForm,
   StyledFormError,
@@ -24,17 +26,29 @@ const SigninForm = () => {
     },
   });
 
-  const { signin } = useAuth();
+  const { data, error, loading, patchData } = usePatch(signinUrl);
 
   const handlerOnSubmit = () => {
     const formData = {
       email: getValues("email"),
       password: getValues("password"),
     };
-    signin(formData);
-  };
+    patchData(formData);
 
-  useEffect(() => {}, [errors]);
+    if (data) {
+      toast.success(data.message, {
+        autoClose: false,
+        hideProgressBar: true,
+        theme: "colored",
+      });
+    }
+
+    if (error) {
+      toast.error(error, {
+        theme: "colored",
+      });
+    }
+  };
 
   return (
     <StyledForm onSubmit={handleSubmit(handlerOnSubmit)}>
@@ -44,10 +58,9 @@ const SigninForm = () => {
           control={control}
           rules={{
             required: "Email is required",
-
             maxLength: {
-              value: 64,
-              message: "Email is not valid",
+              value: 320,
+              message: "Invalid email format",
             },
           }}
           render={({ field }) => (
@@ -76,7 +89,7 @@ const SigninForm = () => {
             required: "Password is required",
             maxLength: {
               value: 20,
-              message: "Password is too long",
+              message: "Character limit exceeded",
             },
           }}
           render={({ field }) => (
@@ -98,8 +111,7 @@ const SigninForm = () => {
       </div>
 
       <Button StyledButton={StyledButton} type="submit">
-        {/* {loading ? <BeatLoader color="white" size={8} /> : "SIGN UP"} */}
-        SIGN IN
+        {loading ? <BeatLoader color="white" size={8} /> : "SIGN IN"}
       </Button>
     </StyledForm>
   );

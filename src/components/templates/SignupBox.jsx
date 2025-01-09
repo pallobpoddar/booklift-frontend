@@ -1,32 +1,27 @@
 import Header1 from "../atoms/labels/Header1";
 import SignupForm from "../organisms/SignupForm";
 import {
-	StyledHeader1,
-	StyledFormBox,
-	StyledParentDiv,
+  StyledFormHeader,
+  StyledFormBox,
+  StyledParentDiv,
 } from "../../App.styles";
 import { Link } from "react-router-dom";
 
 const SignupBox = () => {
   return (
     <StyledParentDiv>
-			<StyledFormBox>
-				<Header1
-					StyledHeader1={StyledHeader1}
-					text="Sign Up"
-				/>
-				<SignupForm />
-				<p>
-					Already have an account? {" "}
-					<Link
-						to={"/signin"}
-						className="linkWithStyle">
-						Sign in
-					</Link>
-				</p>
-			</StyledFormBox>
-		</StyledParentDiv>
-  )
-}
+      <StyledFormBox>
+        <Header1 StyledHeader1={StyledFormHeader} text="Sign Up" />
+        <SignupForm />
+        <Link
+          to={"/signin"}
+          style={{ textDecoration: "none", color: "#3e5962" }}
+        >
+          Already have an account?
+        </Link>
+      </StyledFormBox>
+    </StyledParentDiv>
+  );
+};
 
-export default SignupBox
+export default SignupBox;
