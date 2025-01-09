@@ -16,6 +16,7 @@ import AdminBookUpdate from "./components/pages/admin/AdminBookUpdate";
 import UserForgotPassword from "./components/pages/user/UserForgotPassword";
 import UserResetPassword from "./components/pages/user/UserResetPassword";
 import UserProfile from "./components/pages/user/UserProfile";
+import EmailVerification from "./components/pages/EmailVerification";
 import "./App.scss";
 
 function App() {
@@ -35,6 +36,7 @@ function App() {
             element={<UserResetPassword />}
           />
           <Route path="/signup" element={<Signup />} />
+          <Route path="/verify/:token/:id" element={<EmailVerification />} />
           <Route path="/user/cart" element={<UserCart />} />
           <Route path="/user/profile" element={<UserProfile />} />
           <Route path="/admin/books" Component={AdminBooks} />
