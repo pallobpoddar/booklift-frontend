@@ -36,7 +36,7 @@ function App() {
             element={<UserResetPassword />}
           />
           <Route path="/signup" element={<Signup />} />
-          <Route path="/verify/:token/:id" element={<EmailVerification />} />
+          <Route path="/email-verification/:token/:id" element={<EmailVerification />} />
           <Route path="/user/cart" element={<UserCart />} />
           <Route path="/user/profile" element={<UserProfile />} />
           <Route path="/admin/books" Component={AdminBooks} />

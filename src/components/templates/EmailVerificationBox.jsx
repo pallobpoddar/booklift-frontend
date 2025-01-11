@@ -1,10 +1,12 @@
 import EmailVerificationText from "../organisms/EmailVerificationText";
-import { StyledParentDiv } from "../../App.styles";
+import { StyledParentDiv, StyledFormBox } from "../../App.styles";
 
 const EmailVerificationBox = () => {
   return (
     <StyledParentDiv>
-      <EmailVerificationText />
+      <StyledFormBox>
+        <EmailVerificationText />
+      </StyledFormBox>
     </StyledParentDiv>
   );
 };

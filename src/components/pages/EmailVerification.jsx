@@ -1,7 +1,8 @@
+import EmailVerificationBox from "../templates/EmailVerificationBox"
 
 const EmailVerification = () => {
   return (
-    <div>EmailVerification</div>
+    <EmailVerificationBox />
   )
 }
 

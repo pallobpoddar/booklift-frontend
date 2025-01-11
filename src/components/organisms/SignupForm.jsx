@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { useForm, Controller } from "react-hook-form";
 import Input from "../atoms/inputs/Input";
 import Button from "../atoms/buttons/Button";
@@ -31,28 +32,28 @@ const SignupForm = () => {
 
   const { data, error, loading, postData } = usePost(signupUrl);
 
-  const handlerOnSubmit = () => {
-    const formData = {
-      name: getValues("name"),
-      email: getValues("email"),
-      password: getValues("password"),
-      confirmPassword: getValues("confirmPassword"),
-    };
-    postData(formData);
-
+  useEffect(() => {
     if (data) {
       toast.success(data.message, {
         autoClose: false,
         hideProgressBar: true,
         theme: "colored",
       });
-    }
-
-    if (error) {
-      toast.error(error, {
+    } else if (error) {
+      toast.error(error.message, {
         theme: "colored",
       });
     }
+  }, [data, error]);
+
+  const handlerOnSubmit = async () => {
+    const formData = {
+      name: getValues("name"),
+      email: getValues("email"),
+      password: getValues("password"),
+      confirmPassword: getValues("confirmPassword"),
+    };
+    await postData(formData);
   };
 
   return (

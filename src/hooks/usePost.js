@@ -8,14 +8,14 @@ const usePost = (url) => {
 
   const postData = async (payload) => {
     setLoading(true);
+    setData(null);
     setError(null);
 
     try {
       const response = await axios.post(url, payload);
       setData(response.data);
     } catch (error) {
-      console.log(error);
-      setError(error.response.data.message || "An error occurred");
+      setError(error.response.data);
     } finally {
       setLoading(false);
     }

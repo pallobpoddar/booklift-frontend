@@ -8,14 +8,14 @@ const usePatch = (url) => {
 
   const patchData = async (payload) => {
     setLoading(true);
+    setData(null);
     setError(null);
 
     try {
       const response = await axios.patch(url, payload);
       setData(response.data);
     } catch (error) {
-      console.log(error);
-      setError(error.response.data.message || "An error occurred");
+      setError(error.response.data);
     } finally {
       setLoading(false);
     }

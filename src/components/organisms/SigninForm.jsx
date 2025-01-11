@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { useForm, Controller } from "react-hook-form";
 import Input from "../atoms/inputs/Input";
 import Button from "../atoms/buttons/Button";
@@ -28,26 +29,26 @@ const SigninForm = () => {
 
   const { data, error, loading, patchData } = usePatch(signinUrl);
 
-  const handlerOnSubmit = () => {
-    const formData = {
-      email: getValues("email"),
-      password: getValues("password"),
-    };
-    patchData(formData);
-
+  useEffect(() => {
     if (data) {
       toast.success(data.message, {
         autoClose: false,
         hideProgressBar: true,
         theme: "colored",
       });
-    }
-
-    if (error) {
-      toast.error(error, {
+    } else if (error) {
+      toast.error(error.message, {
         theme: "colored",
       });
     }
+  }, [data, error]);
+
+  const handlerOnSubmit = async () => {
+    const formData = {
+      email: getValues("email"),
+      password: getValues("password"),
+    };
+    await patchData(formData);
   };
 
   return (
