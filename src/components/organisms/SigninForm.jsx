@@ -3,7 +3,7 @@ import { useForm, Controller } from "react-hook-form";
 import Input from "../atoms/inputs/Input";
 import Button from "../atoms/buttons/Button";
 import usePatch from "../../hooks/usePatch";
-import { signinUrl } from "../../api/auths";
+// import { signinUrl } from "../../api/auths";
 import { BeatLoader } from "react-spinners";
 import { toast } from "react-toastify";
 import {
@@ -27,28 +27,28 @@ const SigninForm = () => {
     },
   });
 
-  const { data, error, loading, patchData } = usePatch(signinUrl);
+  // const { data, error, loading, patchData } = usePatch(signinUrl);
 
-  useEffect(() => {
-    if (data) {
-      toast.success(data.message, {
-        autoClose: false,
-        hideProgressBar: true,
-        theme: "colored",
-      });
-    } else if (error) {
-      toast.error(error.message, {
-        theme: "colored",
-      });
-    }
-  }, [data, error]);
+  // useEffect(() => {
+  //   if (data) {
+  //     toast.success(data.message, {
+  //       autoClose: false,
+  //       hideProgressBar: true,
+  //       theme: "colored",
+  //     });
+  //   } else if (error) {
+  //     toast.error(error.message, {
+  //       theme: "colored",
+  //     });
+  //   }
+  // }, [data, error]);
 
   const handlerOnSubmit = async () => {
     const formData = {
       email: getValues("email"),
       password: getValues("password"),
     };
-    await patchData(formData);
+    // await patchData(formData);
   };
 
   return (

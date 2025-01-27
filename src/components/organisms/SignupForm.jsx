@@ -3,9 +3,10 @@ import { useForm, Controller } from "react-hook-form";
 import Input from "../atoms/inputs/Input";
 import Button from "../atoms/buttons/Button";
 import usePost from "../../hooks/usePost";
-import { signupUrl } from "../../api/auths";
+// import { signupUrl } from "../../api/auths";
 import { BeatLoader } from "react-spinners";
 import { toast } from "react-toastify";
+import authApi from "../../api/authApi";
 import {
   StyledForm,
   StyledFormError,
@@ -30,30 +31,33 @@ const SignupForm = () => {
     },
   });
 
-  const { data, error, loading, postData } = usePost(signupUrl);
+  // const { data, error, loading, postData } = usePost(signupUrl);
 
-  useEffect(() => {
-    if (data) {
-      toast.success(data.message, {
-        autoClose: false,
-        hideProgressBar: true,
-        theme: "colored",
-      });
-    } else if (error) {
-      toast.error(error.message, {
-        theme: "colored",
-      });
-    }
-  }, [data, error]);
+  // useEffect(() => {
+  //   if (data) {
+  //     toast.success(data.message, {
+  //       autoClose: false,
+  //       hideProgressBar: true,
+  //       theme: "colored",
+  //     });
+  //   } else if (error) {
+  //     toast.error(error.message, {
+  //       theme: "colored",
+  //     });
+  //   }
+  // }, [data, error]);
 
   const handlerOnSubmit = async () => {
-    const formData = {
+    const data = {
       name: getValues("name"),
       email: getValues("email"),
       password: getValues("password"),
       confirmPassword: getValues("confirmPassword"),
     };
-    await postData(formData);
+    // await postData(formData);
+
+    const response = await authApi.signUp(data);
+    console.log(response.data);
   };
 
   return (
@@ -188,7 +192,8 @@ const SignupForm = () => {
       </div>
 
       <Button StyledButton={StyledButton} type="submit">
-        {loading ? <BeatLoader color="white" size={8} /> : "SIGN UP"}
+        {/* {loading ? <BeatLoader color="white" size={8} /> : "SIGN UP"} */}
+        SIGN UP
       </Button>
     </StyledForm>
   );

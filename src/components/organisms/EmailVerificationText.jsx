@@ -1,9 +1,9 @@
 import { useEffect } from "react";
 import Header1 from "../atoms/labels/Header1";
 import usePatch from "../../hooks/usePatch";
-import {
-  emailVerificationUrl,
-} from "../../api/auths";
+// import {
+//   emailVerificationUrl,
+// } from "../../api/authApi";
 import { useParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
@@ -21,12 +21,12 @@ const StyledDiv = styled.div`
 
 const EmailVerificationText = () => {
   const { token, id } = useParams();
-  const {
-    data: verificationData,
-    error: verificationError,
-    loading: verificationLoading,
-    patchData: verificationPatchData,
-  } = usePatch(`${emailVerificationUrl}/${token}/${id}`);
+  // const {
+  //   data: verificationData,
+  //   error: verificationError,
+  //   loading: verificationLoading,
+  //   patchData: verificationPatchData,
+  // } = usePatch(`${emailVerificationUrl}/${token}/${id}`);
   // const {data: verificationResendData, error: verificationResendError, loading: verificationResendLoading, patchData:verificationResendPatchData } = usePatch(
   //   `${emailVerificationResendUrl}/${id}`
   // )
@@ -34,17 +34,17 @@ const EmailVerificationText = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    const verifyEmail = async () => {
-      await verificationPatchData();
-      if (verificationData) {
-        dispatch(saveSignIn(verificationData));
-        navigate("/");
-      } else if (verificationError?.errors?.status === 409) {
-        navigate("/");
-      }
-    };
+    // const verifyEmail = async () => {
+    //   await verificationPatchData();
+    //   if (verificationData) {
+    //     dispatch(saveSignIn(verificationData));
+    //     navigate("/");
+    //   } else if (verificationError?.errors?.status === 409) {
+    //     navigate("/");
+    //   }
+    // };
 
-    verifyEmail();
+    // verifyEmail();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -52,23 +52,23 @@ const EmailVerificationText = () => {
   //   await verificationResendPatchData();
   // }
 
-  return (
-    <StyledDiv>
-      {verificationLoading && <FadeLoader size={10} color="#3e5962" />}
-      {!verificationLoading &&
-        verificationError &&
-        !verificationError.errors && (
-          <>
-            <Header1
-              StyledHeader1={StyledFormHeader}
-              text="Verification Failed"
-            />
-            <p>{verificationError.message}</p>
-            <StyledButton>RESEND EMAIL</StyledButton>
-          </>
-        )}
-    </StyledDiv>
-  );
+  // return (
+    // <StyledDiv>
+    //   {verificationLoading && <FadeLoader size={10} color="#3e5962" />}
+    //   {!verificationLoading &&
+    //     verificationError &&
+    //     !verificationError.errors && (
+    //       <>
+    //         <Header1
+    //           StyledHeader1={StyledFormHeader}
+    //           text="Verification Failed"
+    //         />
+    //         <p>{verificationError.message}</p>
+    //         <StyledButton>RESEND EMAIL</StyledButton>
+    //       </>
+    //     )}
+    // </StyledDiv>
+  // );
 };
 
 export default EmailVerificationText;
