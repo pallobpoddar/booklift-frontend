@@ -1,9 +1,7 @@
-import { useEffect } from "react";
+import { useState } from "react";
 import { useForm, Controller } from "react-hook-form";
 import Input from "../atoms/inputs/Input";
 import Button from "../atoms/buttons/Button";
-import usePost from "../../hooks/usePost";
-// import { signupUrl } from "../../api/auths";
 import { BeatLoader } from "react-spinners";
 import { toast } from "react-toastify";
 import authApi from "../../api/authApi";
@@ -15,6 +13,7 @@ import {
 } from "../../App.styles";
 
 const SignupForm = () => {
+  const [isLoading, setIsLoading] = useState(false);
   const {
     handleSubmit,
     control,
@@ -31,33 +30,38 @@ const SignupForm = () => {
     },
   });
 
-  // const { data, error, loading, postData } = usePost(signupUrl);
-
-  // useEffect(() => {
-  //   if (data) {
-  //     toast.success(data.message, {
-  //       autoClose: false,
-  //       hideProgressBar: true,
-  //       theme: "colored",
-  //     });
-  //   } else if (error) {
-  //     toast.error(error.message, {
-  //       theme: "colored",
-  //     });
-  //   }
-  // }, [data, error]);
+  const showAlert = (data) => {
+    if (data.success) {
+      toast.success(data.message, {
+        autoClose: false,
+        hideProgressBar: true,
+        theme: "colored",
+      });
+    } else {
+      toast.error(data.message, {
+        theme: "colored",
+      });
+    }
+  };
 
   const handlerOnSubmit = async () => {
-    const data = {
+    const formData = {
       name: getValues("name"),
       email: getValues("email"),
       password: getValues("password"),
       confirmPassword: getValues("confirmPassword"),
     };
-    // await postData(formData);
 
-    const response = await authApi.signUp(data);
-    console.log(response.data);
+    setIsLoading(true);
+
+    try {
+      const response = await authApi.signUp(formData);
+      showAlert(response.data);
+    } catch (error) {
+      showAlert(error.response.data);
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
@@ -192,7 +196,7 @@ const SignupForm = () => {
       </div>
 
       <Button StyledButton={StyledButton} type="submit">
-        {/* {loading ? <BeatLoader color="white" size={8} /> : "SIGN UP"} */}
+        {isLoading ? <BeatLoader color="white" size={8} /> : "SIGN UP"}
         SIGN UP
       </Button>
     </StyledForm>

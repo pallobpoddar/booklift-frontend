@@ -38,7 +38,7 @@ const Header = () => {
       <Link to="/user/profile" className="link">
         <IconButton StyledIcon={StyledIcon} icon={faUser} size="2xl" />
       </Link>
-      <Link to="/user/signin" className="link">
+      <Link to="/signin" className="link">
         {data === null || data === undefined ? (
           <Button StyledButton={StyledButton} text="Sign in" />
         ) : (

@@ -1,13 +1,12 @@
 import { useEffect } from "react";
 import Header1 from "../atoms/labels/Header1";
-import usePatch from "../../hooks/usePatch";
 // import {
 //   emailVerificationUrl,
 // } from "../../api/authApi";
 import { useParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { saveSignIn } from "../../redux/slices/userSlice";
+// import { saveSignIn } from "../../redux/slices/userSlice";
 import { FadeLoader } from "react-spinners";
 import { StyledFormHeader, StyledButton } from "../../App.styles";
 import styled from "styled-components";
