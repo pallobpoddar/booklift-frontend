@@ -1,18 +1,17 @@
 import { useSelector } from "react-redux";
-import { Link } from "react-router-dom";
-import { faCartShopping } from "@fortawesome/free-solid-svg-icons";
-import { faUser } from "@fortawesome/free-solid-svg-icons";
+import { Link } from "react-router";
+// import { faCartShopping } from "@fortawesome/free-solid-svg-icons";
+// import { faUser } from "@fortawesome/free-solid-svg-icons";
 import NavigationList from "../molecules/NavigationList";
-import PrimaryInput from "../atoms/inputs/PrimaryInput";
-import IconButton from "../atoms/buttons/IconButton";
-import Button from "../atoms/buttons/Button.jsx";
+import PrimaryInput from "../atoms/Input";
+// import IconButton from "../atoms/Button";
+import Button from "../atoms/Button.jsx";
 import {
   StyledHeader,
   StyledList,
   StyledInput,
   StyledIcon,
 } from "./Header.styles.jsx";
-import "../../App.scss";
 import styled from "styled-components";
 
 const StyledButton = styled.button`
@@ -33,10 +32,10 @@ const Header = () => {
         placeholder="Search Khonika"
       />
       <Link to="/user/cart" className="link">
-        <IconButton StyledIcon={StyledIcon} icon={faCartShopping} size="2xl" />
+        {/* <IconButton StyledIcon={StyledIcon} icon={faCartShopping} size="2xl" /> */}
       </Link>
       <Link to="/user/profile" className="link">
-        <IconButton StyledIcon={StyledIcon} icon={faUser} size="2xl" />
+        {/* <IconButton StyledIcon={StyledIcon} icon={faUser} size="2xl" /> */}
       </Link>
       <Link to="/signin" className="link">
         {data === null || data === undefined ? (

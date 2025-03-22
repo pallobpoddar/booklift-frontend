@@ -1,12 +1,11 @@
 import { React, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import PrimaryButton from "../atoms/buttons/Button";
-import CheckboxInput from "../atoms/inputs/CheckboxInput";
-import Header3 from "../atoms/labels/Header3";
+import PrimaryButton from "../atoms/Button";
+// import CheckboxInput from "../atoms/inputs/CheckboxInput";
+// import Header3 from "../atoms/labels/Header3";
 import { changeBookList } from "../../redux/slices/bookSlice";
 import { StyledFilterPanel, StyledFilterSection } from "./Filter.styles";
 import { StyledHeader3 } from "../../App.styles";
-import "../../App.scss";
 
 const FilterPanel = () => {
   const dispatch = useDispatch();
@@ -25,7 +24,7 @@ const FilterPanel = () => {
   return (
     <StyledFilterPanel>
       <StyledFilterSection>
-        <Header3 StyledHeader3={StyledHeader3} text="Category" />
+        {/* <Header3 StyledHeader3={StyledHeader3} text="Category" /> */}
         <div>
           <PrimaryButton
             buttonStyle="filterButton"
@@ -43,7 +42,7 @@ const FilterPanel = () => {
       </StyledFilterSection>
 
       <StyledFilterSection>
-        <Header3 StyledHeader3={StyledHeader3} text="Language" />
+        {/* <Header3 StyledHeader3={StyledHeader3} text="Language" /> */}
         <div>
           <PrimaryButton
             buttonStyle="filterButton"

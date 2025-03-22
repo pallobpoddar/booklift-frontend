@@ -1,9 +1,7 @@
-import "./BookRow.scss";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPenToSquare, faTrash } from "@fortawesome/free-solid-svg-icons";
-import { Link } from "react-router-dom";
+// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+// import { faPenToSquare, faTrash } from "@fortawesome/free-solid-svg-icons";
+import { Link } from "react-router";
 import useBook from "../../hooks/useBook";
-import "../../App.scss";
 
 const BookRow = (row) => {
 	const { deleteBook } = useBook();
@@ -28,13 +26,13 @@ const BookRow = (row) => {
 					<Link
 						to={`/admin/books/edit/${row._id}`}
 						className="link">
-						<FontAwesomeIcon icon={faPenToSquare} />
+						{/* <FontAwesomeIcon icon={faPenToSquare} /> */}
 					</Link>
-					<FontAwesomeIcon
+					{/* <FontAwesomeIcon
 						className="click"
 						icon={faTrash}
 						onClick={handlerDelete}
-					/>
+					/> */}
 				</div>
 			</td>
 		</>

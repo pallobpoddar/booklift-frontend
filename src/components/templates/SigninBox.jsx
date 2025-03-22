@@ -1,11 +1,11 @@
-import Header1 from "../atoms/labels/Header1";
+// import Header1 from "../atoms/labels/Header1";
 import SigninForm from "../organisms/SigninForm";
 import {
   StyledFormHeader,
   StyledFormBox,
-  StyledParentDiv,
+  StyledPageWrapper,
 } from "../../App.styles";
-import { Link } from "react-router-dom";
+import { Link } from "react-router";
 import styled from "styled-components";
 
 const StyledParagraph = styled.p`
@@ -15,13 +15,13 @@ const StyledParagraph = styled.p`
 
 const SigninBox = () => {
   return (
-    <StyledParentDiv>
+    <StyledPageWrapper>
       <StyledFormBox>
-        <Header1 StyledHeader1={StyledFormHeader} text="Sign In" />
+        {/* <Header1 StyledHeader1={StyledFormHeader} text="Sign In" /> */}
         <SigninForm />
         <StyledParagraph>
           <Link
-            to={"/signin"}
+            to={"/signup"}
             style={{ textDecoration: "none", color: "#3e5962" }}
           >
             Don&apos;t have an account?
@@ -34,7 +34,7 @@ const SigninBox = () => {
           </Link>
         </StyledParagraph>
       </StyledFormBox>
-    </StyledParentDiv>
+    </StyledPageWrapper>
   );
 };
 

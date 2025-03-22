@@ -1,8 +1,8 @@
 import { useEffect } from "react";
 import { useForm, Controller } from "react-hook-form";
 import useBook from "../../hooks/useBook";
-import Input from "../atoms/inputs/Input";
-import Button from "../atoms/buttons/Button";
+import Input from "../atoms/Input";
+import Button from "../atoms/Button";
 import {
   StyledForm,
   StyledFormRow,

@@ -1,11 +1,10 @@
 import { React } from "react";
 import { useForm, Controller } from "react-hook-form";
-import PrimaryButton from "../atoms/buttons/Button";
-import CheckboxInput from "../atoms/inputs/CheckboxInput";
-import Header3 from "../atoms/labels/Header3";
+import PrimaryButton from "../atoms/Button";
+// import CheckboxInput from "../atoms/inputs/CheckboxInput";
+// import Header3 from "../atoms/labels/Header3";
 import { StyledFilterPanel, StyledFilterSection } from "./Filter.styles";
 import { StyledHeader3 } from "../../App.styles";
-import "../../App.scss";
 
 const Filter = () => {
   const {
@@ -40,14 +39,14 @@ const Filter = () => {
   return (
     <StyledFilterPanel onSubmit={handleSubmit(handlerOnSubmit)}>
       <StyledFilterSection>
-        <Header3 StyledHeader3={StyledHeader3} text="Category" />
+        {/* <Header3 StyledHeader3={StyledHeader3} text="Category" /> */}
         <div>
           <Controller
             name="fantasy"
             control={control}
             render={({ field }) => (
               <>
-                <CheckboxInput type="checkbox" field={field} value="Fantasy" />
+                {/* <CheckboxInput type="checkbox" field={field} value="Fantasy" /> */}
                 <label>Fantasy</label>
               </>
             )}
@@ -59,7 +58,7 @@ const Filter = () => {
             control={control}
             render={({ field }) => (
               <>
-                <CheckboxInput type="checkbox" field={field} value="Fiction" />
+                {/* <CheckboxInput type="checkbox" field={field} value="Fiction" /> */}
                 <label>Fiction</label>
               </>
             )}
@@ -67,14 +66,14 @@ const Filter = () => {
         </div>
       </StyledFilterSection>
       <StyledFilterSection>
-        <Header3 StyledHeader3={StyledHeader3} text="Language" />
+        {/* <Header3 StyledHeader3={StyledHeader3} text="Language" /> */}
         <div>
           <Controller
             name="english"
             control={control}
             render={({ field }) => (
               <>
-                <CheckboxInput type="checkbox" field={field} value="English" />
+                {/* <CheckboxInput type="checkbox" field={field} value="English" /> */}
                 <label>English</label>
               </>
             )}
@@ -86,7 +85,7 @@ const Filter = () => {
             control={control}
             render={({ field }) => (
               <>
-                <CheckboxInput type="checkbox" field={field} value="French" />
+                {/* <CheckboxInput type="checkbox" field={field} value="French" /> */}
                 <label>French</label>
               </>
             )}
@@ -94,14 +93,14 @@ const Filter = () => {
         </div>
       </StyledFilterSection>
       <StyledFilterSection>
-        <Header3 StyledHeader3={StyledHeader3} text="Price" />
+        {/* <Header3 StyledHeader3={StyledHeader3} text="Price" /> */}
         <div>
           <Controller
             name="price300"
             control={control}
             render={({ field }) => (
               <>
-                <CheckboxInput type="checkbox" field={field} value="300" />
+                {/* <CheckboxInput type="checkbox" field={field} value="300" /> */}
                 <label>0 - 300</label>
               </>
             )}
@@ -113,7 +112,7 @@ const Filter = () => {
             control={control}
             render={({ field }) => (
               <>
-                <CheckboxInput type="checkbox" field={field} value="600" />
+                {/* <CheckboxInput type="checkbox" field={field} value="600" /> */}
                 <label>301 - 600</label>
               </>
             )}

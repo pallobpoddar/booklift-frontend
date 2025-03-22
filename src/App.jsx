@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Route, Routes } from "react-router";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import UserHome from "./components/pages/user/UserHome";
@@ -17,13 +17,12 @@ import UserForgotPassword from "./components/pages/user/UserForgotPassword";
 import UserResetPassword from "./components/pages/user/UserResetPassword";
 import UserProfile from "./components/pages/user/UserProfile";
 import EmailVerification from "./components/pages/EmailVerification";
-import "./App.scss";
 
 function App() {
   return (
     <>
       <ToastContainer position="top-right" autoClose={3000} />
-      <Router>
+      <BrowserRouter>
         <Routes>
           <Route path="/" element={<UserHome />} />
           <Route path="/signin" element={<Signin />} />
@@ -36,7 +35,10 @@ function App() {
             element={<UserResetPassword />}
           />
           <Route path="/signup" element={<Signup />} />
-          <Route path="/email-verification/:token/:id" element={<EmailVerification />} />
+          <Route
+            path="/email-verification/:token/:id"
+            element={<EmailVerification />}
+          />
           <Route path="/user/cart" element={<UserCart />} />
           <Route path="/user/profile" element={<UserProfile />} />
           <Route path="/admin/books" Component={AdminBooks} />
@@ -49,7 +51,7 @@ function App() {
           <Route path="/admin/books/add" Component={AdminBookAdd} />
           <Route path="/admin/dashboard" Component={AdminDashboard} />
         </Routes>
-      </Router>
+      </BrowserRouter>
     </>
   );
 }

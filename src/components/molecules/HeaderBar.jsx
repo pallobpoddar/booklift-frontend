@@ -1,5 +1,3 @@
-import "./HeaderBar.scss";
-
 const HeaderBar = () => {
 	return (
 		<div className="headerbar">

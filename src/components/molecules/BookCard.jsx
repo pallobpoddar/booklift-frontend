@@ -2,10 +2,9 @@ import React from "react";
 import { useDispatch } from "react-redux";
 import { addBook } from "../../redux/slices/cartSlice";
 import PrimaryImage from "../atoms/images/PrimaryImage";
-import Button from "../atoms/buttons/Button";
+import Button from "../atoms/Button";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import "../../App.scss";
 import styled from "styled-components";
 
 const StyledButton = styled.button`

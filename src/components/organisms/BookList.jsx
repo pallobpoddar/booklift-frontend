@@ -1,6 +1,6 @@
 import { React, Fragment } from "react";
 import useBook from "../../hooks/useBook";
-import Header2 from "../atoms/labels/Header2";
+// import Header2 from "../atoms/labels/Header2";
 import BookCard from "../molecules/BookCard";
 import Filter from "./Filter";
 import {
@@ -19,10 +19,10 @@ const BookList = () => {
 	const bookCards = useSelector((state) => state.filteredBooks.bookList);
 	return (
 		<>
-			<Header2
+			{/* <Header2
 				StyledHeader2={StyledHeader2}
 				text="Fall into a good book"
-			/>
+			/> */}
 			<StyledBookBox>
 				<FilterPanel />
 				<StyledBookList>

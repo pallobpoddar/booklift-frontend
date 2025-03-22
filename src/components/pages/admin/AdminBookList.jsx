@@ -1,4 +1,3 @@
-import "../../../App.scss";
 import HeaderBar from "../../molecules/HeaderBar";
 import Sidebar from "../../molecules/Sidebar";
 import BookTable from "../../molecules/BookTable";

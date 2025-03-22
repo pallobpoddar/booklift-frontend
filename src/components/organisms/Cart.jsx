@@ -3,8 +3,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { deleteBook } from "../../redux/slices/cartSlice";
 import Header from "./Header";
 import Footer from "./Footer";
-import Header1 from "../atoms/labels/Header1";
-import Header3 from "../atoms/labels/Header3";
+// import Header1 from "../atoms/labels/Header1";
+// import Header3 from "../atoms/labels/Header3";
 import {
   StyledCart,
   StyledCartImage,
@@ -15,8 +15,7 @@ import {
 import { StyledHeader1, StyledHeader3 } from "../../App.styles";
 import PrimaryList from "../atoms/lists/PrimaryList";
 import ImageList from "../atoms/lists/ImageList";
-import PrimaryButton from "../atoms/buttons/Button";
-import "../../App.scss";
+import PrimaryButton from "../atoms/Button";
 
 const Cart = () => {
   const bookList = useSelector((state) => state.cart.bookList);
@@ -38,7 +37,7 @@ const Cart = () => {
       <Header />
       <StyledCart>
         <StyledHeader>
-          <Header1 StyledHeader1={StyledHeader1} text="My Cart" />
+          {/* <Header1 StyledHeader1={StyledHeader1} text="My Cart" /> */}
         </StyledHeader>
         <hr></hr>
 
@@ -62,7 +61,7 @@ const Cart = () => {
           );
         })}
         <StyledTotal>
-          <Header3 StyledHeader3={StyledHeader3} text={`Total: ${total} Tk`} />
+          {/* <Header3 StyledHeader3={StyledHeader3} text={`Total: ${total} Tk`} /> */}
         </StyledTotal>
       </StyledCart>
       <Footer />

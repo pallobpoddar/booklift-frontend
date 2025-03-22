@@ -1,5 +1,4 @@
-import "./ActionCard.scss";
-import { Link } from "react-router-dom";
+import { Link } from "react-router";
 
 const ActionCard = ({ title, path }) => {
 	return (

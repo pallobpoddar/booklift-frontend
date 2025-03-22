@@ -1,23 +1,23 @@
 import React from "react";
-import Header1 from "../atoms/labels/Header1";
+// import Header1 from "../atoms/labels/Header1";
 import {
 	StyledHeader1,
 	StyledFormBox,
-	StyledParentDiv,
+	StyledPageWrapper,
 } from "../../App.styles";
 import ForgotPasswordForm from "../molecules/ForgotPasswordForm";
 
 const ForgotPasswordBox = () => {
 	return (
-		<StyledParentDiv>
+		<StyledPageWrapper>
 			<StyledFormBox>
-				<Header1
+				{/* <Header1
 					StyledHeader1={StyledHeader1}
 					text="Reset your password"
-				/>
+				/> */}
 				<ForgotPasswordForm />
 			</StyledFormBox>
-		</StyledParentDiv>
+		</StyledPageWrapper>
 	);
 };
 

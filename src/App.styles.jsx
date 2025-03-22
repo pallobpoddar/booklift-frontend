@@ -43,12 +43,11 @@ const StyledFormError = styled.p`
 const StyledInput = styled.input`
 	border: 1px solid #ccc;
 	padding: 1rem 1.25rem;
-	width: 20rem;
+	width: 100%;
 
 	&:hover, &:focus {
 		outline: none;
-		border: 2px solid #346250;
-		padding: calc(1rem - 1px) calc(1.25rem - 1px);
+		border: 1px solid #346250;
 	}
 `;
 
@@ -63,15 +62,15 @@ const StyledButton = styled.button`
 
 const StyledFormRow = styled.div``;
 
-const StyledFormBox = styled.div`
-	display: flex;
-	flex-direction: column;
+const StyledFormBox = styled.article`
 	padding: 3rem;
 	border: 2px solid #e5e5e5;
 	border-radius: 2px;
+	width: 90%;
+	max-width: 480px;
 `;
 
-const StyledParentDiv = styled.div`
+const StyledPageWrapper = styled.div`
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -89,6 +88,6 @@ export {
 	StyledInput,
 	StyledButton,
 	StyledFormBox,
-	StyledParentDiv,
+	StyledPageWrapper,
 	StyledFormRow
 };

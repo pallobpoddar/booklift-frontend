@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useForm, Controller } from "react-hook-form";
-import Input from "../atoms/inputs/Input";
-import Button from "../atoms/buttons/Button";
+import Input from "../atoms/Input";
+import Button from "../atoms/Button";
 import { BeatLoader } from "react-spinners";
 import { toast } from "react-toastify";
 import authApi from "../../api/authApi";
@@ -76,13 +76,12 @@ const SignupForm = () => {
               value: 100,
               message: "Character limit exceeded",
             },
+            validate: (value) => value.trim() !== "" || "Name can't be empty",
           }}
           render={({ field }) => (
             <Input
-              type="text"
               StyledInput={StyledInput}
               placeholder="Name"
-              autoFocus
               field={field}
               style={{
                 border: errors.name ? "1px solid red" : "",
@@ -113,7 +112,6 @@ const SignupForm = () => {
           }}
           render={({ field }) => (
             <Input
-              type="text"
               StyledInput={StyledInput}
               placeholder="Email"
               field={field}
@@ -147,7 +145,7 @@ const SignupForm = () => {
               value:
                 /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[~`!@#$%^&*()_\-+={[}\]|\\:;"'<,>.?/])[A-Za-z\d~`!@#$%^&*()_\-+={[}\]|\\:;"'<,>.?/]{8,20}$/,
               message:
-                "Password must contain at least 8 characters, 1 lowercase letter, 1 uppercase letter, 1 number and 1 symbol",
+                "Password must contain 1 lowercase letter, 1 uppercase letter, 1 number and 1 symbol",
             },
           }}
           render={({ field }) => (
@@ -197,7 +195,6 @@ const SignupForm = () => {
 
       <Button StyledButton={StyledButton} type="submit">
         {isLoading ? <BeatLoader color="white" size={8} /> : "SIGN UP"}
-        SIGN UP
       </Button>
     </StyledForm>
   );

@@ -1,6 +1,5 @@
 import useBook from "../../hooks/useBook";
 import BookRow from "./BookRow";
-import "./BookTable.scss";
 
 const BookTable = () => {
 	const { bookList } = useBook();

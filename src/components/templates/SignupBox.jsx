@@ -1,17 +1,17 @@
-import Header1 from "../atoms/labels/Header1";
 import SignupForm from "../organisms/SignupForm";
 import {
   StyledFormHeader,
   StyledFormBox,
-  StyledParentDiv,
+  StyledPageWrapper,
 } from "../../App.styles";
-import { Link } from "react-router-dom";
+import { Link } from "react-router";
+import Typography from "../atoms/Typography";
 
 const SignupBox = () => {
   return (
-    <StyledParentDiv>
+    <StyledPageWrapper>
       <StyledFormBox>
-        <Header1 StyledHeader1={StyledFormHeader} text="Sign Up" />
+        <Typography StyledComponent={StyledFormHeader}>Sign Up</Typography>
         <SignupForm />
         <Link
           to={"/signin"}
@@ -20,7 +20,7 @@ const SignupBox = () => {
           Already have an account?
         </Link>
       </StyledFormBox>
-    </StyledParentDiv>
+    </StyledPageWrapper>
   );
 };
 

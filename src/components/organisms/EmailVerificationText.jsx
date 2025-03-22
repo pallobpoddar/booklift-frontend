@@ -1,10 +1,10 @@
 import { useEffect } from "react";
-import Header1 from "../atoms/labels/Header1";
+// import Header1 from "../atoms/labels/Header1";
 // import {
 //   emailVerificationUrl,
 // } from "../../api/authApi";
-import { useParams } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
+import { useParams } from "react-router";
+import { useNavigate } from "react-router";
 import { useDispatch } from "react-redux";
 // import { saveSignIn } from "../../redux/slices/userSlice";
 import { FadeLoader } from "react-spinners";

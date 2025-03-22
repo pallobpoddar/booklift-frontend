@@ -1,5 +1,3 @@
-import PropTypes from "prop-types";
-
 const Button = ({ StyledButton, type, onClick, children }) => {
 	return (
 		<StyledButton
@@ -8,13 +6,6 @@ const Button = ({ StyledButton, type, onClick, children }) => {
 			{children}
 		</StyledButton>
 	);
-};
-
-Button.propTypes = {
-	StyledButton: PropTypes.elementType.isRequired,
-	children: PropTypes.node,
-	type: PropTypes.string,
-	onClick: PropTypes.func,
 };
 
 export default Button;

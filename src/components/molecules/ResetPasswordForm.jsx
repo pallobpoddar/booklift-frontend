@@ -1,15 +1,15 @@
 import { useEffect } from "react";
 import { useForm, Controller } from "react-hook-form";
 import useAuth from "../../hooks/useAuth";
-import Input from "../atoms/inputs/Input";
-import Button from "../atoms/buttons/Button";
+import Input from "../atoms/Input";
+import Button from "../atoms/Button";
 import {
   StyledForm,
   StyledFormRow,
   StyledFormError,
   StyledInput,
 } from "../../App.styles";
-import { useParams } from "react-router-dom";
+import { useParams } from "react-router";
 import styled from "styled-components";
 
 const StyledButton = styled.button`

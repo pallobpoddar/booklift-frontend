@@ -1,7 +1,6 @@
 import React from "react";
 import PrimaryList from "../atoms/lists/PrimaryList";
-import { Link } from "react-router-dom";
-import "../../App.scss";
+import { Link } from "react-router";
 
 const NavigationList = ({ StyledList }) => {
 	return (
