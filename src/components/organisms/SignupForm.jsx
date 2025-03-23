@@ -1,10 +1,7 @@
-import { useState } from "react";
 import { useForm, Controller } from "react-hook-form";
 import Input from "../atoms/Input";
 import Button from "../atoms/Button";
 import { BeatLoader } from "react-spinners";
-import { toast } from "react-toastify";
-import authApi from "../../api/authApi";
 import {
   StyledForm,
   StyledFormError,
@@ -12,8 +9,7 @@ import {
   StyledButton,
 } from "../../App.styles";
 
-const SignupForm = () => {
-  const [isLoading, setIsLoading] = useState(false);
+const SignupForm = ({ isLoading, onFormSubmit }) => {
   const {
     handleSubmit,
     control,
@@ -30,20 +26,6 @@ const SignupForm = () => {
     },
   });
 
-  const showAlert = (data) => {
-    if (data.success) {
-      toast.success(data.message, {
-        autoClose: false,
-        hideProgressBar: true,
-        theme: "colored",
-      });
-    } else {
-      toast.error(data.message, {
-        theme: "colored",
-      });
-    }
-  };
-
   const handlerOnSubmit = async () => {
     const formData = {
       name: getValues("name"),
@@ -52,16 +34,7 @@ const SignupForm = () => {
       confirmPassword: getValues("confirmPassword"),
     };
 
-    setIsLoading(true);
-
-    try {
-      const response = await authApi.signUp(formData);
-      showAlert(response.data);
-    } catch (error) {
-      showAlert(error.response.data);
-    } finally {
-      setIsLoading(false);
-    }
+    onFormSubmit(formData);
   };
 
   return (
