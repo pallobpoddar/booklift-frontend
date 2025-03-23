@@ -1,6 +1,5 @@
 import { BrowserRouter, Route, Routes } from "react-router";
 import { ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
 import UserHome from "./components/pages/user/UserHome";
 import AdminDashboard from "./components/pages/admin/AdminDashboard";
 import AdminBooks from "./components/pages/admin/AdminBooks";
@@ -17,6 +16,7 @@ import UserForgotPassword from "./components/pages/user/UserForgotPassword";
 import UserResetPassword from "./components/pages/user/UserResetPassword";
 import UserProfile from "./components/pages/user/UserProfile";
 import EmailVerification from "./components/pages/EmailVerification";
+import UnauthenticatedRoutes from "./middleware/UnauthenticatedRoutes";
 
 function App() {
   return (
@@ -25,20 +25,22 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<UserHome />} />
-          <Route path="/signin" element={<Signin />} />
-          <Route
-            path="/user/forgot-password"
-            element={<UserForgotPassword />}
-          />
-          <Route
-            path="/reset-password/:token/:id"
-            element={<UserResetPassword />}
-          />
-          <Route path="/signup" element={<Signup />} />
-          <Route
-            path="/email-verification/:token/:id"
-            element={<EmailVerification />}
-          />
+          {/* <Route element={<UnauthenticatedRoutes />}> */}
+            <Route path="/signup" element={<Signup />} />
+            <Route path="/signin" element={<Signin />} />
+            <Route
+              path="/user/forgot-password"
+              element={<UserForgotPassword />}
+            />
+            <Route
+              path="/reset-password/:token/:id"
+              element={<UserResetPassword />}
+            />
+            <Route
+              path="/email-verification/:token/:id"
+              element={<EmailVerification />}
+            />
+          {/* </Route> */}
           <Route path="/user/cart" element={<UserCart />} />
           <Route path="/user/profile" element={<UserProfile />} />
           <Route path="/admin/books" Component={AdminBooks} />

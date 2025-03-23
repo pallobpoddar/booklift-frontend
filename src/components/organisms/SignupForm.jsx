@@ -193,7 +193,7 @@ const SignupForm = () => {
         )}
       </div>
 
-      <Button StyledButton={StyledButton} type="submit">
+      <Button StyledButton={StyledButton}>
         {isLoading ? <BeatLoader color="white" size={8} /> : "SIGN UP"}
       </Button>
     </StyledForm>
