@@ -15,14 +15,12 @@ const SignupForm = ({ isLoading, onFormSubmit }) => {
     control,
     formState: { errors },
     getValues,
-    watch,
   } = useForm({
     mode: "onChange",
     defaultValues: {
       name: "",
       email: "",
       password: "",
-      confirmPassword: "",
     },
   });
 
@@ -31,7 +29,6 @@ const SignupForm = ({ isLoading, onFormSubmit }) => {
       name: getValues("name"),
       email: getValues("email"),
       password: getValues("password"),
-      confirmPassword: getValues("confirmPassword"),
     };
 
     onFormSubmit(formData);
@@ -55,10 +52,9 @@ const SignupForm = ({ isLoading, onFormSubmit }) => {
             <Input
               StyledInput={StyledInput}
               placeholder="Name"
+              autocomplete={"name"}
               field={field}
-              style={{
-                border: errors.name ? "1px solid red" : "",
-              }}
+              error={errors.name && true}
             />
           )}
         />
@@ -87,10 +83,9 @@ const SignupForm = ({ isLoading, onFormSubmit }) => {
             <Input
               StyledInput={StyledInput}
               placeholder="Email"
+              autocomplete={"email"}
               field={field}
-              style={{
-                border: errors.email ? "1px solid red" : "",
-              }}
+              error={errors.email && true}
             />
           )}
         />
@@ -126,43 +121,16 @@ const SignupForm = ({ isLoading, onFormSubmit }) => {
               StyledInput={StyledInput}
               placeholder="Password"
               type="password"
+              autocomplete={"new-password"}
+              includePasswordIcon={true}
               field={field}
-              style={{
-                border: errors.password ? "1px solid red" : "",
-              }}
+              error={errors.password && true}
             />
           )}
         />
 
         {errors.password && (
           <StyledFormError>{errors.password.message}</StyledFormError>
-        )}
-      </div>
-
-      <div>
-        <Controller
-          name="confirmPassword"
-          control={control}
-          rules={{
-            required: "Confirm password is required",
-            validate: (value) =>
-              value === watch("password") || "Passwords don't match",
-          }}
-          render={({ field }) => (
-            <Input
-              StyledInput={StyledInput}
-              placeholder="Confirm password"
-              type="password"
-              field={field}
-              style={{
-                border: errors.confirmPassword ? "1px solid red" : "",
-              }}
-            />
-          )}
-        />
-
-        {errors.confirmPassword && (
-          <StyledFormError>{errors.confirmPassword.message}</StyledFormError>
         )}
       </div>
 

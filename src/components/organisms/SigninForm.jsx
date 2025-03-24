@@ -50,10 +50,9 @@ const SigninForm = ({ isLoading, onFormSubmit }) => {
               type="text"
               StyledInput={StyledInput}
               placeholder="Email"
+              autocomplete={"email"}
               field={field}
-              style={{
-                border: errors.email ? "1px solid red" : "",
-              }}
+              error={errors.email && true}
             />
           )}
         />
@@ -79,10 +78,10 @@ const SigninForm = ({ isLoading, onFormSubmit }) => {
               type="password"
               StyledInput={StyledInput}
               placeholder="Password"
+              autocomplete={"current-password"}
+              includePasswordIcon
               field={field}
-              style={{
-                border: errors.password ? "1px solid red" : "",
-              }}
+              error={errors.password && true}
             />
           )}
         />
