@@ -1,13 +1,7 @@
-import { useState } from "react";
 import { useForm, Controller } from "react-hook-form";
 import Input from "../atoms/Input";
 import Button from "../atoms/Button";
-import authApi from "../../api/authApi";
 import { BeatLoader } from "react-spinners";
-import { toast } from "react-toastify";
-import { useDispatch } from "react-redux";
-import { signIn } from "../../redux/slices/userSlice";
-import { useNavigate } from "react-router";
 import {
   StyledForm,
   StyledFormError,
@@ -15,10 +9,7 @@ import {
   StyledButton,
 } from "../../App.styles";
 
-const SigninForm = () => {
-  const [isLoading, setIsLoading] = useState(false);
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
+const SigninForm = ({ isLoading, onFormSubmit }) => {
   const {
     handleSubmit,
     control,
@@ -32,31 +23,13 @@ const SigninForm = () => {
     },
   });
 
-  const showAlert = (data) => {
-    if (!data.success) {
-      toast.error(data.message, {
-        theme: "colored",
-      });
-    }
-  };
-
   const handlerOnSubmit = async () => {
     const formData = {
       email: getValues("email"),
       password: getValues("password"),
     };
 
-    setIsLoading(true);
-
-    try {
-      const response = await authApi.signIn(formData);
-      dispatch(signIn(response.data.data));
-      response.data.data.role === "Admin" ? navigate("/admin") : navigate("/");
-    } catch (error) {
-      showAlert(error.response.data);
-    } finally {
-      setIsLoading(false);
-    }
+    onFormSubmit(formData);
   };
 
   return (
