@@ -37,7 +37,7 @@ function App() {
               element={<UserResetPassword />}
             />
             <Route
-              path="/email-verification/:token/:id"
+              path="/:id/email-verification/:token"
               element={<EmailVerification />}
             />
           {/* </Route> */}
