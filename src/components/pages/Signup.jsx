@@ -27,11 +27,11 @@ const Signup = () => {
 
     try {
       const response = await authApi.signUp(formData);
+      setIsLoading(false);
       showAlert(response.data);
     } catch (error) {
-      showAlert(error.response.data);
-    } finally {
       setIsLoading(false);
+      showAlert(error.response.data);
     }
   };
 

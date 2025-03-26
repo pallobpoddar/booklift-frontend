@@ -29,16 +29,16 @@ function App() {
             <Route path="/signup" element={<Signup />} />
             <Route path="/signin" element={<Signin />} />
             <Route
+              path="/:id/email-verification/:token"
+              element={<EmailVerification />}
+            />
+            <Route
               path="/user/forgot-password"
               element={<UserForgotPassword />}
             />
             <Route
               path="/reset-password/:token/:id"
               element={<UserResetPassword />}
-            />
-            <Route
-              path="/:id/email-verification/:token"
-              element={<EmailVerification />}
             />
           {/* </Route> */}
           <Route path="/user/cart" element={<UserCart />} />

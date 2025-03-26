@@ -2,13 +2,16 @@ import EmailVerificationBox from "../templates/EmailVerificationBox";
 import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import authApi from "../../api/authApi";
-import { useParams } from "react-router";
-import { useNavigate } from "react-router";
+import { useParams, useNavigate } from "react-router";
 import { useDispatch } from "react-redux";
 import { signIn } from "../../redux/slices/userSlice";
+import { MoonLoader } from "react-spinners";
 
 const EmailVerification = () => {
-  const [isLoading, setIsLoading] = useState(false);
+  const [isPageLoading, setIsPageLoading] = useState(false);
+  const [isButtonLoading, setIsButtonLoading] = useState(false);
+  const [emailVerificationErrorResponse, setEmailVerificationErrorResponse] =
+    useState({});
   const { id, token } = useParams();
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -29,17 +32,24 @@ const EmailVerification = () => {
 
   useEffect(() => {
     let isMounted = true;
-    setIsLoading(true);
+    setIsPageLoading(true);
 
     const verify = async () => {
       try {
         const response = await authApi.verifyEmail(id, token);
-        dispatch(signIn(response.data.data));
-        navigate("/");
+        if (isMounted) {
+          dispatch(signIn(response.data.data));
+          setIsPageLoading(false);
+          navigate("/");
+        }
       } catch (error) {
-        if (isMounted) showAlert(error.response?.data);
-      } finally {
-        if (isMounted) setIsLoading(false);
+        if (isMounted) {
+          setIsPageLoading(false);
+          setEmailVerificationErrorResponse({
+            message: error.response.data.message,
+            status: error.response.status,
+          });
+        }
       }
     };
 
@@ -51,19 +61,26 @@ const EmailVerification = () => {
   }, [id, token, navigate, dispatch]);
 
   const handleClick = async () => {
-    setIsLoading(true);
+    setIsButtonLoading(true);
 
     try {
-      const response = await authApi.verifyEmail(id, token);
+      const response = await authApi.resendVerificationEmail(id);
+      setIsButtonLoading(false);
       showAlert(response.data);
     } catch (error) {
+      setIsButtonLoading(false);
       showAlert(error.response.data);
-    } finally {
-      setIsLoading(false);
     }
   };
 
-  return <EmailVerificationBox isLoading={isLoading} onClick={handleClick} />;
+  return (
+    <EmailVerificationBox
+      isPageLoading={isPageLoading}
+      isButtonLoading={isButtonLoading}
+      emailVerificationErrorResponse={emailVerificationErrorResponse}
+      onClick={handleClick}
+    />
+  );
 };
 
 export default EmailVerification;

@@ -1,23 +1,20 @@
 import Api from "./apiConfig";
 
 class AuthApi {
-  endPoints = {
-    signup: "/auth/signup",
-    signin: "/auth/signin",
-    emailVerification: "/auth/email-verification",
-    emailVerificationResend: "/auth/email-verification-resend",
-  };
-
   async signUp(data) {
-    return await Api.http.post(this.endPoints.signup, data);
+    return await Api.http.post("/auth/signup", data);
   }
 
   async signIn(data) {
-    return await Api.http.post(this.endPoints.signin, data);
+    return await Api.http.post("/auth/signin", data);
   }
 
   async verifyEmail(id, token) {
-    return await Api.http.post(`/${id}/email-verification/${token}`);
+    return await Api.http.post(`/auth/${id}/email-verification/${token}`);
+  }
+
+  async resendVerificationEmail(id) {
+    return await Api.http.post(`/auth/${id}/email-verification-resend`);
   }
 }
 

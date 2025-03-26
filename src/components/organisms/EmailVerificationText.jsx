@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import Button from "../atoms/Button";
 import { StyledButton } from "../../App.styles";
+import { BeatLoader } from "react-spinners";
 
 const StyledWrapper = styled.div`
   display: flex;
@@ -9,13 +10,27 @@ const StyledWrapper = styled.div`
   gap: 1rem;
 `;
 
-const EmailVerificationText = ({ isLoading, onClick, text }) => {
+const StyledSpan = styled.span`
+  display: inline-flex;
+  width: 100px;
+  justify-content: center;
+`;
+
+const EmailVerificationText = ({
+  isLoading,
+  emailVerificationErrorResponse,
+  onClick,
+}) => {
   return (
     <StyledWrapper>
-      <p>{text}</p>
-      <Button StyledButton={StyledButton} onClick={onClick}>
-        {isLoading ? <BeatLoader color="white" size={8} /> : "Resend"}
-      </Button>
+      <p>{emailVerificationErrorResponse.message}</p>
+      {emailVerificationErrorResponse.status === 410 && (
+        <Button StyledButton={StyledButton} onClick={onClick}>
+          <StyledSpan>
+            {isLoading ? <BeatLoader color="white" size={8} /> : "Resend Email"}
+          </StyledSpan>
+        </Button>
+      )}
     </StyledWrapper>
   );
 };

@@ -1,12 +1,26 @@
 import EmailVerificationText from "../organisms/EmailVerificationText";
 import { StyledPageWrapper, StyledFormBox } from "../../App.styles";
+import { MoonLoader } from "react-spinners";
 
-const EmailVerificationBox = ({isLoading, onClick}) => {
+const EmailVerificationBox = ({
+  isPageLoading,
+  isButtonLoading,
+  emailVerificationErrorResponse,
+  onClick,
+}) => {
   return (
     <StyledPageWrapper>
-      <StyledFormBox>
-        <EmailVerificationText isLoading={isLoading} onClick={onClick} text={"Token is expired"} />
-      </StyledFormBox>
+      {isPageLoading && <MoonLoader color="#3e5962" />}
+
+      {emailVerificationErrorResponse && (
+        <StyledFormBox>
+          <EmailVerificationText
+            isLoading={isButtonLoading}
+            emailVerificationErrorResponse={emailVerificationErrorResponse}
+            onClick={onClick}
+          />
+        </StyledFormBox>
+      )}
     </StyledPageWrapper>
   );
 };

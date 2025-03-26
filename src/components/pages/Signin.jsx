@@ -33,11 +33,11 @@ const Signin = () => {
     try {
       const response = await authApi.signIn(formData);
       dispatch(signIn(response.data.data));
+      setIsLoading(false);
       response.data.data.role === "Admin" ? navigate("/admin") : navigate("/");
     } catch (error) {
-      showAlert(error.response.data);
-    } finally {
       setIsLoading(false);
+      showAlert(error.response.data);
     }
   };
 
