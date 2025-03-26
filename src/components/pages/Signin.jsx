@@ -3,11 +3,11 @@ import { Link } from "react-router";
 import SigninForm from "../organisms/SigninForm";
 import styled from "styled-components";
 import { useState } from "react";
-import { toast } from "react-toastify";
 import authApi from "../../api/authApi";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router";
 import { signIn } from "../../redux/slices/userSlice";
+import { showErrorAlert } from "../../utils/toaster";
 
 const StyledTextWrapper = styled.div`
   display: flex;
@@ -19,14 +19,6 @@ const Signin = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const showAlert = (data) => {
-    if (!data.success) {
-      toast.error(data.message, {
-        theme: "colored",
-      });
-    }
-  };
-
   const handlerOnSubmit = async (formData) => {
     setIsLoading(true);
 
@@ -37,7 +29,7 @@ const Signin = () => {
       response.data.data.role === "Admin" ? navigate("/admin") : navigate("/");
     } catch (error) {
       setIsLoading(false);
-      showAlert(error.response.data);
+      showErrorAlert(error.response.data);
     }
   };
 
@@ -56,7 +48,7 @@ const Signin = () => {
           Don&apos;t have an account?
         </Link>
         <Link
-          to={"/user/forgot-password"}
+          to={"/forgot-password"}
           style={{ textDecoration: "none", color: "#3e5962" }}
         >
           Forgot password?

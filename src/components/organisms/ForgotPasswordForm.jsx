@@ -1,24 +1,15 @@
-import { useEffect } from "react";
 import { useForm, Controller } from "react-hook-form";
-import useAuth from "../../hooks/useAuth";
 import Input from "../atoms/Input";
 import Button from "../atoms/Button";
+import { BeatLoader } from "react-spinners";
 import {
   StyledForm,
-  StyledFormRow,
   StyledFormError,
   StyledInput,
+  StyledButton,
 } from "../../App.styles";
-import styled from "styled-components";
 
-const StyledButton = styled.button`
-  padding: 0.5rem 1rem;
-  background-color: #3e5962;
-  color: white;
-  font-weight: bold;
-`;
-
-const ForgotPasswordForm = () => {
+const ForgotPasswordForm = ({ isLoading, onFormSubmit }) => {
   const {
     handleSubmit,
     control,
@@ -31,56 +22,50 @@ const ForgotPasswordForm = () => {
     },
   });
 
-  const { forgotPassword } = useAuth();
-
   const handlerOnSubmit = () => {
     const formData = {
       email: getValues("email"),
     };
-    forgotPassword(formData);
-  };
 
-  useEffect(() => {}, [errors]);
+    onFormSubmit(formData);
+  };
 
   return (
     <StyledForm onSubmit={handleSubmit(handlerOnSubmit)}>
-      <StyledFormRow>
+      <div>
         <Controller
           name="email"
           control={control}
           rules={{
             required: "Email is required",
-
             maxLength: {
-              value: 64,
-              message: "Email is not valid",
+              value: 320,
+              message: "Invalid email format",
+            },
+            pattern: {
+              value: /^[a-zA-Z0-9._+-]+@[a-zA-Z0-9-]+\.[a-zA-Z]{2,4}$/,
+              message: "Invalid email format",
             },
           }}
           render={({ field }) => (
             <Input
-              type="text"
               StyledInput={StyledInput}
-              placeholder="Email"
+              placeholder="Enter your email"
+              autocomplete={"email"}
               field={field}
-              style={{
-                border: errors.email ? "1px solid red" : "",
-              }}
+              error={errors.email && true}
             />
           )}
         />
-      </StyledFormRow>
 
-      <StyledFormError>
-        {errors.email && <p>{errors.email.message}</p>}
-      </StyledFormError>
+        {errors.email && (
+          <StyledFormError>{errors.email.message}</StyledFormError>
+        )}
+      </div>
 
-      <StyledFormRow>
-        <Button
-          StyledButton={StyledButton}
-          text="Send email"
-          type="submit"
-        />
-      </StyledFormRow>
+      <Button StyledButton={StyledButton}>
+        {isLoading ? <BeatLoader color="white" size={8} /> : "Submit"}
+      </Button>
     </StyledForm>
   );
 };

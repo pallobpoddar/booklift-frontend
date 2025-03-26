@@ -12,7 +12,7 @@ import UserCart from "./components/pages/user/UserCart";
 import Signin from "./components/pages/Signin";
 import Signup from "./components/pages/Signup";
 import AdminBookUpdate from "./components/pages/admin/AdminBookUpdate";
-import UserForgotPassword from "./components/pages/user/UserForgotPassword";
+import ForgotPassword from "./components/pages/ForgotPassword";
 import UserResetPassword from "./components/pages/user/UserResetPassword";
 import UserProfile from "./components/pages/user/UserProfile";
 import EmailVerification from "./components/pages/EmailVerification";
@@ -26,20 +26,17 @@ function App() {
         <Routes>
           <Route path="/" element={<UserHome />} />
           {/* <Route element={<UnauthenticatedRoutes />}> */}
-            <Route path="/signup" element={<Signup />} />
-            <Route path="/signin" element={<Signin />} />
-            <Route
-              path="/:id/email-verification/:token"
-              element={<EmailVerification />}
-            />
-            <Route
-              path="/user/forgot-password"
-              element={<UserForgotPassword />}
-            />
-            <Route
-              path="/reset-password/:token/:id"
-              element={<UserResetPassword />}
-            />
+          <Route path="/signup" element={<Signup />} />
+          <Route path="/signin" element={<Signin />} />
+          <Route
+            path="/:id/email-verification/:token"
+            element={<EmailVerification />}
+          />
+          <Route path="/forgot-password" element={<ForgotPassword />} />
+          <Route
+            path="/reset-password/:token/:id"
+            element={<UserResetPassword />}
+          />
           {/* </Route> */}
           <Route path="/user/cart" element={<UserCart />} />
           <Route path="/user/profile" element={<UserProfile />} />

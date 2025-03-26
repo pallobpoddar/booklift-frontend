@@ -1,18 +1,17 @@
 import FormBox from "../templates/FormBox";
-import SignupForm from "../organisms/SignupForm";
-import { Link } from "react-router";
+import ForgotPasswordForm from "../organisms/ForgotPasswordForm";
 import { useState } from "react";
-import authApi from "../../api/authApi";
 import { showSuccessAlert, showErrorAlert } from "../../utils/toaster";
+import authApi from "../../api/authApi";
 
-const Signup = () => {
+const ForgotPassword = () => {
   const [isLoading, setIsLoading] = useState(false);
 
   const handlerOnSubmit = async (formData) => {
     setIsLoading(true);
 
     try {
-      const response = await authApi.signUp(formData);
+      const response = await authApi.sendPasswordResetEmail(formData);
       setIsLoading(false);
       showSuccessAlert(response.data);
     } catch (error) {
@@ -23,16 +22,12 @@ const Signup = () => {
 
   return (
     <FormBox
-      title="Sign Up"
-      Form={SignupForm}
+      title="Forgot Password?"
+      Form={ForgotPasswordForm}
       isLoading={isLoading}
       onFormSubmit={handlerOnSubmit}
-    >
-      <Link to={"/signin"} style={{ textDecoration: "none", color: "#3e5962" }}>
-        Already have an account?
-      </Link>
-    </FormBox>
+    />
   );
 };
 
-export default Signup;
+export default ForgotPassword;
