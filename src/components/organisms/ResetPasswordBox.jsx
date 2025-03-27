@@ -5,7 +5,7 @@ import {
 	StyledFormBox,
 	StyledPageWrapper,
 } from "../../App.styles";
-import ResetPasswordForm from "../molecules/ResetPasswordForm";
+import ResetPasswordForm from "./ResetPasswordForm";
 
 const ResetPasswordBox = () => {
 	return (

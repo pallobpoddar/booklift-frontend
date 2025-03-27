@@ -13,7 +13,7 @@ import Signin from "./components/pages/Signin";
 import Signup from "./components/pages/Signup";
 import AdminBookUpdate from "./components/pages/admin/AdminBookUpdate";
 import ForgotPassword from "./components/pages/ForgotPassword";
-import UserResetPassword from "./components/pages/user/UserResetPassword";
+import UserResetPassword from "./components/pages/ResetPassword";
 import UserProfile from "./components/pages/user/UserProfile";
 import EmailVerification from "./components/pages/EmailVerification";
 import UnauthenticatedRoutes from "./middleware/UnauthenticatedRoutes";
@@ -34,7 +34,7 @@ function App() {
           />
           <Route path="/forgot-password" element={<ForgotPassword />} />
           <Route
-            path="/reset-password/:token/:id"
+            path="/:id/password-reset/:token"
             element={<UserResetPassword />}
           />
           {/* </Route> */}

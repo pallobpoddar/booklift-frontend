@@ -20,6 +20,10 @@ class AuthApi {
   async sendPasswordResetEmail(data) {
     return await Api.http.post("/auth/forgot-password", data);
   }
+
+  async resetPassword(id, token, data) {
+    return await Api.http.post(`/auth/${id}/password-reset/${token}`, data);
+  }
 }
 
 export default new AuthApi();
