@@ -1,7 +1,7 @@
 import { BrowserRouter, Route, Routes } from "react-router";
 import { ToastContainer } from "react-toastify";
 import UserHome from "./components/pages/user/UserHome";
-import AdminDashboard from "./components/pages/admin/AdminDashboard";
+import AdminDashboard from "./components/pages/AdminDashboard";
 import AdminBooks from "./components/pages/admin/AdminBooks";
 import AdminUsers from "./components/pages/admin/AdminUsers";
 import AdminDiscounts from "./components/pages/admin/AdminDiscounts";
@@ -48,7 +48,7 @@ function App() {
           <Route path="/admin/transactions" Component={AdminTransactions} />
           <Route path="/admin/books/all" Component={AdminBookList} />
           <Route path="/admin/books/add" Component={AdminBookAdd} />
-          <Route path="/admin/dashboard" Component={AdminDashboard} />
+          <Route path="/admin" Component={AdminDashboard} />
         </Routes>
       </BrowserRouter>
     </>

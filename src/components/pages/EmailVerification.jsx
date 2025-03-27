@@ -5,7 +5,6 @@ import authApi from "../../api/authApi";
 import { useParams, useNavigate } from "react-router";
 import { useDispatch } from "react-redux";
 import { signIn } from "../../redux/slices/userSlice";
-import { MoonLoader } from "react-spinners";
 
 const EmailVerification = () => {
   const [isPageLoading, setIsPageLoading] = useState(false);

@@ -64,7 +64,7 @@ const ForgotPasswordForm = ({ isLoading, onFormSubmit }) => {
       </div>
 
       <Button StyledButton={StyledButton}>
-        {isLoading ? <BeatLoader color="white" size={8} /> : "Submit"}
+        {isLoading ? <BeatLoader color="white" size={8} /> : "SUBMIT"}
       </Button>
     </StyledForm>
   );

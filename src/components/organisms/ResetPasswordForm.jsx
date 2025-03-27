@@ -72,7 +72,7 @@ const ResetPasswordForm = ({ isLoading, onFormSubmit }) => {
       </div>
 
       <Button StyledButton={StyledButton}>
-        {isLoading ? <BeatLoader color="white" size={8} /> : "Reset"}
+        {isLoading ? <BeatLoader color="white" size={8} /> : "RESET"}
       </Button>
     </StyledForm>
   );

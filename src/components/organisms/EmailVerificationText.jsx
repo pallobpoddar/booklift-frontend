@@ -27,7 +27,7 @@ const EmailVerificationText = ({
       {emailVerificationErrorResponse.status === 410 && (
         <Button StyledButton={StyledButton} onClick={onClick}>
           <StyledSpan>
-            {isLoading ? <BeatLoader color="white" size={8} /> : "Resend Email"}
+            {isLoading ? <BeatLoader color="white" size={8} /> : "RESEND EMAIL"}
           </StyledSpan>
         </Button>
       )}
