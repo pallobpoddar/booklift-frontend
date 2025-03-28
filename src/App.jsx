@@ -18,6 +18,7 @@ import UserProfile from "./components/pages/user/UserProfile";
 import EmailVerification from "./components/pages/EmailVerification";
 import UnauthenticatedRoutes from "./middleware/UnauthenticatedRoutes";
 import AdminRoutes from "./middleware/AdminRoutes";
+import NotFound from "./components/pages/NotFound";
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<UserHome />} />
+          <Route path="*" element={<NotFound />} />
 
           <Route element={<UnauthenticatedRoutes />}>
             <Route path="/signup" element={<Signup />} />
@@ -55,6 +57,8 @@ function App() {
           <Route path="/admin/transactions" Component={AdminTransactions} />
           <Route path="/admin/books/all" Component={AdminBookList} />
           <Route path="/admin/books/add" Component={AdminBookAdd} />
+
+          
         </Routes>
       </BrowserRouter>
     </>
