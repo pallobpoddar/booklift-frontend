@@ -17,6 +17,7 @@ import UserResetPassword from "./components/pages/ResetPassword";
 import UserProfile from "./components/pages/user/UserProfile";
 import EmailVerification from "./components/pages/EmailVerification";
 import UnauthenticatedRoutes from "./middleware/UnauthenticatedRoutes";
+import AdminRoutes from "./middleware/AdminRoutes";
 
 function App() {
   return (
@@ -25,19 +26,25 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<UserHome />} />
-          {/* <Route element={<UnauthenticatedRoutes />}> */}
-          <Route path="/signup" element={<Signup />} />
-          <Route path="/signin" element={<Signin />} />
-          <Route
-            path="/:id/email-verification/:token"
-            element={<EmailVerification />}
-          />
-          <Route path="/forgot-password" element={<ForgotPassword />} />
-          <Route
-            path="/:id/password-reset/:token"
-            element={<UserResetPassword />}
-          />
-          {/* </Route> */}
+
+          <Route element={<UnauthenticatedRoutes />}>
+            <Route path="/signup" element={<Signup />} />
+            <Route path="/signin" element={<Signin />} />
+            <Route
+              path="/:id/email-verification/:token"
+              element={<EmailVerification />}
+            />
+            <Route path="/forgot-password" element={<ForgotPassword />} />
+            <Route
+              path="/:id/password-reset/:token"
+              element={<UserResetPassword />}
+            />
+          </Route>
+
+          <Route element={<AdminRoutes />}>
+            <Route path="/admin" Component={AdminDashboard} />
+          </Route>
+
           <Route path="/user/cart" element={<UserCart />} />
           <Route path="/user/profile" element={<UserProfile />} />
           <Route path="/admin/books" Component={AdminBooks} />
@@ -48,7 +55,6 @@ function App() {
           <Route path="/admin/transactions" Component={AdminTransactions} />
           <Route path="/admin/books/all" Component={AdminBookList} />
           <Route path="/admin/books/add" Component={AdminBookAdd} />
-          <Route path="/admin" Component={AdminDashboard} />
         </Routes>
       </BrowserRouter>
     </>
